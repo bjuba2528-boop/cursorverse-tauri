@@ -1,0 +1,93 @@
+bluetooth:
+  available: ອຸປະກອນທີ່ມີຢູ່ (ບໍ່ໄດ້ຈັບຄູ່ກັນ)
+  cancel: ຍົກເລີກ
+  connected: ອຸປະກອນເຊື່ອມຕໍ່
+  forget: ລືມ
+  lowenergy: ພະລັງງານຕ່ໍາ
+  more: ການຕັ້ງຄ່າ Bluetooth ເພີ່ມເຕີມ
+  not_found: ບໍ່ພົບອຸປະກອນ Bluetooth
+  pair: ຄູ່
+  paired: ອຸປະກອນທີ່ບັນທຶກໄວ້
+  placeholder:
+    passphrase: passphrase, ລະຫັດຫຼື PIN
+  scanning: ການສະແກນສໍາລັບອຸປະກອນຕ່າງໆ
+context_menu:
+  add_custom_text: ເພີ່ມລາຍການຕົວຫນັງສືທີ່ກໍານົດເອງ
+  modules: ໂມດູນ
+  remove: ດຶງອອກຈາກໂມດູນ
+  reorder_disable: ແຖບເຄື່ອງມືລັອກ
+  reorder_enable: ແຖບເຄື່ອງມືປົດລັອກ
+  restore: ຟື້ນຟູໃຫ້ເປັນຄ່າເລີ່ມຕົ້ນ
+  settings: ການຕັ້ງຄ່າ
+  task_manager: Task Manager
+keyboard:
+  more: ການຕັ້ງຄ່າແປ້ນພິມເພີ່ມເຕີມ
+  title: ຮູບແບບ keyboard
+media:
+  default_multimedia_volume: ປະລິມານມັນຕິມີເດຍ
+  device:
+    channel:
+      system: ລະບົບ SYSTYS
+    comunications: ການສື່ສານ
+    missing: ອຸປະກອນທີ່ຂາດຫາຍໄປ
+    mixer: ປະລິມານ mixer ປະລິມານ
+    multimedia: ໂມສອນເຄີຍີຫໍ້
+    settings: ການຕັ້ງຄ່າອຸປະກອນເພີ່ມເຕີມ
+    volume: ປະລິມານອຸປະກອນ
+  input_devices: ອຸປະກອນປ້ອນຂໍ້ມູນ
+  output_devices: ອຸປະກອນຜົນໄດ້ຮັບ
+  players: ເຄື່ອງຫຼີ້ນສື່
+network:
+  available: ເຄືອຂ່າຍທີ່ມີຢູ່
+  connect: ເຊື່ອມຕໍ່
+  connected: ເຊື່ອມຕໍ່ກັບ
+  disconnect: ຕັດຂາດ
+  hidden: ເຄືອຂ່າຍທີ່ເຊື່ອງໄວ້
+  more: ການຕັ້ງຄ່າເຄືອຂ່າຍເພີ່ມເຕີມ
+  not_found: ບໍ່ພົບເຄືອຂ່າຍທີ່ພົບ
+  placeholder:
+    password: ລະຫັດຜ່ານ
+  saved: ເຄືອຂ່າຍທີ່ບັນທຶກໄວ້
+  scanning: ກຳລັງສະແກນຫາເຄືອຂ່າຍ
+  secured: ເຄືອຂ່າຍເຂົ້າລະຫັດ
+notifications:
+  clear: ລ້າງທັງຫມົດ
+  empty: ບໍ່ມີການແຈ້ງເຕືອນ
+  settings: ການຕັ້ງຄ່າການແຈ້ງເຕືອນເພີ່ມເຕີມ
+  title: ແຈ້ງການ
+placeholder:
+  battery_remaining: ສ່ວນທີ່ເຫຼືອ
+  bluetooth_devices: Bluetooth & ອຸປະກອນ
+  ethernet_connected: ການ​ເຂົ້າ​ເຖິງ​ອິນ​ເຕີ​ເນັດ
+  ethernet_disconnected: ບໍ່ມີການເຂົ້າເຖິງອິນເຕີເນັດ
+  notifications: ແຈ້ງການ
+  settings: ການຕັ້ງຄ່າດ່ວນ
+  smart_charge: '- ຮັບຜິດຊອບສະຫຼາດ'
+  volume: ປະລິມານ
+settings:
+  app_settings: ການຕັ້ງຄ່າແອັບ app
+  brightness: ຄວາມສະຫວ່າງ
+  power: ພະເດດ
+  restart: ເລີ່ມ​ຕົ້ນ​ໃຫມ່
+  title: ການກໍານົດ
+userhome:
+  empty_list: ບໍ່ມີສິນຄ້າຫຍັງ
+  folders:
+    desktop: ຂໍ້ທີ
+    documents: ເອກະສານ
+    downloads: ດາວໂຫລດ
+    more_items: ສະແດງໃຫ້ເຫັນຕື່ມ ...
+    music: ດົນຕີ
+    pictures: ຮູບພາບ
+    recent: ໃຊ້ໄດ້ບໍ່ດົນມານີ້
+    reduce_items: ສະແດງຫນ້ອຍ ...
+    title: ລາຍການຜູ້ໃຊ້
+    videos: ວິດີກ້າ
+  profile:
+    accounts: ເປີດການຕັ້ງຄ່າບັນຊີ
+    open_onedrive: ເປີດໄດເລກະທໍລີ signrive
+    open_user_folder: ເປີດໄດເລກະທໍລີຜູ້ໃຊ້
+  seelen_options:
+    open_installation_folder: ເປີດຮ້ານ Setten Settings
+    open_log_folder: ເປີດໂຟນເດີ LOGO STOEN
+    title: ລາຍການ SEELEN

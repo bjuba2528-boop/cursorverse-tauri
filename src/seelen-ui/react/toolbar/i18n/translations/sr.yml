@@ -1,0 +1,93 @@
+bluetooth:
+  available: Доступни уређаји (нису упарени)
+  cancel: Отказати
+  connected: Повезани уређаји
+  forget: Заборавити
+  lowenergy: Ниска енергија
+  more: Више Блуетоотх поставки
+  not_found: Није пронађен Блуетоотх уређаји
+  pair: Паузати
+  paired: Сачувани уређаји
+  placeholder:
+    passphrase: Пасспхраза, код или ПИН
+  scanning: Скенирање за уређаје
+context_menu:
+  add_custom_text: Додајте прилагођени текст текста
+  modules: Модули
+  remove: Уклони модул
+  reorder_disable: Алатна трака за закључавање
+  reorder_enable: Откључајте траку са алаткама
+  restore: Врати на подразумевано
+  settings: Подешавања
+  task_manager: Таск Манагер
+keyboard:
+  more: Више подешавања тастатуре
+  title: Изглед тастатуре
+media:
+  default_multimedia_volume: Мултимедијална количина
+  device:
+    channel:
+      system: Систем звукови
+    comunications: Комуникација
+    missing: Недостаје уређај
+    mixer: Миксер за јачину звука
+    multimedia: Мултимедијални
+    settings: Више подешавања уређаја
+    volume: Запремина уређаја
+  input_devices: Улазни уређаји
+  output_devices: Излазни уређаји
+  players: Медиа Играчи
+network:
+  available: Доступне мреже
+  connect: Повезати
+  connected: Повезано са
+  disconnect: Прекинути везу
+  hidden: Скривена мрежа
+  more: Више мрежних поставки
+  not_found: Није пронађена ниједна мрежа
+  placeholder:
+    password: Лозинка
+  saved: Сачуване мреже
+  scanning: Скенирање за мреже
+  secured: Шифрована мрежа
+notifications:
+  clear: Очистити све
+  empty: Нема обавештења
+  settings: Више поставки обавештења
+  title: Обавештења
+placeholder:
+  battery_remaining: преостали%
+  bluetooth_devices: Блуетоотх и уређаји
+  ethernet_connected: Приступ интернету
+  ethernet_disconnected: Нема приступа интернету
+  notifications: Обавештења
+  settings: Брза подешавања
+  smart_charge: '- паметно набој'
+  volume: Запремина
+settings:
+  app_settings: Подешавања апликација
+  brightness: Светлина
+  power: Моћ
+  restart: Поново покренути
+  title: Подешавања
+userhome:
+  empty_list: Нема предмета
+  folders:
+    desktop: Радна површина
+    documents: Документи
+    downloads: Преузимања
+    more_items: Прикажи више ...
+    music: Музика
+    pictures: Слике
+    recent: Недавно коришћен
+    reduce_items: Прикажи мање ...
+    title: Корисничке именике
+    videos: Видеос
+  profile:
+    accounts: Подешавања отвореног налога
+    open_onedrive: Отворено ОнеДриве именик
+    open_user_folder: Отворите директориј усер
+  seelen_options:
+    open_installation_folder: Отворите директоријум Сеелен Сеттингс
+    open_log_folder: Отворите мапу Сеелен Лог
+    title: Сеелен директорији

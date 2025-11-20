@@ -1,0 +1,93 @@
+bluetooth:
+  available: Mövcud qurğular (qoşululmur)
+  cancel: Ləğv etmək
+  connected: Bağlı qurğular
+  forget: Unutmaq
+  lowenergy: Aşağı enerji
+  more: Daha çox bluetooth parametrləri
+  not_found: Bluetooth cihazları tapılmadı
+  pair: Cütləşdirmək
+  paired: Qurtaran qurğular
+  placeholder:
+    passphrase: Passphrase, kod və ya pin
+  scanning: Cihazlar üçün tarama
+context_menu:
+  add_custom_text: Xüsusi mətn elementi əlavə edin
+  modules: Modullar
+  remove: Modulu çıxarın
+  reorder_disable: Lövhə
+  reorder_enable: Toolbar kilidini açın
+  restore: Defolt olaraq bərpa edin
+  settings: Parametrlər
+  task_manager: Tapşırıq meneceri
+keyboard:
+  more: Daha çox klaviatura parametrləri
+  title: Klaviatura düzeni
+media:
+  default_multimedia_volume: Multimedia həcmi
+  device:
+    channel:
+      system: Sistem səsləri
+    comunications: Rabitə
+    missing: İtkin cihaz
+    mixer: Həcm qarışdırıcı
+    multimedia: Multimedia
+    settings: Daha çox cihaz parametrləri
+    volume: Cihaz həcmi
+  input_devices: Giriş cihazları
+  output_devices: Çıxış cihazları
+  players: Media oyunçuları
+network:
+  available: Mövcud şəbəkələr
+  connect: Qoşulmaq
+  connected: qoşuldu
+  disconnect: Ayırd etmək
+  hidden: Gizli şəbəkə
+  more: Daha çox şəbəkə parametrləri
+  not_found: Heç bir şəbəkə tapılmadı
+  placeholder:
+    password: Parol
+  saved: Saxlanan şəbəkələr
+  scanning: Şəbəkələrin skan edilməsi
+  secured: Şifrələnmiş şəbəkə
+notifications:
+  clear: Hamısını təmizləmək
+  empty: Bildiriş yoxdur
+  settings: Daha çox bildiriş parametrləri
+  title: Bildirişlər
+placeholder:
+  battery_remaining: Qalan
+  bluetooth_devices: Bluetooth və Cihazlar
+  ethernet_connected: İnternetə çıxışı
+  ethernet_disconnected: İnternetə giriş yoxdur
+  notifications: Bildirişlər
+  settings: Tez Parametrlər
+  smart_charge: '- Ağıllı yük'
+  volume: Həcm
+settings:
+  app_settings: Tətbiq parametrləri
+  brightness: Parlaqlıq
+  power: Güc
+  restart: Yenidən başlamaq
+  title: Parametrlər
+userhome:
+  empty_list: Nəhəng
+  folders:
+    desktop: Masaüstü
+    documents: Sənədləşdirmək
+    downloads: Yüklər
+    more_items: Daha çox göstər ...
+    music: Musiqi
+    pictures: Şəkillər
+    recent: Yaxınlarda istifadə olunur
+    reduce_items: Daha az göstər ...
+    title: İstifadəçi qovluqları
+    videos: Videonlar
+  profile:
+    accounts: Açıq hesab parametrləri
+    open_onedrive: Açıq OneDrive Kataloqu
+    open_user_folder: Açıq İstifadəçi Kataloqu
+  seelen_options:
+    open_installation_folder: SEELEN Parametrləri qovluğu açın
+    open_log_folder: Seelen Giriş Qovluqunu açın
+    title: Seelen qovluqları

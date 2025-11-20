@@ -1,0 +1,362 @@
+.mac-dock-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.dock-settings {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  z-index: 10000;
+  min-width: 300px;
+}
+
+.setting-group {
+  margin-bottom: 20px;
+}
+
+.setting-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.button-group button {
+  flex: 1;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+}
+
+.button-group button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 0, 128, 0.5);
+}
+
+.button-group button.active {
+  background: linear-gradient(135deg, #FF0080, #C724B1);
+  border-color: #FF0080;
+}
+
+.add-app-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #FF0080, #C724B1);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-app-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 0, 128, 0.4);
+}
+
+/* Mac Dock */
+.mac-dock {
+  position: fixed;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 9999;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mac-dock.bottom {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: row;
+}
+
+.mac-dock.left {
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
+}
+
+.mac-dock.right {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
+}
+
+.mac-dock.hidden.auto-hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mac-dock.bottom.hidden {
+  transform: translateX(-50%) translateY(100%);
+}
+
+.mac-dock.left.hidden {
+  transform: translateY(-50%) translateX(-100%);
+}
+
+.mac-dock.right.hidden {
+  transform: translateY(-50%) translateX(100%);
+}
+
+.dock-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+.mac-dock.bottom .dock-background {
+  border-radius: 20px;
+}
+
+.mac-dock.left .dock-background,
+.mac-dock.right .dock-background {
+  border-radius: 20px;
+}
+
+.dock-apps {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  align-items: flex-end;
+}
+
+.mac-dock.left .dock-apps,
+.mac-dock.right .dock-apps {
+  flex-direction: column;
+  align-items: center;
+}
+
+.dock-app {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+
+.mac-dock.left .dock-app,
+.mac-dock.right .dock-app {
+  transform-origin: center;
+}
+
+.app-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5em;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.dock-app:hover .app-icon {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 0, 128, 0.5);
+  box-shadow: 
+    0 6px 25px rgba(255, 0, 128, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.app-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: tooltipFadeIn 0.2s ease;
+  z-index: 10;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.running-indicator {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #FF0080;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #FF0080;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+.dock-separator {
+  width: 2px;
+  height: 60%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  margin: 0 4px;
+  align-self: center;
+}
+
+.mac-dock.left .dock-separator,
+.mac-dock.right .dock-separator {
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  margin: 4px 0;
+}
+
+.dock-trash {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trash-icon {
+  font-size: 2.5em;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.trash-icon:hover {
+  background: rgba(255, 0, 80, 0.2);
+  border-color: #FF0080;
+  transform: scale(1.1);
+}
+
+/* Триггер для авто-скрытия */
+.dock-trigger {
+  position: fixed;
+  z-index: 9998;
+  background: transparent;
+}
+
+.dock-trigger.bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.dock-trigger.left {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+
+.dock-trigger.right {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+
+/* Эффект отражения (как в macOS) */
+.dock-app::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  border-radius: 0 0 15px 15px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  cursor: pointer;
+  accent-color: #FF0080;
+}
+
+.setting-group label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}

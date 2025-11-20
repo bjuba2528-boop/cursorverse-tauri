@@ -1,0 +1,174 @@
+.wallpaper-library {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  background: #1e1e2e;
+}
+
+.library-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.library-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.add-wallpaper-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF0080 0%, #C724B1 50%, #9D00FF 100%);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 0, 128, 0.3);
+}
+
+.add-wallpaper-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 0, 128, 0.5);
+}
+
+.add-wallpaper-btn:active {
+  transform: scale(0.95);
+}
+
+.plus-icon {
+  font-size: 28px;
+  color: white;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.wallpaper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.wallpaper-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wallpaper-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 0, 128, 0.5);
+}
+
+.wallpaper-thumbnail {
+  width: 100%;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.wallpaper-thumbnail.no-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.wallpaper-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wallpaper-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wallpaper-type {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+.error-message {
+  background: rgba(255, 100, 100, 0.1);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  color: #ff6b6b;
+}
+
+.error-message a {
+  color: #FF0080;
+  text-decoration: none;
+}
+
+.error-message a:hover {
+  text-decoration: underline;
+}
+
+.empty-library {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  opacity: 0.7;
+}
+
+.context-menu {
+  background: rgba(30, 30, 46, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 0;
+  min-width: 160px;
+}
+
+.context-menu button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.context-menu button:hover {
+  background: rgba(255, 0, 128, 0.15);
+}
+
+.context-menu button.delete-btn:hover {
+  background: rgba(220, 38, 38, 0.2);
+  color: #ff6b6b;
+}

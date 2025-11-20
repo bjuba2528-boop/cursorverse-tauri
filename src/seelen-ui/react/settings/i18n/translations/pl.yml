@@ -1,0 +1,339 @@
+action:
+  confirm: Jesteś pewien?
+  confirm_body: Tego działania nie można cofnąć.
+app_launcher:
+  enable: Włącz launcher
+  launch_on:
+    mouse_over: Tam gdzie kursor
+    primary: Główny
+  monitor: Ekran na którym się uruchomi
+  runners:
+    cmd: Wymuś
+    explorer: Uruchom
+    label: Opcje uruchamiania
+apps_configurations:
+  app:
+    bindings: Skrót klawiszowy (wymagane są obie opcje)
+    category: Kategoria
+    category_placeholder: Nic
+    monitor: Ekran
+    monitor_placeholder: Nic
+    name: Nazwa
+    ok_create: Utwórz
+    ok_edit: Edytuj
+    ok_readonly: Edytuj jako nowy
+    options:
+      NoInteractive: Brak interaktywnego
+      VdPinned: Pokaż we wszystkich obszarach roboczych
+      WmFloat: Twm - Zacznij pływać
+      WmForce: Twm – Zarządzanie siłami
+      WmUnmanage: Twm — nie zarządzaj
+    options_label: Dodatkowe opcje
+    title_create: Tworzenie {{nazwa}}
+    title_edit: Edycja {{nazwa}}
+    title_readonly: Przeglądanie {{Nazwa}}
+    weg_options_label: Ustawienia docka/paska zadań
+    wm_options_label: Ustawienia menadżera okien
+    workspace: Obszar roboczy
+    workspace_placeholder: Nic
+  bundled_msg: >-
+    Te konfiguracje pakietowe nie są edytowalne i mają na celu zapewnienie
+    najlepszych wrażeń bez dostosowywania. Automatycznie konfigurują dla Ciebie
+    najczęściej używane aplikacje.
+  bundled_title: App Config w pakiecie z Seelen
+  confirm_delete: Czy na pewno chcesz usunąć tę konfigurację?
+  confirm_delete_title: Potwierdź usunięcie
+  delete: Usuń
+  export: Eksportuj
+  export_full: Eksport ustawień według aplikacji
+  extra_info: >-
+    Interfejs użytkownika Seelen używa tylko jednego identyfikatora na aplikację
+    (znaleziono pierwsze dopasowanie), dlatego ważna jest kolejność dodawania.
+    Priorytet będzie mieć najnowszy dodany, ponieważ tabela jest domyślnie
+    sortowana od najnowszego do najstarszego.
+  identifier:
+    add_block: Dodaj blok
+    and: I
+    id: Identyfikator
+    kind: Identyfikuj poprzez
+    matching_strategy: Sposób dopasowania
+    matching_strategy_option:
+      contains: Zawiera
+      ends_with: Kończy się na
+      equals: Równe
+      regex: Wyrażenie regularne
+      starts_with: Zaczyna się od
+    negation: Negate dopasowanie
+    or: LUB
+    remove: Usuń blok
+    type:
+      class: Klasa
+      exe: Ex
+      path: Ścieżka
+      title: Tytuł
+  import: Importuj
+  import_full: Importowanie ustawień według aplikacji
+  new: Nowy
+  search: Szukaj
+  swap: Zamień
+cancel: Anuluj
+close: Zamknij
+delete: Usuń
+devtools:
+  app_folders: Foldery aplikacji
+  custom_config_file: Załaduj niestandardowy plik konfiguracyjny
+  data_folder: Folder danych
+  enable: Włącz narzędzia programistów
+  install_folder: Folder instalacyjny
+  load: Obciążenie
+  settings_file: Plik ustawień
+  simulate_fullscreen: Symuluj wydarzenie na pełnym ekranie
+extras:
+  clear_icons: Wyczyść pamięć podręczną ikon systemowych
+  clear_icons_tooltip: >-
+    Do poprawnego uruchomienia wszystkich widżetów może być wymagane ponowne
+    uruchomienie systemu
+  exit: Wyjdź
+  links: Oficjalne linki
+  relaunch: Wznów
+  version: Wersja
+general:
+  accent_color: Kolor akcentu
+  date_format: Format daty
+  icon_pack:
+    available: Dostępne pakiety ikon
+    selected: Aktywne pakiety ikon
+  language: Język
+  performance_mode:
+    on_battery: Na baterii
+    on_energy_saver: Na oszczędności energii
+    options:
+      disabled: Wyłączony
+      extreme: Skrajny
+      minimal: Minimalny
+    plugged: Podłączone lub ładowanie
+  startup: Uruchomić przy starcie systemu?
+  theme:
+    available: Dostępne motywy
+    selected: Aktywne motywy
+header:
+  labels:
+    config: Konfiguracje
+    developer: Dla deweloperów
+    extras: Dodatki
+    general: Ogólne
+    home: Strona główna
+    icon_pack_editor: Ikony w pamięci podręcznej
+    iconpack: Pakiety ikon
+    monitors: Ekrany
+    plugin: Wtyczki
+    resources: Zasoby
+    shortcuts: Skróty klawiszowe
+    soundpack: Pakiety dźwiękowe
+    specific_apps: Ustawienia według aplikacji
+    theme: Tematy
+    virtual_desk: Wirtualne komputery stacjonarne
+    wallpaper: Tapety
+    widget: Widżety
+home:
+  new_resources: Nowe zasoby
+inherit: Dziedziczyć
+inProgress: W trakcie...
+insert: Wstawić
+loading: Ładowanie...
+miscellaneous: Różnorodny
+monitors_configurations:
+  label: Monitor {{indeks}}
+more: Więcej
+'no': NIE
+open: otwarty
+quit: Zrezygnować
+remove: Usunąć
+reset_all_to_default: Przywróć wartości domyślne
+reset_to_default: Przywróć wartość domyślną
+resources:
+  app_outdated: Ten zasób wymaga nowszej wersji Seelen UI do poprawnego działania.
+  delete: Usuń zasób
+  discover: Odkryj więcej zasobów
+  has_update: Aktualizacja jest dostępna
+  import_wallpapers: Import lokalnych tapet
+  open_folder: Otwórz folder zasobów
+  outdated: >-
+    Ten zasób został zaprojektowany dla starszej wersji Seelen UI i może nie
+    działać poprawnie.
+save: Zastosuj
+save_and_restart: Zastosuj i uruchom ponownie
+see_more: Zobacz więcej
+shortcuts:
+  enable: Włącz wbudowany system skrótów
+  enable_tooltip: >-
+    Wyłącz, jeśli zaimplementujesz własny system skrótów za pomocą klienta
+    Seelen UI
+  labels:
+    create_new_workspace: Utwórz nowy obszar roboczy
+    cycle_stack_next: Następnie stos cyklowy
+    cycle_stack_prev: Stos cyklu poprzedni
+    cycle_wallpaper_next: Zmień na następną tapetę
+    cycle_wallpaper_prev: Zmień na poprzednią tapetę
+    decrease_height: Zmniejszyć wysokość
+    decrease_width: Zmniejszyć szerokość
+    destroy_current_workspace: Zniszcz obecny obszar roboczy
+    focus_bottom: Focus Dim
+    focus_latest: Focus najnowszy
+    focus_left: Skup się na lewej
+    focus_right: Skup się dobrze
+    focus_top: Focus Top
+    increase_height: Zwiększyć wysokość
+    increase_width: Zwiększyć szerokość
+    misc_force_quit: Force zrezygnować
+    misc_force_restart: Wymuś restart
+    misc_open_settings: Otwórz ustawienia
+    misc_toggle_lock_tracing: Przełączanie śledzenia blokady (dzienniki)
+    misc_toggle_win_event_tracing: Przełączanie zdarzeń wygranych (dzienniki)
+    move_to_workspace: Przenieś się do przestrzeni roboczej {{0}}
+    move_window_down: Przenieś okno na dolny
+    move_window_left: Przesuń okno po lewej
+    move_window_right: Przenieś okno po prawej stronie
+    move_window_up: Przesuń okno na górę
+    pause_tiling: Zatrzymaj menedżer okien kafelków
+    reserve_bottom: Rezerwować dno
+    reserve_float: Rezerwować pływak
+    reserve_left: Rezerwa w lewo
+    reserve_right: Rezerwuj prawnie
+    reserve_stack: Stos rezerwowy
+    reserve_top: Rezerwuj top
+    restore_sizes: Przywróć rozmiary
+    send_to_workspace: Wyślij do przestrzeni roboczej {{0}}
+    start_weg_app: Focus lub uruchom aplikację {{0}}
+    switch_to_next_workspace: Przejdź na następny obszar roboczy
+    switch_to_previous_workspace: Przejdź na poprzedni obszar roboczy
+    switch_workspace: Przełącz na przestrzeń roboczą {{0}}
+    toggle_float: Tryb przełączania okna pływaka
+    toggle_launcher: Przełącz wyrzutnię
+    toggle_monocle: Przełącz tryb monocle przestrzeni roboczej
+  readonly_tooltip: To jest skrót tylko do odczytu
+  reset: Zresetuj do domyślnych
+sides:
+  bottom: Dół
+  left: Lewo
+  right: Prawo
+  top: Góra
+start:
+  message: >-
+    Witamy w Seelen UI, kompletnym środowisku pulpitu zawierającym menadżer
+    rozmieszczenia okien, który sprawi że korzystanie z systemu Windows stanie
+    się przyjemniejsze! Przejdź na wyższy poziom produktywności dzięki naszemu
+    intuicyjnemu interfejsowi i zaawansowanym funkcjom.
+  message_accent: Zwiększ swoją produktywność w świetnym stylu!
+  title: Witaj!
+toolbar:
+  auto_hide: Automatyczne ukrywanie
+  delay_to_hide: Opóźnienie ukrycia
+  delay_to_show: Opóźnienie wysunięcia
+  dock_side: Pozycja
+  dynamic_color: Dynamiczny kolor
+  dynamic_color_tooltip: >-
+    Włącz dynamiczne kolory tła i pierwszego planu w oparciu o okno, na którym
+    skupiono uwagę. (Kolory mogą być zastępowane przez motywy)
+  enable: Włącz pasek narzędzi
+  height: Wysokość
+  hide_mode:
+    always: Zawsze
+    never: Nigdy
+    on_overlap: Kiedy zasłania
+  label: Pasek narzędzi
+  placeholder: {}
+  show_hibernate: Wyświetlanie przycisku hibernacji w menu zasilania
+update:
+  available: Dostępna aktualizacja!
+  channel: Kanał aktualizacji
+  downloading: Pobieranie...
+wall:
+  backgrounds: Tapety
+  blur: Rozmycie
+  contrast: Kontrast
+  enable: Włącz menedżer tapet
+  fit:
+    contain: Zawierać
+    cover: Okładka
+    fill: Wypełnienie
+  flipHorizontal: Odwróć w poziomie
+  flipVertical: Flip Vertical
+  hours: godzin
+  interval: Zmień tapetę co
+  minutes: minut
+  muted: Wycisz dźwięk wideo
+  no_background: Brak tapet, używane są tapety motywu systemu Windows.
+  objectFit: Dopasowanie tła
+  objectPosition: Pozycja w tle
+  overlayColor: Kolor nakładki
+  overlayMixBlendMode: Tryb mieszania nakładki
+  playback: Prędkość odtwarzania
+  position:
+    bottom: Dół
+    center: Centrum
+    left: Lewa
+    right: Prawo
+    top: Top
+  random: Losowa kolejność
+  saturation: Nasycenie
+  seconds: sekund
+  withOverlay: Z nakładką
+weg:
+  auto_hide: Automatyczne ukrywanie
+  delay_to_hide: Opóźnienie ukrycia
+  delay_to_show: Opóźnienie wysunięcia
+  dock_side: Pozycja
+  enable: Włącz dok/pasek zadań
+  filtering: Filtrowanie pozycji
+  gap: Przerwa
+  hide_mode:
+    always: Zawsze
+    never: Nigdy
+    on_overlap: Kiedy zasłania
+  items:
+    gap: Przerwa między elementami
+    label: Elementy
+    pinned_visibility:
+      always: Zawsze
+      label: Widoczność przypiętych elementów
+      when_primary: Główny ekran
+    show_instance_counter: Wyświetl liczbę otwartych okien
+    show_window_title: Wyświetl tytuł otwartego okna (tylko poziomo)
+    size: Rozmiar elementów
+    temporal_visibility:
+      all: Wszystkie ekrany
+      label: Widoczność uruchomionych aplikacji
+      on_monitor: Jeden ekran
+    thumbnail_generation_enabled: Miniatury po najechaniu na element
+    visible_separators: Widoczne separatory
+  label: Dock/Pasek zadań
+  margin: Margines
+  mode:
+    full_width: Pełna szerokość ekranu
+    min_content: Jak najmniejszy
+  padding: Wysokość tła
+  show_end_task: Pokaż zadanie końcowe na pasku zadań
+  width: Szerokość
+widget:
+  enable: Włącz ten widżet
+  enable_for_monitor: Włącz na tym monitorze
+  instances: Wystąpienia
+wm:
+  animations:
+    duration: Czas trwania animacji (MS)
+    ease_function: Funkcja łagodzenia animacji
+    enable: Włącz animacje okna
+  author: Autor
+  border:
+    enable: Włącz granicę okna
+    offset: Przesunięcie granic
+    width: Szerokość granicy
+  description: Opis
+  enable: Włącz menedżer rozmieszczenia okien
+  layout: Układ
+  resize_delta: Delta rozmiaru (%)
+  space_between_containers: Przestrzeń między oknami
+  workspace_offset: Marginesy przestrzeni roboczych
+  workspace_padding: Wysokość tła przestrzeni roboczych
+'yes': Tak

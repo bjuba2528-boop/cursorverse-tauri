@@ -1,0 +1,64 @@
+[workspace]
+members = ["libs/slu-ipc", "libs/positioning", "libs/core", "src-tauri"]
+resolver = "2"
+
+[workspace.lints]
+# Add workspace lints here if needed
+
+[workspace.dependencies]
+tokio = { version = "1.47.0", features = ["full"] }
+thiserror = "2.0.12"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.9.34"
+log = "0.4"
+arc-swap = "1.7.1"
+backtrace = "0.3.71"
+base64 = "0.22.1"
+battery = "0.7.8"
+clap = { version = "4.5.4", features = ["derive", "string"] }
+crossbeam-channel = "0.5.15"
+discord-rich-presence = "0.2.5"
+encoding_rs = "0.8.35"
+evalexpr = "=11.3.0"
+fern = "0.7.1"
+image = "0.25.5"
+interprocess = "2.2.3"
+itertools = "0.12.1"
+lazy_static = "1.4.0"
+notify-debouncer-full = "0.3.1"
+os_info = "3.9.2"
+owo-colors = "4.1.0"
+parking_lot = "0.12.1"
+phf = "0.11.2"
+quick-xml = "0.37.2"
+rand = "0.9.1"
+regex = "1.11.1"
+reqwest = { version = "0.12.15", features = ["blocking"] }
+rust-i18n = "3.1.4"
+seelen-core = { path = "libs/core" }
+slu-ipc = { path = "libs/slu-ipc" }
+positioning = { path = "libs/positioning" }
+sysinfo = "0.30.12"
+tauri = "2.1"
+tauri-build = "2.0"
+translators = { version = "0.1.5", features = ["google", "tokio-async"] }
+tauri-plugin-shell = "2.1"
+tauri-plugin-dialog = "2.1"
+tauri-plugin-autostart = "2.1"
+tauri-plugin-log = "2.1"
+tauri-plugin-updater = "2.1"
+tauri-plugin-fs = "2.1"
+tauri-plugin-process = "2.1"
+tauri-plugin-deep-link = "2.1"
+tauri-plugin-http = "2.1"
+url = "2.5.4"
+urlencoding = "2.1.3"
+uuid = "1.8.0"
+widestring = "1.0.2"
+win-screenshot = "4.0.8"
+windows = "0.59.0"
+windows-core = "0.59.0"
+winreg = "0.55.0"
+time = "0.3.41"
+scc = "2.4.0"

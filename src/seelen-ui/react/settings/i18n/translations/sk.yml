@@ -1,0 +1,339 @@
+action:
+  confirm: Si si istý?
+  confirm_body: Táto akcia sa nedá vrátiť späť.
+app_launcher:
+  enable: Povoliť spúšťač aplikácií
+  launch_on:
+    mouse_over: Prejdite myšou
+    primary: Primárne
+  monitor: Monitorovať, aby sa ukázal
+  runners:
+    cmd: Príkaz
+    explorer: Spustenie
+    label: Bežec
+apps_configurations:
+  app:
+    bindings: Viazanie (POZNÁMKA sú potrebné obe možnosti)
+    category: Kategória
+    category_placeholder: Žiadny
+    monitor: Monitor
+    monitor_placeholder: Žiadny
+    name: názov
+    ok_create: Vytvárať
+    ok_edit: Aktualizácia
+    ok_readonly: Upravovať ako nové
+    options:
+      NoInteractive: Žiadna interaktívna
+      VdPinned: Zobraziť vo všetkých pracovných priestoroch
+      WmFloat: Twm - Začať plávať
+      WmForce: Twm - Force Manage
+      WmUnmanage: Twm - Unmanage
+    options_label: Ďalšie možnosti
+    title_create: Vytváranie {{name}}
+    title_edit: Úpravy {{name}}
+    title_readonly: Prezeranie {{name}}
+    weg_options_label: Možnosti doku/panela úloh
+    wm_options_label: Možnosti správcu okien
+    workspace: Pracovný priestor
+    workspace_placeholder: Žiadny
+  bundled_msg: >-
+    Tieto zviazané konfigurácie nie sú upraviteľné a sú navrhnuté tak, aby vám
+    poskytli najlepší zážitok bez prispôsobenia. Automaticky nakonfigurujú pre
+    vás najbežnejšie aplikácie.
+  bundled_title: Aplikácia konfigurácia zviazaná s Seelen
+  confirm_delete: Ste si istí, že chcete túto konfiguráciu vymazať?
+  confirm_delete_title: Potvrďte odstránenie
+  delete: Vymazať
+  export: Export
+  export_full: Export nastavení podľa aplikácie
+  extra_info: >-
+    Používateľské rozhranie Seelen používa iba jeden identifikátor na aplikáciu
+    (prvá nájdená zhoda), takže poradie, v akom sú špecifikované, je dôležité.
+    Najnovšie pridané budú mať prioritu, pretože tabuľka je predvolene zoradená
+    od najnovšieho po staré.
+  identifier:
+    add_block: Pridať blok
+    and: A
+    id: Identifikátor
+    kind: Určiť
+    matching_strategy: Stratégia
+    matching_strategy_option:
+      contains: Obsahuje
+      ends_with: Končí s
+      equals: Rovná sa
+      regex: Regulárny výraz
+      starts_with: Začína s
+    negation: Negovať zladenie
+    or: Alebo
+    remove: Vymazať blok
+    type:
+      class: triedy
+      exe: Exe
+      path: Cesta
+      title: Názov
+  import: Dovoz
+  import_full: Import nastavení podľa aplikácie
+  new: Nový
+  search: Vyhľadávanie
+  swap: Vymeniť
+cancel: Zrušiť
+close: Zatvoriť
+delete: Vymazať
+devtools:
+  app_folders: Priečinky
+  custom_config_file: Načítať vlastný konfiguračný súbor
+  data_folder: Priečinok
+  enable: Povoľte vývojárskym nástrojom
+  install_folder: Inštalačný priečinok
+  load: Naložiť
+  settings_file: Nastavovací súbor
+  simulate_fullscreen: Simulovať udalosť na celú obrazovku
+extras:
+  clear_icons: Vymazanie vyrovnávacej pamäte systémových ikon
+  clear_icons_tooltip: Aby sa všetky widgety plne prejavili, môže byť potrebný reštart.
+  exit: Prestať
+  links: Oficiálne odkazy
+  relaunch: Reštart
+  version: Verzia
+general:
+  accent_color: Prízvuk
+  date_format: Formát
+  icon_pack:
+    available: Dostupné balíčky ikon
+    selected: Balíky aktívnych ikon
+  language: Jazyk
+  performance_mode:
+    on_battery: Batéria
+    on_energy_saver: Na šetrič energie
+    options:
+      disabled: Postihnutý
+      extreme: Extrémny
+      minimal: Minimálny
+    plugged: Zapojené alebo nabíjanie
+  startup: Spustiť pri štarte?
+  theme:
+    available: Dostupné témy
+    selected: Aktívne témy
+header:
+  labels:
+    config: Konfigurácie
+    developer: Pre vývojárov
+    extras: Dodatky
+    general: Všeobecný
+    home: Domov
+    icon_pack_editor: Ikony v medzipamäti
+    iconpack: Balíky ikon
+    monitors: Monitorovať
+    plugin: Zásuvné moduly
+    resources: Zdroje
+    shortcuts: Skratky
+    soundpack: Zvukové balíky
+    specific_apps: Nastavenia podľa aplikácie
+    theme: Témy
+    virtual_desk: Virtuálne pracovné plochy
+    wallpaper: Tapety na plochu
+    widget: Widgety
+home:
+  new_resources: Nové zdroje
+inherit: Zdediť
+inProgress: Prebieha ...
+insert: Vložiť
+loading: Načítava...
+miscellaneous: Rôznorodý
+monitors_configurations:
+  label: Monitor {{index}}
+more: Viac
+'no': Nie
+open: OTVORENÉ
+quit: Prestať
+remove: Odložiť
+reset_all_to_default: Obnovenie všetkých predvolených hodnôt
+reset_to_default: Obnovenie predvolenej hodnoty
+resources:
+  app_outdated: >-
+    Tento zdroj si na správne fungovanie vyžaduje novšiu verziu používateľského
+    rozhrania Seelen.
+  delete: Vymazať zdroj
+  discover: Objavte ďalšie zdroje
+  has_update: K dispozícii je aktualizácia
+  import_wallpapers: Import miestnych tapiet
+  open_folder: Otvorenie priečinka so zdrojmi
+  outdated: >-
+    Tento zdroj bol navrhnutý pre staršiu verziu používateľského rozhrania
+    Seelen a nemusí fungovať správne.
+save: Uložiť
+save_and_restart: Uložiť a reštartovať
+see_more: Pozri viac
+shortcuts:
+  enable: Povoliť vstavaný systém skratiek
+  enable_tooltip: >-
+    Zakážte, ak budete implementovať svoj vlastný systém skratiek pomocou
+    klienta Seelen UI klienta
+  labels:
+    create_new_workspace: Vytvorte nový pracovný priestor
+    cycle_stack_next: Stack Cycle Ďalej
+    cycle_stack_prev: Cyklus predchádzajúci
+    cycle_wallpaper_next: Zmena na ďalšiu tapetu
+    cycle_wallpaper_prev: Zmena na predchádzajúcu tapetu
+    decrease_height: Zníženie výšky
+    decrease_width: Znížiť šírku
+    destroy_current_workspace: Zničiť súčasný pracovný priestor
+    focus_bottom: Zaostrenie
+    focus_latest: Najnovší
+    focus_left: Vľavo
+    focus_right: Zamerať sa
+    focus_top: Zaostrenie
+    increase_height: Výška
+    increase_width: Zväčšenie
+    misc_force_quit: Vynútiť prestať
+    misc_force_restart: Vynútiť reštart
+    misc_open_settings: Otvorené nastavenia
+    misc_toggle_lock_tracing: Prepnite sledovanie zámku (protokoly)
+    misc_toggle_win_event_tracing: Prepnúť sledovanie udalostí Win (protokoly)
+    move_to_workspace: Presunúť do pracovného priestoru {{0}}
+    move_window_down: Presuňte okno dole
+    move_window_left: Presuňte okno doľava
+    move_window_right: Presuňte okno doprava
+    move_window_up: Presuňte okno na vrchol
+    pause_tiling: Pauza obkladací správca okien
+    reserve_bottom: Dno
+    reserve_float: Plavák
+    reserve_left: Vľavo
+    reserve_right: Oprávnenie
+    reserve_stack: Zásobník
+    reserve_top: Horná časť
+    restore_sizes: Obnoviť veľkosti
+    send_to_workspace: Odoslať do Workspace {{0}}
+    start_weg_app: Zamerajte alebo spustiť aplikáciu {{0}}
+    switch_to_next_workspace: Prepnite na ďalší pracovný priestor
+    switch_to_previous_workspace: Prepnite na predchádzajúci pracovný priestor
+    switch_workspace: Prepnite na pracovný priestor {{0}}
+    toggle_float: Prepínanie plavákového režimu okna
+    toggle_launcher: Prepínanie spúšťača
+    toggle_monocle: Prepnite režim Monocle Workspace
+  readonly_tooltip: Toto je skratka iba na čítanie
+  reset: Reset na predvolené hodnoty
+sides:
+  bottom: Spodná časť
+  left: Vľavo
+  right: Správny
+  top: Vrchol
+start:
+  message: >-
+    Vitajte v používateľskom rozhraní Seelen, v konečnom prostredí Desktop so
+    začleneným obkladom Windows Manager, aby ste vylepšili váš zážitok z systému
+    Windows! Preskúmajte novú éru účinnosti a multitaskingu s naším intuitívnym
+    rozhraním a pokročilými funkciami.
+  message_accent: Optimalizujte svoju produktivitu štýlom!
+  title: Vitajte!
+toolbar:
+  auto_hide: Automaticky skryť
+  delay_to_hide: Odložiť skryť
+  delay_to_show: Oneskorenie zobrazenia
+  dock_side: Pozícia
+  dynamic_color: Dynamická farba
+  dynamic_color_tooltip: >-
+    Povolenie dynamických farieb pozadia a popredia na základe zameraného okna.
+    (Farby môžu byť prepísané témami)
+  enable: Povoliť ozdobný panel s nástrojmi
+  height: Výška
+  hide_mode:
+    always: Vždy
+    never: Nikdy
+    on_overlap: Na prekrytí
+  label: Panel s nástrojmi
+  placeholder: {}
+  show_hibernate: Zobrazenie tlačidla hibernácie v ponuke napájania
+update:
+  available: Aktualizácia k dispozícii!
+  channel: Kanál
+  downloading: Sťahovanie ...
+wall:
+  backgrounds: Tapety
+  blur: Rozmazanie
+  contrast: Kontrast
+  enable: Povoliť manažéra tapiet
+  fit:
+    contain: Obsahuje
+    cover: Obal
+    fill: Naplňte stránku
+  flipHorizontal: Flip Horizontálne
+  flipVertical: Flip Vertical
+  hours: hodiny
+  interval: Vymeňte tapetu každý
+  minutes: minúta
+  muted: Stlmiť zvuk videa
+  no_background: Empty SlideShow, namiesto toho pomocou pozadia témy.
+  objectFit: Pozadie Fit
+  objectPosition: Pozadie Pozícia
+  overlayColor: Farba prekrytia
+  overlayMixBlendMode: Režim prekrývania Mix
+  playback: Rýchlosť prehrávania
+  position:
+    bottom: Spodná časť
+    center: Stredisko
+    left: Vľavo
+    right: Vpravo
+    top: Top
+  random: Randomizovať prezentáciu
+  saturation: Nasýtenie
+  seconds: sekundy
+  withOverlay: S prekrytím
+weg:
+  auto_hide: Automaticky skryť
+  delay_to_hide: Odložiť skryť
+  delay_to_show: Oneskorenie zobrazenia
+  dock_side: Pozícia
+  enable: Povoliť prístavisko/panel úloh
+  filtering: Filtrovanie položiek
+  gap: Priepasť
+  hide_mode:
+    always: Vždy
+    never: Nikdy
+    on_overlap: Na prekrytí
+  items:
+    gap: Priestor medzi položkami
+    label: Predmety
+    pinned_visibility:
+      always: Vždy
+      label: Viditeľnosť pripnutých položiek
+      when_primary: Keď je monitor primárny
+    show_instance_counter: Zobrazenie počítadla otvorených okien
+    show_window_title: Zobrazenie názvu otvoreného okna (len horizontálne)
+    size: Veľkosť položky
+    temporal_visibility:
+      all: Všetky
+      label: Viditeľnosť nepripnutých položiek
+      on_monitor: Na monitore
+    thumbnail_generation_enabled: Generovanie miniatúr pri umiestnení položky na myši
+    visible_separators: Viditeľné oddeľovače
+  label: Prístavný panel
+  margin: Okraj
+  mode:
+    full_width: Celá šírka obrazovky
+    min_content: Malý ako len môže byť
+  padding: Vypchávka
+  show_end_task: Zobrazenie koncovej úlohy na paneli úloh
+  width: Šírka
+widget:
+  enable: Povolenie tohto widgetu
+  enable_for_monitor: Povolenie na tomto monitore
+  instances: Inštancie
+wm:
+  animations:
+    duration: Trvanie animácie (MS)
+    ease_function: Animačná uvoľňovanie funkcie
+    enable: Povoľte animácie okien
+  author: Autor
+  border:
+    enable: Povoľte hranicu okna
+    offset: Vyrovnanie
+    width: Šírka hranice
+  description: Opis
+  enable: Povoľte správcu okien obkladov
+  layout: Usporiadanie
+  resize_delta: Zmeňte veľkosť delty (%)
+  space_between_containers: Priestor medzi nádobami
+  workspace_offset: Offsety Workspaces (marže)
+  workspace_padding: Čalúnenie pracovných priestorov
+'yes': Áno

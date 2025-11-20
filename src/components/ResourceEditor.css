@@ -1,0 +1,303 @@
+.resource-editor {
+  padding: 20px;
+  color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.resource-header {
+  text-align: center;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #FF0080 0%, #C724B1 50%, #9D00FF 100%);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(255, 0, 128, 0.3);
+}
+
+.resource-header h2 {
+  margin: 0 0 10px 0;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.resource-header p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1.1em;
+}
+
+.resource-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.resource-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.resource-section:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 0, 128, 0.3);
+  box-shadow: 0 4px 20px rgba(255, 0, 128, 0.2);
+}
+
+.resource-section h3 {
+  margin: 0 0 20px 0;
+  font-size: 1.8em;
+  background: linear-gradient(135deg, #FF0080, #C724B1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-description {
+  opacity: 0.7;
+  margin-bottom: 15px;
+  font-size: 0.95em;
+}
+
+/* Формы */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.icon-select,
+.file-select {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.icon-select:hover,
+.file-select:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 0, 128, 0.5);
+}
+
+.icon-select:focus,
+.file-select:focus {
+  outline: none;
+  border-color: #FF0080;
+  box-shadow: 0 0 0 3px rgba(255, 0, 128, 0.2);
+}
+
+.icon-select option,
+.file-select option {
+  background: #1a1a1a;
+  color: white;
+}
+
+/* Кнопки */
+.btn-primary,
+.btn-secondary {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #FF0080 0%, #C724B1 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 0, 128, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 0, 128, 0.5);
+}
+
+/* Системные иконки */
+.system-icons-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.current-icons {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.current-icons h4 {
+  margin: 0 0 15px 0;
+  font-size: 1.2em;
+  opacity: 0.9;
+}
+
+.icon-info {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  border-left: 3px solid #FF0080;
+}
+
+.icon-type {
+  font-weight: 600;
+  min-width: 200px;
+}
+
+.icon-path {
+  opacity: 0.7;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Селектор файлов */
+.file-selector {
+  margin-bottom: 20px;
+}
+
+.file-selector label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.file-select-group {
+  display: flex;
+  gap: 10px;
+}
+
+.file-select {
+  flex: 1;
+}
+
+.extract-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Сетка иконок */
+.extracted-icons {
+  margin-top: 25px;
+}
+
+.extracted-icons h4 {
+  margin: 0 0 20px 0;
+  font-size: 1.3em;
+  opacity: 0.9;
+}
+
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.icon-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 0, 128, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 0, 128, 0.3);
+}
+
+.icon-preview {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.icon-details {
+  font-size: 0.85em;
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resource-section {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.resource-section:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.resource-section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.resource-section:nth-child(3) {
+  animation-delay: 0.3s;
+}

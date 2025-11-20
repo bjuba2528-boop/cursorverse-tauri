@@ -1,0 +1,93 @@
+bluetooth:
+  available: Διαθέσιμες συσκευές (χωρίς ζεύξη)
+  cancel: Ακύρωση
+  connected: Συνδεδεμένες συσκευές
+  forget: Ξεχάστε το
+  lowenergy: Χαμηλή ενέργεια
+  more: Περισσότερες ρυθμίσεις Bluetooth
+  not_found: Δεν βρέθηκαν συσκευές Bluetooth
+  pair: Ζευγάρι
+  paired: Αποθηκευμένες συσκευές
+  placeholder:
+    passphrase: Συνθηματική φράση, κωδικός ή PIN
+  scanning: Σάρωση για συσκευές
+context_menu:
+  add_custom_text: Προσθήκη προσαρμοσμένου στοιχείου κειμένου
+  modules: Ενότητες
+  remove: Αφαιρέστε την ενότητα
+  reorder_disable: Κλείδωμα γραμμής εργαλείων
+  reorder_enable: Ξεκλείδωμα γραμμής εργαλείων
+  restore: Επαναφορά στην προεπιλογή
+  settings: Ρυθμίσεις
+  task_manager: Task Manager
+keyboard:
+  more: Περισσότερες ρυθμίσεις πληκτρολογίου
+  title: Διάταξη πληκτρολογίου
+media:
+  default_multimedia_volume: Όγκος πολυμέσων
+  device:
+    channel:
+      system: Ήχοι συστήματος
+    comunications: Διαβιβάσεις
+    missing: Λείπει η συσκευή
+    mixer: Μίξερ έντασης ήχου
+    multimedia: ΠΟΛΥΜΕΣΑ
+    settings: Περισσότερες ρυθμίσεις συσκευής
+    volume: Όγκος συσκευής
+  input_devices: Συσκευές εισόδου
+  output_devices: Συσκευές εξόδου
+  players: Media players
+network:
+  available: Διαθέσιμα δίκτυα
+  connect: Συνδέω-συωδεομαι
+  connected: Συνδεδεμένο με
+  disconnect: Αποσυνδέω
+  hidden: Κρυμμένο δίκτυο
+  more: Περισσότερες ρυθμίσεις δικτύου
+  not_found: Δεν βρέθηκαν δίκτυα
+  placeholder:
+    password: Κωδικός πρόσβασης
+  saved: Αποθηκευμένα δίκτυα
+  scanning: Σάρωση για δίκτυα
+  secured: Κρυπτογραφημένο δίκτυο
+notifications:
+  clear: Εκκαθάριση όλων
+  empty: Δεν υπάρχουν ειδοποιήσεις
+  settings: Περισσότερες ρυθμίσεις ειδοποιήσεων
+  title: Ειδοποιήσεις
+placeholder:
+  battery_remaining: '% υπόλοιπο'
+  bluetooth_devices: Bluetooth & συσκευές
+  ethernet_connected: πρόσβαση στο διαδίκτυο
+  ethernet_disconnected: Χωρίς πρόσβαση στο Διαδίκτυο
+  notifications: Ειδοποιήσεις
+  settings: Γρήγορες ρυθμίσεις
+  smart_charge: '- έξυπνη χρέωση'
+  volume: Ενταση ΗΧΟΥ
+settings:
+  app_settings: Ρυθμίσεις εφαρμογής
+  brightness: Φωτεινότητα
+  power: Εξουσία
+  restart: Επανεκκίνηση
+  title: Ρυθμίσεις
+userhome:
+  empty_list: Δεν υπάρχουν αντικείμενα
+  folders:
+    desktop: Επιτραπέζια επιφάνεια εργασίας
+    documents: Έγγραφα
+    downloads: Λήψεις
+    more_items: Περισσότερα...
+    music: Μουσική
+    pictures: Εικόνες
+    recent: Χρησιμοποιήθηκε πρόσφατα
+    reduce_items: Εμφάνιση λιγότερων...
+    title: Κατάλογοι χρηστών
+    videos: Βίντεο
+  profile:
+    accounts: Ρυθμίσεις ανοίγματος λογαριασμού
+    open_onedrive: Ανοίξτε τον κατάλογο OneDrive
+    open_user_folder: Άνοιγμα καταλόγου χρήστη
+  seelen_options:
+    open_installation_folder: Ανοίξτε το φάκελο ρυθμίσεων Seelen
+    open_log_folder: Ανοίξτε το φάκελο Seelen log
+    title: Κατάλογοι Seelen

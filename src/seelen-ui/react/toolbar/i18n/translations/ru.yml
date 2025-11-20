@@ -1,0 +1,93 @@
+bluetooth:
+  available: Доступные устройства (не сопряженные)
+  cancel: Отмена
+  connected: Подключенные устройства
+  forget: Удалить
+  lowenergy: Низкое энергопотребление
+  more: Другие настройки Bluetooth
+  not_found: Устройства Bluetooth не найдены
+  pair: Сопрячь
+  paired: Сопряжённые устройства
+  placeholder:
+    passphrase: Пароль, код или PIN-код
+  scanning: Сканирование для поиска устройств
+context_menu:
+  add_custom_text: Добавить пользовательский текстовый элемент
+  modules: Модули
+  remove: Удалить модуль
+  reorder_disable: Заблокировать панели
+  reorder_enable: Разблокировать панель
+  restore: Восстановить по умолчанию
+  settings: Настройки
+  task_manager: Диспетчер задач
+keyboard:
+  more: Другие настройки клавиатуры
+  title: Раскладка клавиатуры
+media:
+  default_multimedia_volume: Громкость устройств мультимедиа
+  device:
+    channel:
+      system: Системные звуки
+    comunications: Связь
+    missing: Отсутствующее устройство
+    mixer: Микшер громкости
+    multimedia: Мультимедиа
+    settings: Другие настройки устройства
+    volume: Громкость устройства
+  input_devices: Устройства ввода
+  output_devices: Устройства вывода
+  players: Медиаплееры
+network:
+  available: Доступные сети
+  connect: Подключить
+  connected: Подключено к
+  disconnect: Отключить
+  hidden: Скрытая сеть
+  more: Дополнительные сетевые параметры
+  not_found: Сети Wi-Fi не найдены
+  placeholder:
+    password: Пароль
+  saved: Сохраненные сети
+  scanning: Сканирование сетей
+  secured: Защищённая сеть
+notifications:
+  clear: Очистить все
+  empty: Нет уведомлений
+  settings: Другие настройки уведомлений
+  title: Уведомления
+placeholder:
+  battery_remaining: '% осталось'
+  bluetooth_devices: Bluetooth и устройства
+  ethernet_connected: Сеть
+  ethernet_disconnected: Нет сети
+  notifications: Уведомления
+  settings: Быстрые настройки
+  smart_charge: '- Умная зарядка'
+  volume: Громкость
+settings:
+  app_settings: Настройки приложения
+  brightness: Яркость
+  power: Питание
+  restart: Перезагрузка
+  title: Настройки
+userhome:
+  empty_list: Нет предметов
+  folders:
+    desktop: Рабочий стол
+    documents: Документы
+    downloads: Загрузки
+    more_items: Показать еще...
+    music: Музыка
+    pictures: Изображения
+    recent: Недавно использованные
+    reduce_items: Показать меньше...
+    title: Пользовательские папки
+    videos: Видео
+  profile:
+    accounts: Настройки учетной записи
+    open_onedrive: Открыть папку OneDrive
+    open_user_folder: Открыть пользовательскую папку
+  seelen_options:
+    open_installation_folder: Открыть папку настроек Seelen
+    open_log_folder: Открыть папку журнала Seelen
+    title: Каталоги Seelen

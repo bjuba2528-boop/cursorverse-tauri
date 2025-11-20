@@ -1,0 +1,105 @@
+/**
+ * The styles in this file are only structural for toolbar,
+ * all the design should be added to the default theme css.
+ */
+body {
+  overflow: hidden;
+  background: transparent;
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  position: absolute;
+  width: 100vw;
+  transition: transform 0.2s ease-in-out;
+
+  &:has(.ft-bar.top) {
+    top: 0;
+  }
+
+  &:has(.ft-bar.bottom) {
+    bottom: 0;
+  }
+
+  &:has(.ft-bar-hidden.top:not(:hover)) {
+    transform: translate(0, calc(var(--config-height) * -1));
+  }
+
+  &:has(.ft-bar-hidden.bottom:not(:hover)) {
+    transform: translate(0, calc(var(--config-height)));
+  }
+}
+
+.ft-bar {
+  position: relative;
+  width: 100%;
+  height: var(--config-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--config-padding-at-side);
+
+  .ft-bar-left,
+  .ft-bar-center,
+  .ft-bar-right {
+    display: flex;
+    align-items: stretch;
+    height: min-content;
+    gap: 6px;
+  }
+
+  .ft-bar-left {
+    max-width: 50%;
+    width: 50%;
+    overflow: hidden;
+    justify-content: flex-start;
+  }
+
+  .ft-bar-center {
+    justify-content: center;
+    padding: 0 6px;
+  }
+
+  .ft-bar-right {
+    max-width: 50%;
+    width: 50%;
+    overflow: hidden;
+    justify-content: flex-end;
+  }
+}
+
+.ft-bar-item-tooltip {
+  .ft-bar.top & {
+    top: calc(var(--config-height) + 4px) !important; /* Override inline style */
+  }
+  .ft-bar.bottom & {
+    bottom: calc(var(--config-height) + 4px) !important; /* Override inline style */
+  }
+}
+
+.ft-bar-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ft-bar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+
+  .ft-bar-item-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    > span {
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: pre;
+    }
+  }
+}

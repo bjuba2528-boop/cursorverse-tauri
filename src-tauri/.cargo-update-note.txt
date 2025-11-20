@@ -1,0 +1,1 @@
+Consider running `cargo update -p tauri-build tauri tauri-utils` when upgrading config fields.

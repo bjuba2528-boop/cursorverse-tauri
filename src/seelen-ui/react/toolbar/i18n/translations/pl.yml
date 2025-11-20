@@ -1,0 +1,93 @@
+bluetooth:
+  available: Dostępne urządzenia (niesparowane)
+  cancel: Anuluj
+  connected: Połączone urządzenia
+  forget: Zapomnij
+  lowenergy: Niski poziom baterii
+  more: Więcej ustawień Bluetooth
+  not_found: Nie znaleziono urządzeń Bluetooth
+  pair: Sparuj
+  paired: Zapisane urządzenia
+  placeholder:
+    passphrase: Hasło lub kod PIN
+  scanning: Skanowanie w poszukiwaniu urządzeń
+context_menu:
+  add_custom_text: Dodaj niestandardowy element tekstowy
+  modules: Moduły
+  remove: Usuń moduł
+  reorder_disable: Zablokuj pasek narzędzi
+  reorder_enable: Odblokuj pasek narzędzi
+  restore: Przywróć domyślne
+  settings: Ustawienia
+  task_manager: Menedżer zadań
+keyboard:
+  more: Więcej ustawień klawiatury
+  title: Układ klawiatury
+media:
+  default_multimedia_volume: Poziomy głośności
+  device:
+    channel:
+      system: Dźwięki systemowe
+    comunications: Komunikacja
+    missing: Brak urządzenia
+    mixer: Mikser głośności
+    multimedia: Multimedia
+    settings: Więcej ustawień urządzenia
+    volume: Głośność urządzenia
+  input_devices: Urządzenia wejściowe
+  output_devices: Urządzenia wyjściowe
+  players: Odtwarzacze multimedialne
+network:
+  available: Dostępne sieci
+  connect: Połącz
+  connected: Połączony z
+  disconnect: Rozłącz
+  hidden: Ukryta sieć
+  more: Więcej ustawień sieciowych
+  not_found: Nie znaleziono sieci
+  placeholder:
+    password: Hasło
+  saved: Zapisane sieci
+  scanning: Skanowanie w poszukiwaniu sieci
+  secured: Sieć szyfrowana
+notifications:
+  clear: Wyczyść wszystko
+  empty: Brak powiadomień
+  settings: Więcej ustawień powiadomień
+  title: Powiadomienia
+placeholder:
+  battery_remaining: '% pozostało'
+  bluetooth_devices: Bluetooth i urządzenia
+  ethernet_connected: dostęp do Internetu
+  ethernet_disconnected: Brak dostępu do internetu
+  notifications: Powiadomienia
+  settings: Szybkie ustawienia
+  smart_charge: '- Inteligentne ładowanie'
+  volume: Głośność
+settings:
+  app_settings: Ustawienia aplikacji
+  brightness: Jasność
+  power: Zasilanie
+  restart: Uruchom ponownie
+  title: Ustawienia
+userhome:
+  empty_list: Brak przedmiotów
+  folders:
+    desktop: Pulpit
+    documents: Dokumenty
+    downloads: Pobrane
+    more_items: Pokaż więcej...
+    music: Muzyka
+    pictures: Obrazy
+    recent: Ostatnio używane
+    reduce_items: Pokaż mniej...
+    title: Katalog użytkownika
+    videos: Wideo
+  profile:
+    accounts: Ustawienia konta
+    open_onedrive: Otwórz katalog OneDrive
+    open_user_folder: Otwórz katalog użytkownika
+  seelen_options:
+    open_installation_folder: Otwórz folder ustawień Seelen
+    open_log_folder: Otwórz folder dziennika Seelen
+    title: Katalogi Seelen

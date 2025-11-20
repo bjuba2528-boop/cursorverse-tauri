@@ -1,0 +1,12 @@
+C:\Users\shust\Desktop\cursorverse-tauri\src-tauri\src-tauri/target\debug\deps\tar-c5fda24e06fb569a.d: C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\lib.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\archive.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\builder.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\entry.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\entry_type.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\error.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\header.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\pax.rs
+
+C:\Users\shust\Desktop\cursorverse-tauri\src-tauri\src-tauri/target\debug\deps\libtar-c5fda24e06fb569a.rmeta: C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\lib.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\archive.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\builder.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\entry.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\entry_type.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\error.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\header.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\pax.rs
+
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\lib.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\archive.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\builder.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\entry.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\entry_type.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\error.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\header.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tar-0.4.44\src\pax.rs:

@@ -1,0 +1,342 @@
+action:
+  confirm: Bist du sicher?
+  confirm_body: Diese Aktion kann nicht rückgängig gemacht werden.
+app_launcher:
+  enable: App Launcher aktivieren
+  launch_on:
+    mouse_over: Maus drüber
+    primary: Primär
+  monitor: Monitor zum Anzeigen
+  runners:
+    cmd: Befehl
+    explorer: Run
+    label: Runner
+apps_configurations:
+  app:
+    bindings: Bindung (beide Optionen sind erforderlich)
+    category: Kategorie
+    category_placeholder: Keine
+    monitor: Monitor
+    monitor_placeholder: Keine
+    name: Name
+    ok_create: Erstellen
+    ok_edit: Ändern
+    ok_readonly: Als neu bearbeiten
+    options:
+      NoInteractive: Keine Interaktivität
+      VdPinned: In allen Arbeitsbereichen anzeigen
+      WmFloat: Twm – Beginnen Sie mit dem Schweben
+      WmForce: Twm – Force Manage
+      WmUnmanage: Twm – Nicht verwalten
+    options_label: Zusätzliche Optionen
+    title_create: '{{name}} erstellen'
+    title_edit: Bearbeitung {{Name}}
+    title_readonly: '{{name}} ansehen'
+    weg_options_label: Dock/Taskleistenoptionen
+    wm_options_label: Fenstermanageroptionen
+    workspace: Arbeitsbereich
+    workspace_placeholder: Keine
+  bundled_msg: >-
+    Diese gebündelten Konfigurationen sind nicht bearbeitbar und wurden
+    entwickelt, um dir das beste Erlebnis ohne Anpassung zu bieten. Sie
+    konfigurieren die gebräuchlichsten Anwendungen automatisch für dich.
+  bundled_title: Mit Seelen gebündelte App-Konfiguration
+  confirm_delete: Möchtest du diese Konfiguration wirklich löschen?
+  confirm_delete_title: Löschen bestätigen
+  delete: Löschen
+  export: Exportieren
+  export_full: Einstellungen nach Anwendung exportieren
+  extra_info: >-
+    Seelen UI Verwenden Sie nur einen Kenner pro App (zuerst übereinstimmend
+    gefunden). Die Reihenfolge, in der spezifisch ist, ist wichtig. Die neueste
+    hinzugefügte zusätzliche wird priorisiert, da die Tabelle standardmäßig von
+    der neuesten nach alt sortiert wird.
+  identifier:
+    add_block: Block hinzufügen
+    and: UND
+    id: Identifikator
+    kind: Identifizieren nach
+    matching_strategy: Abgleichstrategie
+    matching_strategy_option:
+      contains: Enthält
+      ends_with: Endet mit
+      equals: Gleich
+      regex: Regulärer Ausdruck
+      starts_with: Beginnt mit
+    negation: Abgleich negieren
+    or: ODER
+    remove: Block löschen
+    type:
+      class: Klasse
+      exe: Exe
+      path: Weg
+      title: Titel
+  import: Importieren
+  import_full: Einstellungen nach Anwendung importieren
+  new: Neu
+  search: Suchen
+  swap: Austauschen
+cancel: Abbrechen
+close: Schließen
+delete: Löschen
+devtools:
+  app_folders: Anwendungsordner
+  custom_config_file: Benutzerdefinierte Konfigurationsdatei laden
+  data_folder: Datenordner
+  enable: Entwicklerwerkzeuge aktivieren
+  install_folder: Installationsordner
+  load: Laden
+  settings_file: Einstellungsdatei
+  simulate_fullscreen: Vollbildereignis simulieren
+extras:
+  clear_icons: System-Symbol-Cache löschen
+  clear_icons_tooltip: >-
+    Ein Neustart könnte erforderlich sein, um alle Widgets vollständig zu
+    aktivieren.
+  exit: Beenden
+  links: Offizielle Links
+  relaunch: Neu starten
+  version: Version
+general:
+  accent_color: Akzentfarbe
+  date_format: Datumsformat
+  icon_pack:
+    available: Verfügbare Icon-Pakete
+    selected: Aktive Icon-Pakete
+  language: Sprache
+  performance_mode:
+    on_battery: Batterie
+    on_energy_saver: Auf Energiesparer
+    options:
+      disabled: Deaktiviert
+      extreme: Extrem
+      minimal: Minimal
+    plugged: Verstopft oder aufgeladen
+  startup: Beim Hochfahren ausführen?
+  theme:
+    available: Verfügbare Themen
+    selected: Aktive Themen
+header:
+  labels:
+    config: Konfigurationen
+    developer: Für Entwickler
+    extras: Extras
+    general: Allgemein
+    home: Home
+    icon_pack_editor: Zwischengespeicherte Icons
+    iconpack: Icon Packs
+    monitors: Monitore
+    plugin: Plugins
+    resources: Ressourcen
+    shortcuts: Kurzbefehle
+    soundpack: Sound Packs
+    specific_apps: Einstellungen nach Anwendung
+    theme: Themen
+    virtual_desk: Virtuelle Desktops
+    wallpaper: Bildschirmhintergründe
+    widget: Widgets
+home:
+  new_resources: Neue Ressourcen
+inherit: Erben
+inProgress: In Bearbeitung...
+insert: Einfügen
+loading: Am Laden...
+miscellaneous: Verschiedenes
+monitors_configurations:
+  label: Monitor {{index}}
+more: Mehr
+'no': NEIN
+open: Öffnen
+quit: Beenden
+remove: Entfernen
+reset_all_to_default: Alles auf Standardwerte zurücksetzen
+reset_to_default: Zurücksetzen auf den Standardwert
+resources:
+  app_outdated: >-
+    Diese Ressource erfordert eine neuere Version von Seelen UI, um richtig zu
+    funktionieren.
+  delete: Ressource löschen
+  discover: Weitere Ressourcen entdecken
+  has_update: Ein Update ist verfügbar
+  import_wallpapers: Lokale Hintergrundbilder importieren
+  open_folder: Ressourcenordner öffnen
+  outdated: >-
+    Diese Ressource wurde für eine ältere Version von Seelen UI entwickelt und
+    funktioniert möglicherweise nicht richtig.
+save: Speichern
+save_and_restart: Speichern & neu starten
+see_more: Mehr sehen
+shortcuts:
+  enable: Aktivieren Sie ein integriertes Verknüpfungssystem
+  enable_tooltip: >-
+    Deaktivieren Sie, wenn Sie Ihr eigenes Verknüpfungssystem mit dem Seelen UI
+    -Client implementieren
+  labels:
+    create_new_workspace: Erstellen Sie einen neuen Arbeitsbereich
+    cycle_stack_next: Fahrradstapel als nächstes
+    cycle_stack_prev: Zyklusstapel vorher
+    cycle_wallpaper_next: Wechseln Sie zum nächsten Tapeten
+    cycle_wallpaper_prev: Wechseln Sie in die vorherige Tapete
+    decrease_height: Abnahme der Höhe
+    decrease_width: Verringerung der Breite
+    destroy_current_workspace: Zerstören Sie den aktuellen Arbeitsbereich
+    focus_bottom: Fokus auf den Boden
+    focus_latest: Fokus neuest
+    focus_left: Fokus links
+    focus_right: Fokus rechts
+    focus_top: Fokus auf die Spitze
+    increase_height: Erhöhen Sie die Größe
+    increase_width: Breite erhöhen
+    misc_force_quit: Kraft verlassen
+    misc_force_restart: Neustart erzwingen
+    misc_open_settings: Einstellungen geöffnet
+    misc_toggle_lock_tracing: Schaltersperrverfolgung (Protokolle)
+    misc_toggle_win_event_tracing: Verfolgung des Sieg -Ereignisses (Protokolle) umschalten
+    move_to_workspace: Wechseln Sie zum Arbeitsbereich {{0}}
+    move_window_down: Fenster nach unten bewegen
+    move_window_left: Fenster nach links bewegen
+    move_window_right: Fenster nach rechts bewegen
+    move_window_up: Fenster nach oben bewegen
+    pause_tiling: Pause von Fliesenfenstermanager innehalten
+    reserve_bottom: Reservenboden
+    reserve_float: Reserve Float
+    reserve_left: Reserve links
+    reserve_right: Rechts reservieren
+    reserve_stack: Reservestapel
+    reserve_top: Reserve Top
+    restore_sizes: Größen wiederherstellen
+    send_to_workspace: An den Arbeitsbereich senden {{0}}
+    start_weg_app: Fokus oder Start Application {{0}}
+    switch_to_next_workspace: Wechseln Sie zum nächsten Arbeitsbereich
+    switch_to_previous_workspace: Wechseln Sie zum vorherigen Arbeitsbereich
+    switch_workspace: Wechseln Sie zum Arbeitsbereich {{0}}
+    toggle_float: Wechselfensterfloatmodus umschalten
+    toggle_launcher: Launcher umschalten
+    toggle_monocle: Umschalten des Arbeitsbereichs Monocle -Modus
+  readonly_tooltip: Dies ist eine schreibgeschützte Verknüpfung
+  reset: Auf Standards zurücksetzen
+sides:
+  bottom: Unten
+  left: Links
+  right: Rechts
+  top: Oben
+start:
+  message: >-
+    Willkommen bei Seelen UI, der ultimativen Desktop-Umgebung mit einem
+    integrierten Fenstermanager, um dein Windows-Erlebnis zu verbessern! Erkunde
+    eine neue Ära der Effizienz und Multitasking mit unserer intuitiven
+    Oberfläche und fortschrittlichen Funktionen.
+  message_accent: Optimiere deine Produktivität mit Stil!
+  title: Willkommen!
+toolbar:
+  auto_hide: Automatisch ausblenden
+  delay_to_hide: Verzögerung zum Verstecken
+  delay_to_show: Verzögerung beim Anzeigen
+  dock_side: Position
+  dynamic_color: Dynamische Farbe
+  dynamic_color_tooltip: >-
+    Aktivieren Sie dynamische Hintergrund- und Vordergrundfarben, die auf dem
+    fokussierten Fenster basieren. (Farben können von Themes überschrieben
+    werden)
+  enable: Elegante Werkzeugleiste aktivieren
+  height: Höhe
+  hide_mode:
+    always: Stets
+    never: Niemals
+    on_overlap: Auf Überlappung
+  label: Symbolleiste
+  placeholder: {}
+  show_hibernate: Schaltfläche "Ruhezustand" im Menü "Energie" anzeigen
+update:
+  available: Update verfügbar!
+  channel: Update-Kanal
+  downloading: Am Herunterladen ...
+wall:
+  backgrounds: Hintergrundbilder
+  blur: Unschärfe
+  contrast: Kontrast
+  enable: Tapetenmanager aktivieren
+  fit:
+    contain: Enthält
+    cover: Abdeckung
+    fill: Füllen Sie
+  flipHorizontal: Horizontal spiegeln
+  flipVertical: Vertikal drehen
+  hours: Std.
+  interval: Wechseln Sie die Hintergrundbild
+  minutes: Minuten
+  muted: Video-Audio stumm schalten
+  no_background: Leere Diashow, stattdessen wird der Hintergrund des Themas verwendet.
+  objectFit: Hintergrund Passform
+  objectPosition: Hintergrund Position
+  overlayColor: Überlagerungsfarbe
+  overlayMixBlendMode: Mischmodus Überlagerung
+  playback: Wiedergabegeschwindigkeit
+  position:
+    bottom: Unten
+    center: Zentrum
+    left: Links
+    right: Rechts
+    top: Top
+  random: Die Diashow randomisieren
+  saturation: Sättigung
+  seconds: Sekunden
+  withOverlay: Mit Overlay
+weg:
+  auto_hide: Automatisch ausblenden
+  delay_to_hide: Verzögerung zum Verstecken
+  delay_to_show: Verzögerung beim Anzeigen
+  dock_side: Position
+  enable: Dock/Taskleiste aktivieren
+  filtering: Element-Filterung
+  gap: Abstand
+  hide_mode:
+    always: Stets
+    never: Niemals
+    on_overlap: Auf Überlappung
+  items:
+    gap: Abstand zwischen Elementen
+    label: Elemente
+    pinned_visibility:
+      always: Stets
+      label: Sichtbarkeit angehefteter Elemente
+      when_primary: Wenn der Monitor primär ist
+    show_instance_counter: Zähler für offene Fenster anzeigen
+    show_window_title: Titel des geöffneten Fensters anzeigen (nur horizontal)
+    size: Elementgröße
+    temporal_visibility:
+      all: Alle
+      label: Sichtbarkeit nicht angehefteter Elemente
+      on_monitor: Auf dem Monitor
+    thumbnail_generation_enabled: Erzeugen von Miniaturbildern beim Hovern eines Artikels
+    visible_separators: Sichtbare Trennzeichen
+  label: Dock/Taskleiste
+  margin: Rand
+  mode:
+    full_width: Volle Bildschirmbreite
+    min_content: So klein wie möglich
+  padding: Polsterung
+  show_end_task: Beendete Aufgabe in der Taskleiste anzeigen
+  width: Breite
+widget:
+  enable: Aktivieren Sie dieses Widget
+  enable_for_monitor: Auf diesem Monitor aktivieren
+  instances: Instanzen
+wm:
+  animations:
+    duration: Animationsdauer (MS)
+    ease_function: Animation Lockering -Funktion
+    enable: Aktivieren Sie die Animationen von Windows
+  author: Autor
+  border:
+    enable: Fensterrand aktivieren
+    offset: Randversatz
+    width: Randbreite
+  description: Beschreibung
+  enable: Aktivieren Sie den Tiling Window Manager
+  layout: Layout
+  resize_delta: Relative Größenänderung (%)
+  space_between_containers: Abstand zwischen Containern
+  workspace_offset: Arbeitsbereichs-Versatz (Ränder)
+  workspace_padding: Arbeitsbereichs-Padding
+'yes': Ja

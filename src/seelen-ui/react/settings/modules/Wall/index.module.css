@@ -1,0 +1,38 @@
+.backgroundAdd {
+  align-self: flex-end;
+  width: 40px;
+  margin-right: 8px;
+}
+
+.interval {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
+
+.entryLabel {
+  display: grid;
+  grid-template-columns: 48px 1fr 30px;
+  align-items: center;
+  gap: 8px;
+
+  .entryName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 10px;
+}

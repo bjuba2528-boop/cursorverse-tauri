@@ -1,0 +1,341 @@
+action:
+  confirm: Ma hubtaa?
+  confirm_body: Ficilkan lama beddeli karo.
+app_launcher:
+  enable: U oggolow appka bilaabista
+  launch_on:
+    mouse_over: Jiirku wuu dhammaaday
+    primary: Asal ahaan
+  monitor: Kormeer si loo muujiyo
+  runners:
+    cmd: Amrid
+    explorer: Ordid
+    label: Orodyahannada
+apps_configurations:
+  app:
+    bindings: Xirashada (Xusuusin labada ikhtiyaar ayaa loo baahan yahay)
+    category: Dabaqad
+    category_placeholder: Midna
+    monitor: Kaabba-galaas
+    monitor_placeholder: Midna
+    name: Magac
+    ok_create: Abuurid
+    ok_edit: Cusboonaysiin
+    ok_readonly: Tafatir sida cusub
+    options:
+      NoInteractive: Is dhexgalka
+      VdPinned: Muuji dhammaan goobta shaqada
+      WmFloat: TWM - Bilow sabuuradda
+      WmForce: TWM - Xoog Maamulka
+      WmUnmanage: TWM - oo aan si qabad lahayn
+    options_label: Fursadaha dheeraadka ah
+    title_create: Abuuritaanka {{Magaca {Magaca}
+    title_edit: Tafatirka {{magaca}}
+    title_readonly: Daawashada {{,}
+    weg_options_label: Dock / Fursadaha Hawlgalka
+    wm_options_label: Xulashooyinka Maamulaha daaqada
+    workspace: Shaqo-joojin
+    workspace_placeholder: Midna
+  bundled_msg: >-
+    Qaabeyntan xirmada ma aha wax aan la taabtaan oo loogu talagalay inay ku
+    siiyaan khibradda ugu fiican ee aan la helin. Waxay si otomaatig ah u
+    habeeyaan codsiyada ugu caansan adiga.
+  bundled_title: App COLOND SOLDED SELEN
+  confirm_delete: Ma hubtaa inaad rabto inaad tirtirto qaabeyntan / s?
+  confirm_delete_title: Xaqiiji Delete
+  delete: Tirtirid
+  export: Dhoofin
+  export_full: Dejinta Dhoofinta Codsiga
+  extra_info: >-
+    Seelen UI waxay isticmaashaa hal aqoonsi oo app kasta ah (ciyaartii ugu
+    horaysay ee la helay) markaa siday u kala horreeyaan sida loo cayimay ayaa
+    muhiim ah, waxa ugu dambeeya ee lagu daray ayaa la kala hormarin doonaa,
+    sida la ogsoon yahay in miiska si caadi ah loo soocay kii u dambeeyay ilaa
+    kii hore.
+  identifier:
+    add_block: Ku dar xannibaadda
+    and: Iyo
+    id: Aqoonsiga
+    kind: Aqoonso
+    matching_strategy: Istaraatiijiyadda iswaafajinta
+    matching_strategy_option:
+      contains: Waxa ku jira
+      ends_with: Ku dhamaata
+      equals: U dhigma
+      regex: Odhaah joogto ah
+      starts_with: Waxay ku bilaabataa
+    negation: Ciriiri u dhigma
+    or: Ama
+    remove: Tirtir xannibaadda
+    type:
+      class: Fasalka
+      exe: Ex
+      path: Jidka
+      title: Ciwaanka
+  import: Soo dejin
+  import_full: Soo dejinta goobaha codsashada
+  new: Cusub
+  search: Raadin
+  swap: Isku beddelo
+cancel: Burin
+close: Xirid
+delete: Tirtirid
+devtools:
+  app_folders: Faylka app
+  custom_config_file: Xamuul faylka caadiga ah ee config
+  data_folder: Faylka xogta
+  enable: U oggolow qalabka horumarinta
+  install_folder: Xeerka rakibaadda
+  load: Xammuul
+  settings_file: Faylka Dejinta
+  simulate_fullscreen: Isku day dhacdo shaashad buuxda
+extras:
+  clear_icons: Calaamadaha Calaamadaha Camis Cast
+  clear_icons_tooltip: >-
+    Dib-u-bilaabi kara ayaa loo baahan karaa inuu si buuxda u dhaqan geliyo
+    dhammaan waxyaabaha widgets
+  exit: Jooji / bixitaan
+  links: Xiriirinta rasmiga ah
+  relaunch: Dib u beer
+  version: Werin
+general:
+  accent_color: Midab caqabad
+  date_format: Taariikh format
+  icon_pack:
+    available: Xirmooyinka Icon ee la heli karo
+    selected: Xirmooyinka Astaanta Firfircoon
+  language: Af
+  performance_mode:
+    on_battery: Batteriga
+    on_energy_saver: Ku Saabsan Tamarta Saver
+    options:
+      disabled: Itaal-daran
+      extreme: Xad-dhaaf ah
+      minimal: Aan yahayeexan
+    plugged: Xirxiran ama ku dallac
+  startup: Ku orod bilowga?
+  theme:
+    available: Mawduucyada la heli karo
+    selected: Mawduucyada Firfircoon
+header:
+  labels:
+    config: Qaabaynta
+    developer: Loogu talagalay horumarka
+    extras: Ka duwan daro
+    general: Guud
+    home: Guri
+    icon_pack_editor: Calaamadaha lagu dhejiyay
+    iconpack: Xirmooyinka icon
+    monitors: Kormeerayaasha
+    plugin: Pluins
+    resources: Kheyraadka
+    shortcuts: Gaaban
+    soundpack: Xirmooyinka dhawaaqa
+    specific_apps: Dejinta Codsi
+    theme: Mowduucyada
+    virtual_desk: Desktops Virtual
+    wallpaper: Darf-biyoodka
+    widget: Widgetts
+home:
+  new_resources: Kheyraadka cusub
+inherit: Dhaxlid
+inProgress: Horusocod ...
+insert: Gelin
+loading: Loading ...
+miscellaneous: Kala duduwan
+monitors_configurations:
+  label: Kormeer {{tus ind ind}}
+more: Ka badan
+'no': Maya
+open: Furid
+quit: Joojin
+remove: Ka qaadid
+reset_all_to_default: Dib u dejiso dhammaan qiimayaasha caadiga ah
+reset_to_default: Dib u dejiso qiimaha caadiga ah
+resources:
+  app_outdated: >-
+    Kheyraadkaani wuxuu u baahan yahay nooc cusub oo ah Selelel Ui oo si sax ah
+    u shaqeynaya.
+  delete: Tirtir Kheyraadka
+  discover: Soo hel ilo badan
+  has_update: Cusboonaysiin ayaa la heli karaa
+  import_wallpapers: Soo dejiso waraaqaha boodhka ee maxalliga ah
+  open_folder: Fur faylka furan
+  outdated: >-
+    Kheyraadkan waxaa loogu talagalay in nooc ka weyn oo ah Selelel Ui oo laga
+    yaabo inuu si sax ah u shaqeyn.
+save: Badbaadin
+save_and_restart: Badbaadin & Dib u bilow
+see_more: Arag in dheeraad ah
+shortcuts:
+  enable: U fududee nidaamka qaab dhismeedka gaagaaban
+  enable_tooltip: >-
+    Disable Haddii aad hirgelin doontid nidaamkaaga gaagaaban ee aad adigu iska
+    leedahay adiga oo adeegsanaya macmiilka SELEN UI
+  labels:
+    create_new_workspace: Abuuro shaqooyin cusub
+    cycle_stack_next: Wareegga xidhmada
+    cycle_stack_prev: Wareegga hore
+    cycle_wallpaper_next: U beddelo warqadaha xiga
+    cycle_wallpaper_prev: U beddelo xaashiyaha hore
+    decrease_height: Hoos u dhig dhererka
+    decrease_width: Ballaadhinta ballac
+    destroy_current_workspace: Burburinta goobta shaqada ee hadda jirta
+    focus_bottom: Hoos udhaca hoose
+    focus_latest: Diirad saar
+    focus_left: Ahrive bidix
+    focus_right: Diiradda saara
+    focus_top: Xoogga saar dusha sare
+    increase_height: Kordhi dhererka
+    increase_width: Kordhi ballaadhan
+    misc_force_quit: Xoog ku jooji
+    misc_force_restart: Xoogga dib u bilow
+    misc_open_settings: Meel furan
+    misc_toggle_lock_tracing: Ku wareeji raadinta qufulka (logs)
+    misc_toggle_win_event_tracing: Ku guuleysta raadinta dhacdada dhacdada (logs)
+    move_to_workspace: U dhaqaaq goobta shaqada {0}}
+    move_window_down: Daaqadda u dhaqaaq ilaa hoose
+    move_window_left: Daaqadda u dhaqaaq ilaa bidix
+    move_window_right: Daaqadda u dhaqaaq dhanka midig
+    move_window_up: Daaqadda u dhaqaaq ilaa sare
+    pause_tiling: Jooji Maareeyaha Daaqadda Daaqadda
+    reserve_bottom: Kaydsanaanta hoose
+    reserve_float: Keydka sabuuradda
+    reserve_left: Kaydsanaanta bidix
+    reserve_right: Xaq u dhig
+    reserve_stack: Reebs Rap
+    reserve_top: Keydka sare
+    restore_sizes: Soo celinta cabirka
+    send_to_workspace: U dir goobta shaqada {{0}}
+    start_weg_app: Diiradda ama Bilaabashada Arjiga Codsiga {0-}}
+    switch_to_next_workspace: U beddelo goobta shaqada ee xiga
+    switch_to_previous_workspace: U beddelo shaqooyin hore
+    switch_workspace: U beddelo goobta shaqada {{0}}
+    toggle_float: Ku wareeji xarkaha suuqa
+    toggle_launcher: Tirggle Bilaash
+    toggle_monocle: TOGGLE MODOCLE MoCOCLE Mode
+  readonly_tooltip: Tani waa gaagaaban oo keliya oo keliya
+  reset: Dib u dejiso defafyada
+sides:
+  bottom: Hoose
+  left: Bidix
+  right: Sax
+  top: Dusha kore
+start:
+  message: >-
+    Ku soo dhawow SELEN Ui, oo ah jawiga desktop-ka ugu dambeeya oo leh
+    maamulaha Windows-ka oo lagu daro Maareeyaha Windows Sahamiyaan marxalad
+    cusub oo hufnaan iyo fara badan
+  message_accent: Ku dadaal wax soo saarkaaga qaabka!
+  title: Soo dhawow!
+toolbar:
+  auto_hide: Auto qaraha
+  delay_to_hide: Dib u dhig si loo qariyo
+  delay_to_show: Dib u dhig si loo muujiyo
+  dock_side: Meel
+  dynamic_color: Midab firfircoon
+  dynamic_color_tooltip: >-
+    U oggolow asalka firfircoon iyo milix hore oo salka ku haya daaqadda diirada
+    saareysa. (Midabada waxaa lagu wareejin karaa mawduucyo)
+  enable: Keeniyaan Qalabka Fancy Toolbar
+  height: Dherer
+  hide_mode:
+    always: Had iyo jeer
+    never: Marna
+    on_overlap: Isku dhafka
+  label: Qalab argamiye
+  placeholder: {}
+  show_hibernate: Tus badhanka Hibernate ee ku yaal menuska Power
+update:
+  available: Cusboonaysiinta la heli karo!
+  channel: Cusboonaysiinta Kanaalka
+  downloading: Soo dejinta ...
+wall:
+  backgrounds: Darf-biyoodka
+  blur: Jilicsan
+  contrast: Is barbar dhigidda
+  enable: Awood u yeelo maamulaha derbiga
+  fit:
+    contain: Ka koobasho
+    cover: Daboolid
+    fill: Buuxin
+  flipHorizontal: Flip siman
+  flipVertical: Flip vertical
+  hours: saacadood
+  interval: Beddel wadooyinka si kasta
+  minutes: daqiiqo
+  muted: Muuqaalka Muuqaalka Mate
+  no_background: Slideshow madhan, adoo adeegsanaya asalka mawduuca.
+  objectFit: Asalka taam
+  objectPosition: Booska asalka ah
+  overlayColor: Midab ka sarreeya
+  overlayMixBlendMode: Isku-darka iskudarka isku-darka
+  playback: Xawaaraha ciyaarta
+  position:
+    bottom: Hoos
+    center: Dhex
+    left: Bidix
+    right: Sax
+    top: Dusha kore
+  random: Kala sooc slideshow
+  saturation: SATION
+  seconds: sekan
+  withOverlay: Iyadoo lagu daboolay
+weg:
+  auto_hide: Auto qaraha
+  delay_to_hide: Dib u dhig si loo qariyo
+  delay_to_show: Dib u dhig si loo muujiyo
+  dock_side: Meel
+  enable: Kartida DOCK / Turniinka
+  filtering: Shaandhaynta sheyga
+  gap: Dalool
+  hide_mode:
+    always: Had iyo jeer
+    never: Marna
+    on_overlap: Isku dhafka
+  items:
+    gap: Meel udhaxeysa waxyaabaha
+    label: Waxyaabaha
+    pinned_visibility:
+      always: Had iyo jeer
+      label: Shayga Ku dheggan Muuqaal
+      when_primary: Marka kormeeruhu uu yahay aasaasiga
+    show_instance_counter: Muuji miiska daaqadaha furan
+    show_window_title: Muuji cinwaanka daaqadda furan (oo kaliya toosan)
+    size: Shayga cabirka
+    temporal_visibility:
+      all: Dhammaan
+      label: Aragtida Shayada Furan
+      on_monitor: On Monitor
+    thumbnail_generation_enabled: Abuur thumbnails on sheyga
+    visible_separators: Kala-sooca muuqda
+  label: Dock / Tootshar
+  margin: Margin
+  mode:
+    full_width: Ballaca shaashadda oo dhan
+    min_content: Yaryar sida ay noqon karto
+  padding: Suur
+  show_end_task: Muuji shaqada dhamaadka ee Tooska
+  width: Ballac
+widget:
+  enable: U oggolow widget-kaan
+  enable_for_monitor: U oggolow kormeerkan
+  instances: Tusaca
+wm:
+  animations:
+    duration: Duration animation (MS)
+    ease_function: Animation fududeynta shaqada
+    enable: Karti animations daaqadaha
+  author: Qoraa
+  border:
+    enable: Karti xadka daaqadaha
+    offset: Xudduud xadka
+    width: Xadka ballaca
+  description: Sifo
+  enable: U oggolow maamulaha daaqadda daaqadda
+  layout: Khariidad
+  resize_delta: Dib u dhig Delta (%)
+  space_between_containers: Meel bannaan oo u dhexeeya weelka
+  workspace_offset: Goobaha shaqada ayaa ka dhigtay
+  workspace_padding: Goobta Goobta Goobta
+'yes': Haa

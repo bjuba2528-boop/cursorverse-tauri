@@ -1,0 +1,93 @@
+bluetooth:
+  available: Доступні пристрої (не в парі)
+  cancel: Скасувати
+  connected: Підключені пристрої
+  forget: Забудь.
+  lowenergy: Низька енергія
+  more: Більше налаштувань Bluetooth
+  not_found: Пристроїв Bluetooth не знайдено
+  pair: Пара
+  paired: Збережені пристрої
+  placeholder:
+    passphrase: Пароль, код або PIN-код
+  scanning: Сканування на наявність пристроїв
+context_menu:
+  add_custom_text: Додати власний текстовий елемент
+  modules: Модулі
+  remove: Видалити модуль
+  reorder_disable: Заблокувати панель інструментів
+  reorder_enable: Розблокувати панель інструментів
+  restore: Відновити за замовчуванням
+  settings: Налаштування
+  task_manager: Диспетчер задач
+keyboard:
+  more: Більше налаштувань клавіатури
+  title: Розкладка клавіатури
+media:
+  default_multimedia_volume: Мультимедійна гучність
+  device:
+    channel:
+      system: Звуки системи
+    comunications: Комунікація
+    missing: Відсутній пристрій
+    mixer: Змішувач гучності
+    multimedia: Мультимедіа
+    settings: Більше налаштувань пристрою
+    volume: Гучність пристрою
+  input_devices: Пристрої введення
+  output_devices: Пристрої виводу
+  players: Медіаплеєри
+network:
+  available: Доступні мережі
+  connect: Підключити
+  connected: Підключено до
+  disconnect: Відключити
+  hidden: Прихована мережа
+  more: Більше налаштувань мережі
+  not_found: Жодних мереж не знайдено
+  placeholder:
+    password: Пароль
+  saved: Збережені мережі
+  scanning: Сканування мереж
+  secured: Зашифрована мережа
+notifications:
+  clear: Зачистити все.
+  empty: Немає сповіщень
+  settings: Більше налаштувань сповіщень
+  title: Сповіщення
+placeholder:
+  battery_remaining: '% залишилось'
+  bluetooth_devices: Bluetooth та пристрої
+  ethernet_connected: Доступ в інтернет
+  ethernet_disconnected: Немає доступу до Інтернету
+  notifications: Сповіщення
+  settings: Швидкі налаштування
+  smart_charge: '- розумний заряд'
+  volume: Гучність
+settings:
+  app_settings: Налаштування додатку
+  brightness: Яскравість
+  power: Живлення
+  restart: Перезапустити
+  title: Налаштування
+userhome:
+  empty_list: Немає предметів
+  folders:
+    desktop: Робочий стіл
+    documents: Документи
+    downloads: Завантаження
+    more_items: Показати більше...
+    music: Музика
+    pictures: Зображення
+    recent: Нещодавно використані
+    reduce_items: Показати менше...
+    title: Каталоги користувачів
+    videos: Відео
+  profile:
+    accounts: Налаштування відкритого рахунку
+    open_onedrive: Відкрийте каталог OneDrive
+    open_user_folder: Відкрити каталог користувача
+  seelen_options:
+    open_installation_folder: Відкрийте папку налаштувань Seelen
+    open_log_folder: Відкрийте папку журналу Seelen
+    title: Переглянуті каталоги

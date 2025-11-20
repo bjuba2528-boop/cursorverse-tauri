@@ -1,0 +1,337 @@
+action:
+  confirm: Är du säker?
+  confirm_body: Denna åtgärd kan inte ångras.
+app_launcher:
+  enable: Aktivera App Launcher
+  launch_on:
+    mouse_over: Musen över
+    primary: Primär
+  monitor: Övervaka att visa
+  runners:
+    cmd: Kommando
+    explorer: Sikt
+    label: Löpare
+apps_configurations:
+  app:
+    bindings: Bindning (Observera att båda alternativen krävs)
+    category: Kategori
+    category_placeholder: Ingen
+    monitor: Övervaka
+    monitor_placeholder: Ingen
+    name: namn
+    ok_create: Skapa
+    ok_edit: Uppdatering
+    ok_readonly: Redigera som ny
+    options:
+      NoInteractive: Ingen interaktiv
+      VdPinned: Visa i alla arbetsytor
+      WmFloat: Twm - Börja flyta
+      WmForce: Twm - Force Hantera
+      WmUnmanage: Twm - Unmanage
+    options_label: Extra alternativ
+    title_create: Skapa {{name}}
+    title_edit: Redigera {{name}}
+    title_readonly: Visa {{name}}
+    weg_options_label: Dock/Aktivitetsfältalternativ
+    wm_options_label: Fönsterchefalternativ
+    workspace: Arbetsyta
+    workspace_placeholder: Ingen
+  bundled_msg: >-
+    Dessa bundna konfigurationer är inte redigerbara och är utformade för att ge
+    dig den bästa upplevelsen utan anpassning. De konfigurerar automatiskt de
+    vanligaste applikationerna för dig.
+  bundled_title: App config bunded med seelen
+  confirm_delete: Är du säker på att du vill ta bort den här konfigurationen/s?
+  confirm_delete_title: Bekräfta radering
+  delete: Radera
+  export: Exportera
+  export_full: Exportera inställningar per applikation
+  extra_info: >-
+    Seelen UI använder endast en identifierare per app (första matchningen
+    hittas) så ordningen i hur de specificeras är viktig, det senast tillagda
+    kommer att prioriteras, som observera att tabellen sorteras som standard
+    från senaste till gammal.
+  identifier:
+    add_block: Lägga till
+    and: OCH
+    id: Identifierare
+    kind: Identifiera sig genom
+    matching_strategy: Matchningsstrategi
+    matching_strategy_option:
+      contains: Innehåller
+      ends_with: Slutar med
+      equals: Lika
+      regex: Reguljärt uttryck
+      starts_with: Börjar med
+    negation: Negera matchning
+    or: ELLER
+    remove: Radera block
+    type:
+      class: Klass
+      exe: Exe
+      path: Väg
+      title: Titel
+  import: Importera
+  import_full: Importera inställningar per applikation
+  new: Ny
+  search: Sök
+  swap: Byta
+cancel: Annullera
+close: Nära
+delete: Radera
+devtools:
+  app_folders: Appmappar
+  custom_config_file: Ladda anpassad konfigurationsfil
+  data_folder: Datarmapp
+  enable: Aktivera utvecklarverktyg
+  install_folder: Installationsmapp
+  load: Ladda
+  settings_file: Inställningsfil
+  simulate_fullscreen: Simulera helskärmshändelse
+extras:
+  clear_icons: Rensa cachen för systemikoner
+  clear_icons_tooltip: En omstart kan krävas för att få full effekt på alla widgets
+  exit: Sluta/avsluta
+  links: Officiella länkar
+  relaunch: Omstart
+  version: Version
+general:
+  accent_color: Accentfärg
+  date_format: Datumformat
+  icon_pack:
+    available: Tillgängliga ikonpaket
+    selected: Aktiva ikonpaket
+  language: Språk
+  performance_mode:
+    on_battery: På batteri
+    on_energy_saver: På energisparare
+    options:
+      disabled: Funktionshindrad
+      extreme: Extrem
+      minimal: Minimal
+    plugged: Ansluten eller laddning
+  startup: Köras vid start?
+  theme:
+    available: Tillgängliga teman
+    selected: Aktiva teman
+header:
+  labels:
+    config: Konfigurationer
+    developer: För utvecklare
+    extras: Extramaterial
+    general: Allmän
+    home: Hem
+    icon_pack_editor: Cachade ikoner
+    iconpack: Ikonpaket
+    monitors: Monitorer
+    plugin: Plugins
+    resources: Resurser
+    shortcuts: Genvägar
+    soundpack: Ljudpaket
+    specific_apps: Inställningar per applikation
+    theme: Teman
+    virtual_desk: Virtuella skrivbord
+    wallpaper: Bakgrundsbilder
+    widget: Widgetar
+home:
+  new_resources: Nya resurser
+inherit: Ärva
+inProgress: Pågående...
+insert: Infoga
+loading: Läser in...
+miscellaneous: Diverse
+monitors_configurations:
+  label: Monitor {{index}}
+more: Mer
+'no': Inga
+open: Öppen
+quit: Sluta
+remove: Ta bort
+reset_all_to_default: Återställ alla till standardvärden
+reset_to_default: Återställ till standardvärde
+resources:
+  app_outdated: Denna resurs kräver en nyare version av Seelen UI för att fungera korrekt.
+  delete: Radera resurs
+  discover: Upptäck fler resurser
+  has_update: En uppdatering är tillgänglig
+  import_wallpapers: Importera lokala bakgrundsbilder
+  open_folder: Öppna resursmappen
+  outdated: >-
+    Den här resursen är utformad för en äldre version av Seelen UI och kanske
+    inte fungerar korrekt.
+save: Spara
+save_and_restart: Spara och starta om
+see_more: Se mer
+shortcuts:
+  enable: Aktivera inbyggda genvägssystem
+  enable_tooltip: >-
+    Inaktivera om du kommer att implementera ditt eget genvägssystem med Seelen
+    UI -klienten
+  labels:
+    create_new_workspace: Skapa en ny arbetsyta
+    cycle_stack_next: Cykelstack nästa
+    cycle_stack_prev: Cykelstack föregående
+    cycle_wallpaper_next: Byt till nästa tapet
+    cycle_wallpaper_prev: Ändra till tidigare tapeter
+    decrease_height: Minskande höjd
+    decrease_width: Minskande bredd
+    destroy_current_workspace: Förstör den aktuella arbetsytan
+    focus_bottom: Fokusera botten
+    focus_latest: Fokus senaste
+    focus_left: Fokus vänster
+    focus_right: Fokusera rätt
+    focus_top: Focus topp
+    increase_height: Öka höjden
+    increase_width: Öka bredd
+    misc_force_quit: Straffa
+    misc_force_restart: Tvinga omstart
+    misc_open_settings: Öppna inställningar
+    misc_toggle_lock_tracing: TOGGLE LOCK TRACING (loggar)
+    misc_toggle_win_event_tracing: Toggle Win Event Tracing (loggar)
+    move_to_workspace: Flytta till Workspace {{0}}
+    move_window_down: Flytta fönster till botten
+    move_window_left: Flytta fönstret till vänster
+    move_window_right: Flytta fönstret till höger
+    move_window_up: Flytta fönstret till toppen
+    pause_tiling: Pausskakelfönsterhanterare
+    reserve_bottom: Reserv botten
+    reserve_float: Reservflott
+    reserve_left: Reservera vänster
+    reserve_right: Reservera höger
+    reserve_stack: Reservstack
+    reserve_top: Reservtopp
+    restore_sizes: Återställ storleken
+    send_to_workspace: Skicka till Workspace {{0}}
+    start_weg_app: Fokus eller starta applikationen {{0}}
+    switch_to_next_workspace: Byt till nästa arbetsyta
+    switch_to_previous_workspace: Byt till tidigare arbetsyta
+    switch_workspace: Byt till Workspace {{0}}
+    toggle_float: Växla fönsterflödesläge
+    toggle_launcher: Växla launcher
+    toggle_monocle: Växla arbetsyta Monocle -läge
+  readonly_tooltip: Detta är en skrivskyddad genväg
+  reset: Återställas till standardvärden
+sides:
+  bottom: Botten
+  left: Vänster
+  right: Höger
+  top: Topp
+start:
+  message: >-
+    Välkommen till Seelen UI, den ultimata skrivbordsmiljön med en införlivad
+    kakling Windows Manager för att förbättra din Windows -upplevelse! Utforska
+    en ny era av effektivitet och multitasking med vårt intuitiva gränssnitt och
+    avancerade funktioner.
+  message_accent: Optimera din produktivitet med stil!
+  title: Välkommen!
+toolbar:
+  auto_hide: Auto Hide
+  delay_to_hide: Dröjsmål att gömma sig
+  delay_to_show: Fördröjning att visa
+  dock_side: Position
+  dynamic_color: Dynamisk färg
+  dynamic_color_tooltip: >-
+    Aktivera dynamiska bakgrunds- och förgrundsfärger baserat på fokuserat
+    fönster. (Färgerna kan åsidosättas av teman)
+  enable: Aktivera snyggt verktygsfält
+  height: Höjd
+  hide_mode:
+    always: Alltid
+    never: Aldrig
+    on_overlap: På överlappning
+  label: Verktygsfält
+  placeholder: {}
+  show_hibernate: Visa knappen för viloläge i Power-menyn
+update:
+  available: Uppdatering tillgänglig!
+  channel: Uppdateringskanal
+  downloading: Nedladdning ...
+wall:
+  backgrounds: Tapeter
+  blur: Blur
+  contrast: Kontrast
+  enable: Aktivera tapetchef
+  fit:
+    contain: Innehåller
+    cover: Omslag
+    fill: Fylla
+  flipHorizontal: Vänd horisontellt
+  flipVertical: Vänd vertikal
+  hours: timme
+  interval: Ändra tapeter varje
+  minutes: minuter
+  muted: Stäng av videoljud
+  no_background: Tomt bildspel, med temas bakgrund istället.
+  objectFit: Bakgrund Passform
+  objectPosition: Bakgrund Position
+  overlayColor: Färg på överlägg
+  overlayMixBlendMode: Overlay Mix Blandningsläge
+  playback: Uppspelningshastighet
+  position:
+    bottom: Botten
+    center: Centrum
+    left: Vänster
+    right: Rätt
+    top: Topp
+  random: Slumpmässig bildspel
+  saturation: Mättnad
+  seconds: sekunder
+  withOverlay: Med överlägg
+weg:
+  auto_hide: Auto Hide
+  delay_to_hide: Dröjsmål att gömma sig
+  delay_to_show: Fördröjning att visa
+  dock_side: Placera
+  enable: Aktivera bryggor/aktivitetsfält
+  filtering: Filtrering av objekt
+  gap: Glipa
+  hide_mode:
+    always: Alltid
+    never: Aldrig
+    on_overlap: På överlappning
+  items:
+    gap: Utrymme mellan föremål
+    label: Föremål
+    pinned_visibility:
+      always: Alltid
+      label: Synlighet för fästa objekt
+      when_primary: När monitorn är primär
+    show_instance_counter: Visa räknare för öppna fönster
+    show_window_title: Visa titel på öppet fönster (endast horisontellt)
+    size: Objektstorlek
+    temporal_visibility:
+      all: Alla
+      label: Synlighet för lossade objekt
+      on_monitor: På bildskärm
+    thumbnail_generation_enabled: Generera miniatyrbilder när objektet rör sig
+    visible_separators: Synliga separatorer
+  label: Docka/arbetsfält
+  margin: Marginal
+  mode:
+    full_width: Helskärmsbredd
+    min_content: Liten som kan vara
+  padding: Stoppning
+  show_end_task: Visa slutuppgift i aktivitetsfältet
+  width: Bredd
+widget:
+  enable: Aktivera denna widget
+  enable_for_monitor: Aktivera på denna bildskärm
+  instances: Instanser
+wm:
+  animations:
+    duration: Animationens varaktighet (MS)
+    ease_function: Animationslättningsfunktion
+    enable: Aktivera Windows animationer
+  author: Författare
+  border:
+    enable: Aktivera fönstergränsen
+    offset: Gränsförskjutning
+    width: Gränsbredd
+  description: Beskrivning
+  enable: Aktivera kakelfönsterhanterare
+  layout: Layout
+  resize_delta: Ändra ändra delta (%)
+  space_between_containers: Utrymme mellan containrar
+  workspace_offset: Arbetsytor Offset (marginaler)
+  workspace_padding: Arbetsytor
+'yes': Ja

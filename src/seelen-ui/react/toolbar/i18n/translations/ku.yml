@@ -1,0 +1,93 @@
+bluetooth:
+  available: Amûrên berdest (ne paldan)
+  cancel: Bişûndekirin
+  connected: Amûrên girêdayî
+  forget: Jibîrkirin
+  lowenergy: Enerjiya kêm
+  more: Mîhengên bêtir Bluetooth
+  not_found: Amûrên Bluetooth-ê nehat dîtin
+  pair: Cot
+  paired: Amûrên hilanîn
+  placeholder:
+    passphrase: Passphrase, kod an pin
+  scanning: Ji bo amûrên şehîn
+context_menu:
+  add_custom_text: Tiştê nivîsê ya xwerû zêde bikin
+  modules: Modules
+  remove: Modulê rakirin
+  reorder_disable: Toolbar tool
+  reorder_enable: Vebijêrin Toolbar
+  restore: Restore to Default
+  settings: Settings
+  task_manager: Gerînendetiya Peywiran
+keyboard:
+  more: Mîhengên bêtir klavyeyê
+  title: Bişkojka Keyboard
+media:
+  default_multimedia_volume: Volume Multimedia
+  device:
+    channel:
+      system: Dengên pergalê
+    comunications: Têkilî
+    missing: Cîhaza wenda
+    mixer: Mixer mixer
+    multimedia: Multimedia
+    settings: Mîhengên bêtir amûrê
+    volume: Qumarê amûrê
+  input_devices: Amûrên input
+  output_devices: Amûrên deriyê
+  players: Lîstikên Medyayê
+network:
+  available: Torên berdest
+  connect: Bihevgirêdan
+  connected: Girêdayî
+  disconnect: Hevqetandin
+  hidden: Tora Hidden
+  more: Mîhengên bêtir torê
+  not_found: Tora torgilok nehat dîtin
+  placeholder:
+    password: Şîfre
+  saved: torên Saved
+  scanning: Ji bo toran lêgerîn
+  secured: Tora şîfrekirî
+notifications:
+  clear: Hemî paqij bikin
+  empty: No notifications
+  settings: Mîhengên bêtir agahdariyan
+  title: Notifications
+placeholder:
+  battery_remaining: '% mayî'
+  bluetooth_devices: Bluetooth & Amûrên
+  ethernet_connected: Gihîştina înternetê
+  ethernet_disconnected: Ne gihîştina înternetê
+  notifications: Notifications
+  settings: Mîhengên Bilez
+  smart_charge: '- heqê harm'
+  volume: Bend
+settings:
+  app_settings: Mîhengên App
+  brightness: Biriqîn
+  power: Erk
+  restart: Destpêkirin
+  title: Mîhengan
+userhome:
+  empty_list: Tiştek tune
+  folders:
+    desktop: Desktop
+    documents: Belge
+    downloads: Daxistin
+    more_items: Zêdetir ...
+    music: Mûzîk
+    pictures: Wêneyên wêne
+    recent: Herî dawî bikar anîn
+    reduce_items: Kêmtir nîşan bide ...
+    title: Rêbernameyên bikarhêner
+    videos: Videos
+  profile:
+    accounts: Mîhengên hesabê vekin
+    open_onedrive: Peldanka OneDrive vekirî
+    open_user_folder: Peldanka Bikarhêner veke
+  seelen_options:
+    open_installation_folder: Peldanka Mîhengên Seelen vekin
+    open_log_folder: Peldanka Log Seelen Open
+    title: Derhênerên Derveyî

@@ -1,0 +1,339 @@
+action:
+  confirm: Ziur al zaude?
+  confirm_body: Ekintza hau ezin da desegin.
+app_launcher:
+  enable: Gaitu aplikazioaren abiarazlea
+  launch_on:
+    mouse_over: Sagua pasa
+    primary: Lehen mailakoa
+  monitor: Monitorea erakusteko
+  runners:
+    cmd: Agindu
+    explorer: Korrika
+    label: Kornollari
+apps_configurations:
+  app:
+    bindings: Lotura (kontuan bi aukerak behar dira)
+    category: Kategoria
+    category_placeholder: Ezein ez
+    monitor: Behatu
+    monitor_placeholder: Ezein ez
+    name: Izen
+    ok_create: Sortu
+    ok_edit: Eguneratu
+    ok_readonly: Editatu berria
+    options:
+      NoInteractive: Ez interaktiborik
+      VdPinned: Erakutsi laneko gune guztietan
+      WmFloat: Twm - Hasi flotatzen
+      WmForce: Twm - Indarra kudeatu
+      WmUnmanage: Twm - Deskudeatu
+    options_label: Aukera gehigarriak
+    title_create: '{{Name}} sortzea'
+    title_edit: '{{Name}} edizioa'
+    title_readonly: '{{Name}} ikustea'
+    weg_options_label: Dock / ataza barrako aukerak
+    wm_options_label: Leiho kudeatzailearen aukerak
+    workspace: Laneko espazioa
+    workspace_placeholder: Ezein ez
+  bundled_msg: >-
+    Konfigurazio multzo hauek ez dira editagarriak eta pertsonalizaziorik gabeko
+    esperientzia onena emateko diseinatuta daude. Zuretzako aplikazio ohikoenak
+    automatikoki konfiguratzen dituzte.
+  bundled_title: App konfigurazioa Seelen-ekin lotuta
+  confirm_delete: Ziur konfigurazio hau ezabatu nahi duzula?
+  confirm_delete_title: Berretsi Ezabatu
+  delete: Ezabatu
+  export: Esportagai
+  export_full: Esportatu ezarpenak aplikazioaren arabera
+  extra_info: >-
+    Seelen UIk aplikazio bakoitzeko identifikatzaile bakarra erabili (lehen
+    partidua aurkitu da), beraz, zehatz-mehatz azaltzen da, azken erantsia
+    lehentasuna izango da, ohar gisa taula lehenetsi da lehenetsitakoa
+    zaharretik azkenetik ordenatuta.
+  identifier:
+    add_block: Gehitu blokea
+    and: Eta
+    id: Identifikatzaile
+    kind: Identifikatu
+    matching_strategy: Bat datorren estrategia
+    matching_strategy_option:
+      contains: Dauka
+      ends_with: Honekin amaitzen da
+      equals: Berdin
+      regex: Adierazpen erregularra
+      starts_with: '-rekin hasten da'
+    negation: Ezeztatu bat datozenak
+    or: Ala
+    remove: Ezabatu blokea
+    type:
+      class: Klasea
+      exe: Exe
+      path: Bidea
+      title: Izenburua
+  import: Inportatu
+  import_full: Inportatu ezarpenak aplikazioaren arabera
+  new: Berri
+  search: Araketa
+  swap: Tratu
+cancel: Indargabetu
+close: Hurbileko
+delete: Ezabatu
+devtools:
+  app_folders: Aplikazio karpetak
+  custom_config_file: Kargatu Config fitxategi pertsonalizatua
+  data_folder: Datu karpeta
+  enable: Gaitu garatzaileen tresnak
+  install_folder: Instalazio karpeta
+  load: Zamatu
+  settings_file: Ezarpenak fitxategia
+  simulate_fullscreen: Simulatu pantaila osoko gertaera
+extras:
+  clear_icons: Garbitu sistemaren ikonoak cachea
+  clear_icons_tooltip: Berrabiarazi behar da widget guztietan erabat indarrean egon dadin
+  exit: Irten / irten
+  links: Lotura Ofizialak
+  relaunch: Errorefrika
+  version: Bertsio
+general:
+  accent_color: Azentu kolorea
+  date_format: Data formatua
+  icon_pack:
+    available: Eskuragarri dauden ikono paketeak
+    selected: Ikono pakete aktiboak
+  language: Mintzaira
+  performance_mode:
+    on_battery: Bateria gainean
+    on_energy_saver: Energia aurrezteari buruz
+    options:
+      disabled: Minusbaliatu
+      extreme: Muturreko
+      minimal: Gutxien
+    plugged: Entxufatua edo kargatzea
+  startup: Korrika abiaraztean?
+  theme:
+    available: Eskuragarri dauden gaiak
+    selected: Gai aktiboak
+header:
+  labels:
+    config: Konfigurazio
+    developer: Garatzaileentzako
+    extras: Aput
+    general: Jeneral
+    home: Etxe
+    icon_pack_editor: Ikono katxeak
+    iconpack: Ikono paketeak
+    monitors: Monitore
+    plugin: Plakins
+    resources: Baliabide
+    shortcuts: Lasterbideak
+    soundpack: Soinu paketeak
+    specific_apps: Ezarpenak aplikazioaren arabera
+    theme: Haibideak
+    virtual_desk: Mahaigain birtualak
+    wallpaper: Horma-irudiak
+    widget: Widgets
+home:
+  new_resources: Baliabide berriak
+inherit: Jarauntsi
+inProgress: Abian ...
+insert: Txertatu
+loading: Kargatzen ...
+miscellaneous: Heterogeneo
+monitors_configurations:
+  label: Monitor {{index}}
+more: Gehiago
+'no': Ez-
+open: Ireki
+quit: Laga
+remove: Atera
+reset_all_to_default: Berrezarri guztiak balio lehenetsiak
+reset_to_default: Berrezarri lehenetsitako balioa
+resources:
+  app_outdated: >-
+    Baliabide honek Seelen UI bertsio berriagoa behar du behar bezala funtziona
+    dezan.
+  delete: Baliabidea ezabatu
+  discover: Ezagutu baliabide gehiago
+  has_update: Eguneratze bat eskuragarri dago
+  import_wallpapers: Inportatu tokiko horma-irudiak
+  open_folder: Baliabide irekiko karpeta
+  outdated: >-
+    Baliabide hau Seelen UI bertsio zaharragoa da eta agian ez du behar bezala
+    funtzionatuko.
+save: Aurreztu
+save_and_restart: Gorde eta berrabiarazi
+see_more: Ikusi gehiago
+shortcuts:
+  enable: Gaitu zuzeneko lasterbideen sistema
+  enable_tooltip: >-
+    Desgaitu Seelen UI bezeroa erabiliz zure lasterbideen sistema ezartzen
+    baduzu
+  labels:
+    create_new_workspace: Sortu laneko espazioa berria
+    cycle_stack_next: Ziklo pila hurrengoa
+    cycle_stack_prev: Ziklo pila Aurrekoa
+    cycle_wallpaper_next: Aldatu hurrengo horma-irudira
+    cycle_wallpaper_prev: Aldatu aurreko horma-irudira
+    decrease_height: Altuera gutxitu
+    decrease_width: Murriztu zabalera
+    destroy_current_workspace: Destroy uneko lan-eremua
+    focus_bottom: Fokua Behean
+    focus_latest: Fokua azkena
+    focus_left: Focus ezkerrera
+    focus_right: Argindu eskubidea
+    focus_top: Focus Top
+    increase_height: Altuera handitzea
+    increase_width: Zabalera handitzea
+    misc_force_quit: Behartu irten
+    misc_force_restart: Indarra berrabiarazi
+    misc_open_settings: Ezarpenak irekitzea
+    misc_toggle_lock_tracing: Txandakatu blokeoaren trazadura (erregistroak)
+    misc_toggle_win_event_tracing: Txandakatu Gertaeren trazatzea (erregistroak)
+    move_to_workspace: Mugitu lan-eremura {{0}}
+    move_window_down: Mugitu leihoa beherantz
+    move_window_left: Mugitu leihoa ezkerrera
+    move_window_right: Mugitu leihoa eskuinera
+    move_window_up: Mugitu leihoa goitik
+    pause_tiling: Pausatu fitxa leiho kudeatzailea
+    reserve_bottom: Erreserbatu behealdea
+    reserve_float: Erreserba karroza
+    reserve_left: Erreserba ezkerrera
+    reserve_right: Erreserbatu eskubidea
+    reserve_stack: Erreserba pila
+    reserve_top: Erreserba Top
+    restore_sizes: Neurriak leheneratu
+    send_to_workspace: Bidali lantokiari {{0}}
+    start_weg_app: Fokatu edo abiarazi aplikazioa {{0}}
+    switch_to_next_workspace: Aldatu hurrengo lantokira
+    switch_to_previous_workspace: Aldatu aurreko lan-eremura
+    switch_workspace: Aldatu lan-eremura {{0}}
+    toggle_float: Txandakatu leiho karroza modua
+    toggle_launcher: Txandakatu abiarazlea
+    toggle_monocle: Txandakatu Workspace Monocle modua
+  readonly_tooltip: Hau irakurtzeko lasterbidea da
+  reset: Berrezarri lehenetsitakoak
+sides:
+  bottom: Azpi
+  left: Ezker
+  right: Zuzen
+  top: Tontor
+start:
+  message: >-
+    Ongi etorri Seelen UI-ra, azken mahaigaineko ingurunea, fitxategien leiho
+    kudeatzailearekin txertatu zure Windows esperientzia hobetzeko! Arakatu
+    eraginkortasunaren eta multiataza aro berria gure interfaze intuitiboarekin
+    eta ezaugarri aurreratuekin.
+  message_accent: Optimizatu zure produktibitatea estiloarekin!
+  title: Ongi etorri!
+toolbar:
+  auto_hide: Ezkutatu automatikoa
+  delay_to_hide: Ezkutatzeko atzeratu
+  delay_to_show: Erakusteko atzerapena
+  dock_side: Kokaleku
+  dynamic_color: Kolore dinamikoa
+  dynamic_color_tooltip: >-
+    Gaitu fokatutako leihoan oinarritutako atzeko plano eta lehen planoko kolore
+    dinamikoak. (Koloreak gaiak gainditu daitezke)
+  enable: Gaitu tresna-barra
+  height: Luzera
+  hide_mode:
+    always: Beti
+    never: Inoiz ez
+    on_overlap: Gainjartzean
+  label: Tresna barra
+  placeholder: {}
+  show_hibernate: Erakutsi Hibernate botoia Power Menuan
+update:
+  available: Eguneratu eskuragarri!
+  channel: Eguneratu kanala
+  downloading: Deskargatzen ...
+wall:
+  backgrounds: Horma-irudiak
+  blur: Lau lauak
+  contrast: Kontraste
+  enable: Gaitu horma-kudeatzailea
+  fit:
+    contain: Eduki
+    cover: Estalki
+    fill: Bete
+  flipHorizontal: Flip horizontala
+  flipVertical: Irauli bertikala
+  hours: ordire ordu
+  interval: Aldatu horma-irudia guztietan
+  minutes: minutuak
+  muted: Ezkutatu bideoaren audioa
+  no_background: Aurkezpen hutsak, gaiaren atzeko planoa erabiliz.
+  objectFit: Atzeko planoaren moldaketa
+  objectPosition: Atzeko planoaren posizioa
+  overlayColor: Overlay kolorea
+  overlayMixBlendMode: Overlay nahastu nahasketa modua
+  playback: Erreproduzitzeko abiadura
+  position:
+    bottom: Azpi
+    center: Gune
+    left: Ezker
+    right: Zuzen
+    top: Tontor
+  random: Aurkezpen diaporama
+  saturation: Saturazio
+  seconds: bizkarbete
+  withOverlay: Gainjartzearekin
+weg:
+  auto_hide: Ezkutatu automatikoa
+  delay_to_hide: Ezkutatzeko atzeratu
+  delay_to_show: Erakusteko atzerapena
+  dock_side: Kokaleku
+  enable: Gaitu kaia / ataza barra
+  filtering: Elementua iragaztea
+  gap: Tarte
+  hide_mode:
+    always: Beti
+    never: Inoiz ez
+    on_overlap: Gainjartzean
+  items:
+    gap: Elementuen arteko espazioa
+    label: Manatu
+    pinned_visibility:
+      always: Beti
+      label: Ainguratutako elementuen ikusgaitasuna
+      when_primary: Monitorea nagusia denean
+    show_instance_counter: Erakutsi irekitako leihoen kontagailua
+    show_window_title: Erakutsi leiho irekiko titulua (horizontala bakarrik)
+    size: Elementuen tamaina
+    temporal_visibility:
+      all: Denak
+      label: Ainguratu gabeko elementuen ikusgaitasuna
+      on_monitor: Monitorean
+    thumbnail_generation_enabled: Sortu miniatura igotzeko elementuan
+    visible_separators: Ikusgai bereizgailuak
+  label: Dock / ataza barra
+  margin: Emandar
+  mode:
+    full_width: Pantaila osoko zabalera
+    min_content: Txikia izan daitekeen bezala
+  padding: Betegarri
+  show_end_task: Erakutsi zeregin-barran
+  width: Zabalera
+widget:
+  enable: Gaitu widget hau
+  enable_for_monitor: Gaitu monitore honetan
+  instances: Makineria
+wm:
+  animations:
+    duration: Animazioaren iraupena (MS)
+    ease_function: Animazioaren arakuntzaren funtzioa
+    enable: Gaitu leihoen animazioak
+  author: Idazle
+  border:
+    enable: Gaitu leihoen ertza
+    offset: Ertzaren desplazamendua
+    width: Ertzaren zabalera
+  description: Deskribapen
+  enable: Gaitu fitxa leiho kudeatzailea
+  layout: Diseinu
+  resize_delta: RETIZE DELTA (%)
+  space_between_containers: Edukiontzien arteko espazioa
+  workspace_offset: Laneko espazioak desplazamendua (marjinak)
+  workspace_padding: Laneko guneak betegarria
+'yes': Bai

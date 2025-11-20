@@ -1,0 +1,339 @@
+.pets-manager-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.pets-manager-modal {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  width: 600px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.pets-manager-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pets-manager-header h2 {
+  margin: 0;
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.close-button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 36px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  transform: scale(1.2);
+}
+
+.pets-manager-content {
+  padding: 30px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.pet-catalog {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+}
+
+.catalog-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.catalog-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 22px;
+}
+
+.catalog-header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+}
+
+.catalog-status {
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+}
+
+.category-filter {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-button {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid transparent;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.category-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.category-button.active {
+  background: white;
+  color: #667eea;
+  border-color: white;
+}
+
+.catalog-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.catalog-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.catalog-grid::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.catalog-grid::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.catalog-grid::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.catalog-card {
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.catalog-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.catalog-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.catalog-card.selected {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.selected-pet-preview {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.selected-pet-preview img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.add-pet-button {
+  width: 100%;
+  padding: 15px;
+  background: white;
+  color: #667eea;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.add-pet-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.add-pet-button:active {
+  transform: translateY(0);
+}
+
+.add-pet-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.pets-list {
+  margin-top: 30px;
+}
+
+.pets-list h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.no-pets {
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 30px;
+  font-style: italic;
+}
+
+.pets-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pet-item {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+}
+
+.pet-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(5px);
+}
+
+.pet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.pet-name {
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.pet-details {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+}
+
+.remove-pet-button {
+  padding: 8px 16px;
+  background: rgba(255, 59, 48, 0.8);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.remove-pet-button:hover {
+  background: rgba(255, 59, 48, 1);
+  transform: scale(1.05);
+}
+
+.pets-instructions {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.pets-instructions h4 {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.pets-instructions ul {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  padding-left: 20px;
+}
+
+.pets-instructions li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.pets-instructions strong {
+  color: white;
+}

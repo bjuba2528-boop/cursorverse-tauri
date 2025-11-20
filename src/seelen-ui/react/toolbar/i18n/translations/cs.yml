@@ -1,0 +1,93 @@
+bluetooth:
+  available: Dostupná zařízení (nespárovaná)
+  cancel: Zrušit
+  connected: Připojená zařízení
+  forget: Zapomenout
+  lowenergy: Nízká spotřeba energie
+  more: Další nastavení Bluetooth
+  not_found: Nebyla nalezena žádná zařízení Bluetooth
+  pair: Párovat
+  paired: Uložená zařízení
+  placeholder:
+    passphrase: Heslo, kód nebo PIN
+  scanning: Skenování zařízení
+context_menu:
+  add_custom_text: Přidání vlastní textové položky
+  modules: Moduly
+  remove: Odebrat modul
+  reorder_disable: Zamknout panel nástrojů
+  reorder_enable: Odemknout panel nástrojů
+  restore: Obnovení výchozího nastavení
+  settings: Nastavení
+  task_manager: Správce úloh
+keyboard:
+  more: Další nastavení klávesnice
+  title: Rozložení klávesnice
+media:
+  default_multimedia_volume: Multimediální hlasitost
+  device:
+    channel:
+      system: Zvuky systému
+    comunications: Komunikace
+    missing: Chybějící zařízení
+    mixer: Směšovač hlasitosti
+    multimedia: Multimédia
+    settings: Další nastavení zařízení
+    volume: Hlasitost zařízení
+  input_devices: Vstupní zařízení
+  output_devices: Výstupní zařízení
+  players: Přehrávače médií
+network:
+  available: Dostupné sítě
+  connect: Připojit
+  connected: Připojeno k
+  disconnect: Odpojit
+  hidden: Skrytá síť
+  more: Více nastavení sítě
+  not_found: Žádné sítě nenalezeny
+  placeholder:
+    password: Heslo
+  saved: Uložené sítě
+  scanning: Vyhledávání sítí
+  secured: Šifrovaná síť
+notifications:
+  clear: Vymazat vše
+  empty: Žádné oznámení
+  settings: Další nastavení oznámení
+  title: Oznámení
+placeholder:
+  battery_remaining: '% zbývá'
+  bluetooth_devices: Bluetooth & zařízení
+  ethernet_connected: Přístup na internet
+  ethernet_disconnected: Žádný přístup na internet
+  notifications: Oznámení
+  settings: Rychlé nastavení
+  smart_charge: '- Chytré nabíjení'
+  volume: Hlasitost
+settings:
+  app_settings: Nastavení aplikace
+  brightness: Jas
+  power: Napájení
+  restart: Restart
+  title: Nastavení
+userhome:
+  empty_list: Žádné položky
+  folders:
+    desktop: Plocha
+    documents: Dokumenty
+    downloads: Stažené soubory
+    more_items: Zobrazit více...
+    music: Hudba
+    pictures: Obrázky
+    recent: Nedávno použité
+    reduce_items: Zobrazit méně...
+    title: Adresáře uživatelů
+    videos: Videa
+  profile:
+    accounts: Nastavení otevřeného účtu
+    open_onedrive: Otevření adresáře OneDrive
+    open_user_folder: Otevření uživatelského adresáře
+  seelen_options:
+    open_installation_folder: Otevřete složku nastavení Seelen
+    open_log_folder: Otevřete složku logů Seelen
+    title: Adresáře Seelen

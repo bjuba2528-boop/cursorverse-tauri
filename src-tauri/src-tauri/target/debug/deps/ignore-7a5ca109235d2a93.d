@@ -1,0 +1,12 @@
+C:\Users\shust\Desktop\cursorverse-tauri\src-tauri\src-tauri/target\debug\deps\ignore-7a5ca109235d2a93.d: C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\lib.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\default_types.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\dir.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\gitignore.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\overrides.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\pathutil.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\types.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\walk.rs
+
+C:\Users\shust\Desktop\cursorverse-tauri\src-tauri\src-tauri/target\debug\deps\libignore-7a5ca109235d2a93.rmeta: C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\lib.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\default_types.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\dir.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\gitignore.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\overrides.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\pathutil.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\types.rs C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\walk.rs
+
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\lib.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\default_types.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\dir.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\gitignore.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\overrides.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\pathutil.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\types.rs:
+C:\Users\shust\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ignore-0.4.25\src\walk.rs:

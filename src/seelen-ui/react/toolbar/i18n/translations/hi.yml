@@ -1,0 +1,93 @@
+bluetooth:
+  available: उपलब्ध उपकरण (युग्मित नहीं)
+  cancel: रद्द करना
+  connected: जुड़ी हुई डिवाइसेज
+  forget: भूल जाओ
+  lowenergy: कम ऊर्जा
+  more: अधिक ब्लूटूथ सेटिंग्स
+  not_found: कोई ब्लूटूथ डिवाइस नहीं मिला
+  pair: जोड़ा
+  paired: बचाए गए उपकरण
+  placeholder:
+    passphrase: पासफ्रेज़, कोड या पिन
+  scanning: उपकरणों के लिए स्कैनिंग
+context_menu:
+  add_custom_text: कस्टम पाठ आइटम जोड़ें
+  modules: मॉड्यूल
+  remove: मॉड्यूल निकालें
+  reorder_disable: लॉक टूलबार
+  reorder_enable: अनलॉक टूलबार
+  restore: डिफ़ॉल्ट रूप से पुनर्स्थापित करें
+  settings: सेटिंग्स
+  task_manager: कार्य प्रबंधक
+keyboard:
+  more: अधिक कीबोर्ड सेटिंग्स
+  title: कीबोर्ड विन्यास
+media:
+  default_multimedia_volume: बहुरूपी मात्रा
+  device:
+    channel:
+      system: सिस्टम लगता है
+    comunications: संचार
+    missing: गरीब युक्ति
+    mixer: वॉल्यूम मिक्सर
+    multimedia: बहुतायत
+    settings: अधिक डिवाइस सेटिंग्स
+    volume: युक्ति मात्रा
+  input_devices: आगत यंत्र
+  output_devices: आउटपुट डिवाइस
+  players: मीडिया -खिलाड़ी
+network:
+  available: उपलब्ध नेटवर्क
+  connect: जोड़ना
+  connected: से जुड़ा
+  disconnect: डिस्कनेक्ट
+  hidden: छिपा हुआ नेटवर्क
+  more: अधिक नेटवर्क सेटिंग्स
+  not_found: कोई नेटवर्क नहीं मिला
+  placeholder:
+    password: पासवर्ड
+  saved: सहेजे गए नेटवर्क
+  scanning: नेटवर्क के लिए स्कैनिंग
+  secured: एन्क्रिप्टेड नेटवर्क
+notifications:
+  clear: सभी साफ करें
+  empty: कोई सूचना नहीं
+  settings: अधिक सूचनाएँ सेटिंग्स
+  title: अधिसूचना
+placeholder:
+  battery_remaining: '% शेष'
+  bluetooth_devices: ब्लूटूथ और डिवाइस
+  ethernet_connected: इंटरनेट का उपयोग
+  ethernet_disconnected: इंटरनेट की सुविधा नहीं है
+  notifications: अधिसूचना
+  settings: त्वरित सेटिंग
+  smart_charge: '- स्मार्ट चार्ज'
+  volume: आयतन
+settings:
+  app_settings: एप्लिकेशन सेटिंग
+  brightness: चमक
+  power: शक्ति
+  restart: पुनः आरंभ करें
+  title: समायोजन
+userhome:
+  empty_list: कोई आइटम नहीं
+  folders:
+    desktop: डेस्कटॉप
+    documents: दस्तावेज़
+    downloads: डाउनलोड
+    more_items: और दिखाओ ...
+    music: संगीत
+    pictures: चित्र
+    recent: हाल ही में इस्तेमाल किया
+    reduce_items: कम दिखाओ ...
+    title: उपयोगकर्ता निर्देशिकाएँ
+    videos: वीडियो
+  profile:
+    accounts: खाता सेटिंग्स खोलें
+    open_onedrive: ओपन ऑनड्राइव डायरेक्टरी
+    open_user_folder: उपयोगकर्ता निर्देशिका खोलें
+  seelen_options:
+    open_installation_folder: सेलेन सेटिंग्स फ़ोल्डर खोलें
+    open_log_folder: सेलेन लॉग फ़ोल्डर खोलें
+    title: सीलेन निर्देशिकाएँ

@@ -1,0 +1,93 @@
+bluetooth:
+  available: Mevcut Cihazlar (Eşleştirilmemiş)
+  cancel: İptal
+  connected: Bağlantılı Cihazlar
+  forget: Unutmak
+  lowenergy: Düşük Enerji
+  more: Daha Fazla Bluetooth Ayarı
+  not_found: Bluetooth cihazı bulunamadı
+  pair: Çift
+  paired: Kaydedilen Cihazlar
+  placeholder:
+    passphrase: Parola, Kod veya PIN
+  scanning: Cihazlar için tarama
+context_menu:
+  add_custom_text: Özel metin öğesi ekleme
+  modules: Modüller
+  remove: Modülü Kaldır
+  reorder_disable: Araç çubuğunu kilitle
+  reorder_enable: Araç çubuğunun kilidini aç
+  restore: Varsayılana Geri Yükle
+  settings: Ayarlar
+  task_manager: Görev Yöneticisi
+keyboard:
+  more: Daha Fazla Klavye Ayarı
+  title: Klavye Düzeni
+media:
+  default_multimedia_volume: Multimedya Hacmi
+  device:
+    channel:
+      system: Sistem sesleri
+    comunications: İletişim
+    missing: Kayıp Cihaz
+    mixer: Ses Mikseri
+    multimedia: Multimedya
+    settings: Daha Fazla Cihaz Ayarı
+    volume: Cihaz Hacmi
+  input_devices: Giriş cihazları
+  output_devices: Çıkış cihazları
+  players: Medya Oynatıcıları
+network:
+  available: Mevcut ağlar
+  connect: Bağlan
+  connected: 'Şuraya bağlanıldı:'
+  disconnect: Bağlantıyı Kes
+  hidden: Gizli Ağ
+  more: Daha Fazla Ağ Ayarı
+  not_found: Ağ bulunamadı
+  placeholder:
+    password: Şifre
+  saved: Kayıtlı ağlar
+  scanning: Ağlar taranıyor
+  secured: Şifreli ağ
+notifications:
+  clear: Tümünü temizle
+  empty: Bildirim yok
+  settings: Daha Fazla Bildirim Ayarı
+  title: Bildirimler
+placeholder:
+  battery_remaining: '% kalan'
+  bluetooth_devices: Bluetooth ve Cihazlar
+  ethernet_connected: İnternet erişimi
+  ethernet_disconnected: İnternet erişimi yok
+  notifications: Bildirimler
+  settings: Hızlı Ayarlar
+  smart_charge: '- Akıllı şarj'
+  volume: Ses
+settings:
+  app_settings: Uygulama Ayarları
+  brightness: Parlaklık
+  power: Güç
+  restart: Yeniden başlat
+  title: Ayarlar
+userhome:
+  empty_list: Ürün yok
+  folders:
+    desktop: Masaüstü
+    documents: Belgeler
+    downloads: İndirmeler
+    more_items: Daha fazlasını göster...
+    music: Müzik
+    pictures: Resimler
+    recent: Yakın zamanda kullanılmış
+    reduce_items: Daha az göster...
+    title: Kullanıcı dizinleri
+    videos: Videolar
+  profile:
+    accounts: Hesap ayarlarını aç
+    open_onedrive: OneDrive dizinini açın
+    open_user_folder: Kullanıcı dizinini aç
+  seelen_options:
+    open_installation_folder: Seelen ayarlar klasörünü açın
+    open_log_folder: Seelen günlük klasörünü açın
+    title: Seelen dizinleri

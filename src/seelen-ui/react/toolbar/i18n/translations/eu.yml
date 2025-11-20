@@ -1,0 +1,93 @@
+bluetooth:
+  available: Gailu erabilgarriak (ez da parekatuta)
+  cancel: Indargabetu
+  connected: Konektatutako gailuak
+  forget: Ahaztu
+  lowenergy: Energia baxua
+  more: Bluetooth ezarpen gehiago
+  not_found: Ez da Bluetooth gailurik aurkitu
+  pair: Pare
+  paired: Gorde diren gailuak
+  placeholder:
+    passphrase: Pasahitza, kodea edo PINa
+  scanning: Gailuetarako eskaneatzea
+context_menu:
+  add_custom_text: Gehitu testu-elementu pertsonalizatua
+  modules: Modulu
+  remove: Kendu modulua
+  reorder_disable: Blokeatu tresna barra
+  reorder_enable: Desblokeatu tresna barra
+  restore: Lehenetsitako lehenetsia
+  settings: Ezarpenak
+  task_manager: Zereginen kudeatzailea
+keyboard:
+  more: Teklatuaren ezarpen gehiago
+  title: Teklatuko diseinua
+media:
+  default_multimedia_volume: Multimedia bolumena
+  device:
+    channel:
+      system: Sistema soinuak
+    comunications: Komunikazioak
+    missing: Gailua falta da
+    mixer: Bolumen-nahastea
+    multimedia: Multimedia
+    settings: Gailuaren ezarpen gehiago
+    volume: Gailuaren bolumena
+  input_devices: Sarrerako gailuak
+  output_devices: Irteerako gailuak
+  players: Komunikabideetako jokalariak
+network:
+  available: Eskuragarri dauden sareak
+  connect: Batu
+  connected: Honekin konektatuta
+  disconnect: Deskonektatu
+  hidden: Ezkutuko sarea
+  more: Sareko ezarpen gehiago
+  not_found: Ez da sarerik aurkitu
+  placeholder:
+    password: Kontrazeinu
+  saved: Gordetako sareak
+  scanning: Sareak bilatzen
+  secured: Sare zifratua
+notifications:
+  clear: Garbitu guztiak
+  empty: Ez da jakinarazpenik
+  settings: Jakinarazpen gehiago ezarpenak
+  title: Jakinarazpenak
+placeholder:
+  battery_remaining: '% geratzen'
+  bluetooth_devices: Bluetooth eta gailuak
+  ethernet_connected: Interneterako sarbidea
+  ethernet_disconnected: Ez da Interneteko sarbiderik
+  notifications: Jakinarazpenak
+  settings: Ezarpen azkarrak
+  smart_charge: '- Karga adimentsua'
+  volume: Ozentasun
+settings:
+  app_settings: Aplikazioaren ezarpenak
+  brightness: Distira
+  power: Botere
+  restart: Berriro hasi
+  title: Ezarpen
+userhome:
+  empty_list: Ez dago elementurik
+  folders:
+    desktop: Mahaigarri
+    documents: Agends
+    downloads: Deskarga
+    more_items: Erakutsi gehiago ...
+    music: Musika
+    pictures: Irudi
+    recent: Duela gutxi erabili
+    reduce_items: Erakutsi gutxiago ...
+    title: Erabiltzaileen direktorioak
+    videos: Bideo
+  profile:
+    accounts: Ireki kontuaren ezarpenak
+    open_onedrive: OneDrive direktorio irekia
+    open_user_folder: Erabiltzaileen direktorio irekia
+  seelen_options:
+    open_installation_folder: Ireki Seelen ezarpenen karpeta
+    open_log_folder: Ireki Seelen erregistro karpeta
+    title: Seelen direktorioak

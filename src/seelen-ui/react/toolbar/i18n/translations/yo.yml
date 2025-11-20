@@ -1,0 +1,93 @@
+bluetooth:
+  available: Awọn ẹrọ ti o wa (ko so pọ)
+  cancel: Fagilee
+  connected: Awọn ẹrọ ti o sopọ mọ
+  forget: Gbagbe
+  lowenergy: Agbara kekere
+  more: Awọn eto Bluetooth diẹ sii
+  not_found: Ko si awọn ẹrọ Bluetooth naa
+  pair: Meji
+  paired: Awọn ẹrọ ti o fipamọ
+  placeholder:
+    passphrase: Ọrọ kukuru, koodu tabi PIN
+  scanning: Sisọnu fun awọn ẹrọ
+context_menu:
+  add_custom_text: Ṣafikun Nkan Nkan Nkan
+  modules: Awọn modulu
+  remove: Yọ module
+  reorder_disable: Ọpa irinṣẹ Titiipa
+  reorder_enable: Ṣii bọtini irinṣẹ
+  restore: Mu pada si aiyipada
+  settings: Eto
+  task_manager: Oluṣakoso iṣẹ-ṣiṣe
+keyboard:
+  more: Diẹ Eto Eto
+  title: Ifilapada Key Keyboard
+media:
+  default_multimedia_volume: Iwọn didun Multimedia
+  device:
+    channel:
+      system: Awọn ohun eto
+    comunications: Awọn ibaraẹnisọrọ
+    missing: Ẹrọ sonu
+    mixer: Ipọpọ iwọn didun
+    multimedia: Multimedia
+    settings: Eto ẹrọ diẹ sii
+    volume: Iwọn didun ẹrọ
+  input_devices: Ẹrọ titẹ sii
+  output_devices: Awọn ẹrọ iṣelọpọ
+  players: Awọn oṣere Media
+network:
+  available: Awọn nẹtiwọki ti o wa
+  connect: Sopọ
+  connected: Ti sopọ si
+  disconnect: Ge kuro
+  hidden: Nẹtiwọki ti o farapamọ
+  more: Awọn eto nẹtiwọọki diẹ sii
+  not_found: Ko si awọn nẹtiwọki ti a rii
+  placeholder:
+    password: Ọrọ igbaniwọle
+  saved: Awọn nẹtiwọki ti a fipamọ
+  scanning: Ṣiṣayẹwo fun awọn nẹtiwọki
+  secured: Nẹtiwọọki ti paroko
+notifications:
+  clear: Pa gbogbo run
+  empty: Ko si awọn iwifunni
+  settings: Awọn ifiranṣẹ iwifunni diẹ sii
+  title: Awọn iwifunni
+placeholder:
+  battery_remaining: '% ti o ku'
+  bluetooth_devices: Bluetooth & awọn ẹrọ
+  ethernet_connected: Wiwọle Intanẹẹti
+  ethernet_disconnected: Ko si wiwọle intanẹẹti ko si
+  notifications: Awọn iwifunni
+  settings: Eto Awọn ọna
+  smart_charge: '- Awọn iṣakoso Smart'
+  volume: Iwọn didun
+settings:
+  app_settings: Eto App
+  brightness: Didan
+  power: Agbara
+  restart: Tun bẹrẹ
+  title: Ètò
+userhome:
+  empty_list: Ko si awọn ohun kan
+  folders:
+    desktop: Tabili
+    documents: Awọn iwe aṣẹ
+    downloads: Igbasilẹ
+    more_items: Ṣe afihan diẹ sii ...
+    music: Orin
+    pictures: Awọn aworan
+    recent: Laipe lo
+    reduce_items: Fihan diẹ sii ...
+    title: Awọn ilana Olumulo
+    videos: Awọn fidio
+  profile:
+    accounts: Ṣii awọn eto iroyin
+    open_onedrive: Ṣii itọsọna ti odinẹ
+    open_user_folder: Ṣii itọsọna olumulo
+  seelen_options:
+    open_installation_folder: Ṣii folda Eto Sisen
+    open_log_folder: Ṣi sableber log
+    title: Awọn ilana nkan iwaju

@@ -1,0 +1,93 @@
+bluetooth:
+  available: Tilgjengelige enheter (ikke sammenkoblet)
+  cancel: Kansellere
+  connected: Tilkoblede enheter
+  forget: Glemme
+  lowenergy: Lav energi
+  more: Flere Bluetooth -innstillinger
+  not_found: Ingen Bluetooth -enheter funnet
+  pair: Par
+  paired: Lagrede enheter
+  placeholder:
+    passphrase: Passfrase, kode eller pinne
+  scanning: Skanning etter enheter
+context_menu:
+  add_custom_text: Legg til tilpasset tekstelement
+  modules: Moduler
+  remove: Fjern modulen
+  reorder_disable: Lås verktøylinje
+  reorder_enable: Lås opp verktøylinje
+  restore: Gjenopprett til standard
+  settings: Innstillinger
+  task_manager: Oppgavebehandling
+keyboard:
+  more: Flere tastaturinnstillinger
+  title: Tastaturoppsett
+media:
+  default_multimedia_volume: Multimedia -volum
+  device:
+    channel:
+      system: Systemet høres ut
+    comunications: Kommunikasjon
+    missing: Manglende enhet
+    mixer: Volummikser
+    multimedia: Multimedia
+    settings: Flere enhetsinnstillinger
+    volume: Enhetsvolum
+  input_devices: Inngangsenheter
+  output_devices: Utgangsenheter
+  players: Mediespillere
+network:
+  available: Tilgjengelige nettverk
+  connect: Koble
+  connected: Koblet til
+  disconnect: Koble fra
+  hidden: Skjult nettverk
+  more: Flere nettverksinnstillinger
+  not_found: Ingen nettverk funnet
+  placeholder:
+    password: Passord
+  saved: Lagrede nettverk
+  scanning: Skanner etter nettverk
+  secured: Kryptert nettverk
+notifications:
+  clear: Fjern alle
+  empty: Ingen varsler
+  settings: Flere varsler
+  title: Varsler
+placeholder:
+  battery_remaining: '% gjenstående'
+  bluetooth_devices: Bluetooth & Devices
+  ethernet_connected: Internettilgang
+  ethernet_disconnected: Ingen internettilgang
+  notifications: Varsler
+  settings: Raske innstillinger
+  smart_charge: '- Smart kostnad'
+  volume: Volum
+settings:
+  app_settings: Appinnstillinger
+  brightness: Lysstyrke
+  power: Makt
+  restart: Omstart
+  title: Innstillinger
+userhome:
+  empty_list: Ingen ting
+  folders:
+    desktop: Skrivebord
+    documents: Dokumenter
+    downloads: Nedlastinger
+    more_items: Vis mer ...
+    music: Musikk
+    pictures: Bilder
+    recent: Nylig brukt
+    reduce_items: Vis mindre ...
+    title: Brukerkataloger
+    videos: Videoer
+  profile:
+    accounts: Åpne kontoinnstillinger
+    open_onedrive: Åpne OneDrive -katalogen
+    open_user_folder: Åpen brukerkatalog
+  seelen_options:
+    open_installation_folder: Åpne Seelen -innstillingsmappen
+    open_log_folder: Åpne Seelen -loggmappe
+    title: Seelen -kataloger

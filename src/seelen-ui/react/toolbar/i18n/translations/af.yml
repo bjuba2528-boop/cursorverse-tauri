@@ -1,0 +1,93 @@
+bluetooth:
+  available: Beskikbare toestelle (nie gepaar nie)
+  cancel: Kanselleer
+  connected: Gekoppelde toestelle
+  forget: Vergeet
+  lowenergy: Lae energie
+  more: Meer Bluetooth -instellings
+  not_found: Geen Bluetooth -toestelle gevind nie
+  pair: Paar
+  paired: Gestoorde toestelle
+  placeholder:
+    passphrase: Passfrase, kode of PIN
+  scanning: Skandering vir toestelle
+context_menu:
+  add_custom_text: Voeg pasgemaakte teksitem by
+  modules: Modules
+  remove: Verwyder die module
+  reorder_disable: Sluitbalk
+  reorder_enable: Ontsluit werkbalk
+  restore: Herstel na standaard
+  settings: Instellings
+  task_manager: Taakbestuurder
+keyboard:
+  more: Meer sleutelbordinstellings
+  title: Sleutelborduitleg
+media:
+  default_multimedia_volume: Multimedia volume
+  device:
+    channel:
+      system: Stelselklanke
+    comunications: Kommunikasie
+    missing: Ontbrekende toestel
+    mixer: Volume menger
+    multimedia: Multimedia
+    settings: Meer toestelinstellings
+    volume: Toestelvolume
+  input_devices: Insettoestelle
+  output_devices: Uitsettoestelle
+  players: Mediaspelers
+network:
+  available: Beskikbare netwerke
+  connect: Konnekteer
+  connected: Gekoppel aan
+  disconnect: Afsluit ??
+  hidden: Verborge netwerk
+  more: Meer netwerkinstellings
+  not_found: Geen netwerke gevind nie
+  placeholder:
+    password: Wagwoord
+  saved: Gestoorde netwerke
+  scanning: Soek vir netwerke
+  secured: Geënkripteerde netwerk
+notifications:
+  clear: Duidelik alles
+  empty: Geen kennisgewings nie
+  settings: Meer kennisgewingsinstellings
+  title: Kennisgewings
+placeholder:
+  battery_remaining: '% oorblywende'
+  bluetooth_devices: Bluetooth & toestelle
+  ethernet_connected: toegang tot die internet
+  ethernet_disconnected: Geen internettoegang nie
+  notifications: Kennisgewings
+  settings: Vinnige instellings
+  smart_charge: '- Slim lading'
+  volume: Volume
+settings:
+  app_settings: Appinstellings
+  brightness: Helderheid
+  power: Mag
+  restart: Begin oor
+  title: Instellings
+userhome:
+  empty_list: Geen items nie
+  folders:
+    desktop: Tafelblad
+    documents: Dokumente
+    downloads: Aflaai
+    more_items: Wys meer ...
+    music: Musiek
+    pictures: Foto's
+    recent: Onlangs gebruik
+    reduce_items: Wys minder ...
+    title: Gebruikersgidse
+    videos: Video's
+  profile:
+    accounts: Open rekeninginstellings
+    open_onedrive: Oop OneDrive Directory
+    open_user_folder: Open gebruikersgids
+  seelen_options:
+    open_installation_folder: Open Seelen Instellings -lêergids
+    open_log_folder: Maak Seelen Log -lêergids oop
+    title: Seelen Gidse

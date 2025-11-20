@@ -1,0 +1,93 @@
+bluetooth:
+  available: উপলব্ধ ডিভাইস (জোড় নয়)
+  cancel: বাতিল
+  connected: সংযুক্ত ডিভাইস
+  forget: ভুলে যাও
+  lowenergy: কম শক্তি
+  more: আরও ব্লুটুথ সেটিংস
+  not_found: কোনও ব্লুটুথ ডিভাইস পাওয়া যায় নি
+  pair: জুটি
+  paired: সংরক্ষণ করা ডিভাইস
+  placeholder:
+    passphrase: পাসফ্রেজ, কোড বা পিন
+  scanning: ডিভাইসগুলির জন্য স্ক্যানিং
+context_menu:
+  add_custom_text: কাস্টম পাঠ্য আইটেম যুক্ত করুন
+  modules: মডিউল
+  remove: মডিউল সরান
+  reorder_disable: লক টুলবার
+  reorder_enable: সরঞ্জামদণ্ড আনলক করুন
+  restore: ডিফল্ট পুনরুদ্ধার
+  settings: সেটিংস
+  task_manager: টাস্ক ম্যানেজার
+keyboard:
+  more: আরও কীবোর্ড সেটিংস
+  title: কীবোর্ড লেআউট
+media:
+  default_multimedia_volume: মাল্টিমিডিয়া ভলিউম
+  device:
+    channel:
+      system: সিস্টেম শব্দ
+    comunications: যোগাযোগ
+    missing: অনুপস্থিত ডিভাইস
+    mixer: ভলিউম মিক্সার
+    multimedia: মাল্টিমিডিয়া
+    settings: আরও ডিভাইস সেটিংস
+    volume: ডিভাইস ভলিউম
+  input_devices: ইনপুট ডিভাইস
+  output_devices: আউটপুট ডিভাইস
+  players: মিডিয়া প্লেয়ার
+network:
+  available: উপলব্ধ নেটওয়ার্ক
+  connect: সংযুক্ত করুন
+  connected: সাথে সংযুক্ত
+  disconnect: সংযোগ বিচ্ছিন্ন
+  hidden: লুকানো নেটওয়ার্ক
+  more: আরও নেটওয়ার্ক সেটিংস
+  not_found: কোনও নেটওয়ার্ক পাওয়া যায় নি
+  placeholder:
+    password: পাসওয়ার্ড
+  saved: সংরক্ষিত নেটওয়ার্ক
+  scanning: নেটওয়ার্কের জন্য স্ক্যান করা হচ্ছে
+  secured: এনক্রিপ্ট করা নেটওয়ার্ক
+notifications:
+  clear: সব পরিষ্কার
+  empty: কোন বিজ্ঞপ্তি
+  settings: আরও বিজ্ঞপ্তি সেটিংস
+  title: বিজ্ঞপ্তি
+placeholder:
+  battery_remaining: '% অবশিষ্ট'
+  bluetooth_devices: ব্লুটুথ এবং ডিভাইস
+  ethernet_connected: ইন্টারনেট সুবিধা
+  ethernet_disconnected: কোনও ইন্টারনেট অ্যাক্সেস নেই
+  notifications: বিজ্ঞপ্তি
+  settings: দ্রুত সেটিংস
+  smart_charge: '- স্মার্ট চার্জ'
+  volume: ভলিউম
+settings:
+  app_settings: অ্যাপ সেটিংস
+  brightness: উজ্জ্বলতা
+  power: শক্তি
+  restart: আবার শুরু
+  title: সেটিংস
+userhome:
+  empty_list: কোনও আইটেম নেই
+  folders:
+    desktop: ডেস্কটপ
+    documents: নথি
+    downloads: ডাউনলোড
+    more_items: আরও দেখান ...
+    music: সংগীত
+    pictures: ছবি
+    recent: সম্প্রতি ব্যবহৃত
+    reduce_items: কম দেখান ...
+    title: ব্যবহারকারী ডিরেক্টরি
+    videos: ভিডিও
+  profile:
+    accounts: অ্যাকাউন্ট সেটিংস খুলুন
+    open_onedrive: ওয়ানড্রাইভ ডিরেক্টরি খুলুন
+    open_user_folder: ব্যবহারকারী ডিরেক্টরি খুলুন
+  seelen_options:
+    open_installation_folder: সিলেন সেটিংস ফোল্ডারটি খুলুন
+    open_log_folder: সিলেন লগ ফোল্ডারটি খুলুন
+    title: সিলেন ডিরেক্টরি

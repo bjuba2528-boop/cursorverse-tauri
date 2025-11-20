@@ -1,0 +1,93 @@
+bluetooth:
+  available: Amadivayisi atholakalayo (angabhangqwa)
+  cancel: Hlikihla
+  connected: Amadivayisi axhunyiwe
+  forget: Khohlwa
+  lowenergy: Amandla aphansi
+  more: Izilungiselelo eziningi ze-Bluetooth
+  not_found: Awekho amadivaysi e-Bluetooth atholakele
+  pair: Okubili
+  paired: Amadivayisi alondoloziwe
+  placeholder:
+    passphrase: I-Passphase, ikhodi noma iPIN
+  scanning: Ukuskena kwamadivayisi
+context_menu:
+  add_custom_text: Engeza into yombhalo wangokwezifiso
+  modules: Amashumane
+  remove: Susa module
+  reorder_disable: Khiya i-Toolbar
+  reorder_enable: Vula ithuluzi lamathuluzi
+  restore: Buyisela ezenzakalelayo
+  settings: Izilungiselelo
+  task_manager: Umphathi Womsebenzi
+keyboard:
+  more: Izilungiselelo eziningi zekhibhodi
+  title: Ukuhlelwa kwekhibhodi
+media:
+  default_multimedia_volume: Ivolumu yemultimedia
+  device:
+    channel:
+      system: Umsindo wesistimu
+    comunications: Ukuxoxisana
+    missing: Idivayisi elahlekile
+    mixer: I-Movolur Mixer
+    multimedia: Multimedia
+    settings: Izilungiselelo Eziningi Zedivayisi
+    volume: Ivolumu yedivayisi
+  input_devices: Amadivayisi wokufaka
+  output_devices: Amadivayisi okukhipha
+  players: Abadlali beMedia
+network:
+  available: Amanethiwekhi atholakalayo
+  connect: Hlangana
+  connected: Kuxhunywe ku
+  disconnect: Thukulula
+  hidden: Inethiwekhi efihliwe
+  more: Izilungiselelo eziningi zenethiwekhi
+  not_found: Awekho amanethiwekhi atholakele
+  placeholder:
+    password: Igama lokuvunyelwa ukungena endaweni ethile
+  saved: Amanethiwekhi alondoloziwe
+  scanning: Iskenela amanethiwekhi
+  secured: Inethiwekhi ebethelwe
+notifications:
+  clear: Sula konke
+  empty: Azikho izaziso
+  settings: Izilungiselelo zezaziso eziningi
+  title: Izaziso
+placeholder:
+  battery_remaining: '% okusele'
+  bluetooth_devices: I-Bluetooth & Amadivayisi
+  ethernet_connected: Ukufinyelela i-Inthanethi
+  ethernet_disconnected: Akukho ukufinyelela kwe-inthanethi
+  notifications: Izaziso
+  settings: Izilungiselelo ezisheshayo
+  smart_charge: '- Ukushaja okuhle'
+  volume: Ukuvimbanisa
+settings:
+  app_settings: Izilungiselelo zohlelo lokusebenza
+  brightness: Ukugqama
+  power: Ubuqhwaga
+  restart: Qalanisa
+  title: Amasethingi
+userhome:
+  empty_list: Azikho izinto
+  folders:
+    desktop: Desktop
+    documents: Amadokhumenti
+    downloads: Ukulanda
+    more_items: Khombisa okuningi ...
+    music: Umculo
+    pictures: Isithombe
+    recent: Isanda kusetshenziswa
+    reduce_items: Khombisa okuncane ...
+    title: Izincwajanazo Zomsebenzisi
+    videos: Vigenanapho
+  profile:
+    accounts: Vula Izilungiselelo ze-Akhawunti
+    open_onedrive: Vula umkhombandlela we-OneDrive
+    open_user_folder: Vula umkhombandlela womsebenzisi
+  seelen_options:
+    open_installation_folder: Vula ifolda yezilungiselelo ze-Seelen Izilungiselelo
+    open_log_folder: Vula ifolda ye-weelen log
+    title: Izincwajana zeSeben

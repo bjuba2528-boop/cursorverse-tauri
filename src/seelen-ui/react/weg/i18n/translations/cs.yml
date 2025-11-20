@@ -1,0 +1,31 @@
+app_menu:
+  close: Zavřít
+  close_multiple: Zavřít všechny
+  copy_handles: Kopírovat úchyty
+  kill: Ukončit proces
+  kill_multiple: Ukončit všechny procesy
+  open_file_location: Otevřít umístění souboru
+  pin: Připnout
+  pin_to_center: Připnout na střed
+  pin_to_left: Připnout doleva
+  pin_to_right: Připnout doprava
+  run_as: Spustit jako administrátor
+  unpin: Odepnout
+context_menu:
+  reorder_disable: Uzamčení hlavního panelu
+  reorder_enable: Odemknutí hlavního panelu
+media:
+  not_playing: Nic nehraje
+media_menu:
+  remove: Odebrat mediální modul
+start_menu:
+  remove: Odstranit startovací modul
+taskbar_menu:
+  add_file: Připnout vlastní soubor
+  add_folder: Připnout vlastní složku
+  media: Přidat mediální modul
+  settings: Nastavení
+  start: Přidat startovací modul
+  task_manager: Správce úloh
+weg:
+  empty: Žádné položky k zobrazení

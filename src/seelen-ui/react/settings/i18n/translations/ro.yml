@@ -1,0 +1,341 @@
+action:
+  confirm: Ești sigur?
+  confirm_body: Această acțiune nu poate fi anulată.
+app_launcher:
+  enable: Activați lansatorul de aplicații
+  launch_on:
+    mouse_over: Trece cu mouse-ul peste
+    primary: Primar
+  monitor: Monitor pentru a arăta
+  runners:
+    cmd: Comanda
+    explorer: Alerga
+    label: Alergători
+apps_configurations:
+  app:
+    bindings: Legare (notă ambele opțiuni sunt necesare)
+    category: Categorie
+    category_placeholder: Nici unul
+    monitor: Monitor
+    monitor_placeholder: Nici unul
+    name: Nume
+    ok_create: Crea
+    ok_edit: Actualizați
+    ok_readonly: Editați ca nou
+    options:
+      NoInteractive: Nu interactiv
+      VdPinned: Afișați în toate spațiile de lucru
+      WmFloat: Twm - Începeți să plutească
+      WmForce: Twm - Gestionarea forței
+      WmUnmanage: Twm - Unmanage
+    options_label: Opțiuni suplimentare
+    title_create: Crearea {{nume}}
+    title_edit: Editare {{nume}}
+    title_readonly: Vizualizare {{nume}}
+    weg_options_label: Opțiuni de doc/bara de activități
+    wm_options_label: Opțiuni manager de ferestre
+    workspace: Spațiu de lucru
+    workspace_placeholder: Nici unul
+  bundled_msg: >-
+    Aceste configurații în pachet nu sunt editabile și sunt concepute pentru a
+    vă oferi cea mai bună experiență fără personalizare. Acestea configurează
+    automat cele mai frecvente aplicații pentru dvs.
+  bundled_title: App Config Bundled cu Seelen
+  confirm_delete: Ești sigur că vrei să ștergi această configurație/s?
+  confirm_delete_title: Confirmă ștergerea
+  delete: Șterge
+  export: Export
+  export_full: Exportul setărilor în funcție de aplicație
+  extra_info: >-
+    Seelen UI folosește un singur identificator pe aplicație (prima potrivire
+    găsită), astfel încât ordinea în modul în care este specificată este
+    importantă, cea mai recentă adăugată va fi prioritară, deoarece notă tabelul
+    este sortat în mod implicit de la cel mai recent la vechi.
+  identifier:
+    add_block: Adăugați bloc
+    and: ȘI
+    id: Identificator
+    kind: Identifică de
+    matching_strategy: Strategia de potrivire
+    matching_strategy_option:
+      contains: Conține
+      ends_with: Se termină cu
+      equals: Egal
+      regex: Expresia regulată
+      starts_with: Începe cu
+    negation: Negate potrivire
+    or: SAU
+    remove: Ștergeți blocul
+    type:
+      class: Clasă
+      exe: Exe
+      path: Cale
+      title: Titlu
+  import: Import
+  import_full: Importul setărilor în funcție de aplicație
+  new: Nou
+  search: Căutare
+  swap: Swap
+cancel: Anulare
+close: Aproape
+delete: Șterge
+devtools:
+  app_folders: Foldere de aplicații
+  custom_config_file: Încărcați fișierul de configurare personalizat
+  data_folder: Folder de date
+  enable: Activați instrumentele pentru dezvoltatori
+  install_folder: Folder de instalare
+  load: Sarcină
+  settings_file: Fișier de setări
+  simulate_fullscreen: Simulați un eveniment pe ecran complet
+extras:
+  clear_icons: Ștergeți memoria cache a pictogramelor de sistem
+  clear_icons_tooltip: >-
+    Ar putea fi necesară o repornire pentru ca toate widget-urile să intre în
+    vigoare
+  exit: Renunță/ieșire
+  links: Link -uri oficiale
+  relaunch: Relansare
+  version: Versiune
+general:
+  accent_color: Culoare de accent
+  date_format: Formatul datei
+  icon_pack:
+    available: Pachete de pictograme disponibile
+    selected: Pachete de pictograme active
+  language: Limba
+  performance_mode:
+    on_battery: Pe baterie
+    on_energy_saver: Pe economia de energie
+    options:
+      disabled: Dezactivat
+      extreme: Extrem
+      minimal: Minim
+    plugged: Conectat sau încărcat
+  startup: Rulați la pornire?
+  theme:
+    available: Teme disponibile
+    selected: Teme active
+header:
+  labels:
+    config: Configurații
+    developer: Pentru dezvoltatori
+    extras: Extras
+    general: General
+    home: Acasă
+    icon_pack_editor: Icoane în cache
+    iconpack: Pachete de pictograme
+    monitors: Monitoare
+    plugin: Plugin-uri
+    resources: Resurse
+    shortcuts: Comitete rapide
+    soundpack: Pachete de sunet
+    specific_apps: Setări în funcție de aplicație
+    theme: Teme
+    virtual_desk: Birouri virtuale
+    wallpaper: Imagini de fundal
+    widget: Widget-uri
+home:
+  new_resources: Resurse noi
+inherit: Moşteni
+inProgress: În curs...
+insert: Introduce
+loading: Se încarcă...
+miscellaneous: Diverse
+monitors_configurations:
+  label: Monitor {{index}}
+more: Mai mult
+'no': Nu
+open: Deschis
+quit: Părăsi
+remove: Elimina
+reset_all_to_default: Resetați toate la valorile implicite
+reset_to_default: Resetare la valoarea implicită
+resources:
+  app_outdated: >-
+    Această resursă necesită o versiune mai recentă a Seelen UI pentru a
+    funcționa corect.
+  delete: Ștergeți resursa
+  discover: Descoperiți mai multe resurse
+  has_update: O actualizare este disponibilă
+  import_wallpapers: Importați imagini de fundal locale
+  open_folder: Deschideți folderul de resurse
+  outdated: >-
+    Această resursă a fost proiectată pentru o versiune mai veche a Seelen UI și
+    este posibil să nu funcționeze corect.
+save: Salvați
+save_and_restart: Salvați și reporniți
+see_more: A se vedea mai mult
+shortcuts:
+  enable: Activați sistemul de comenzi rapide încorporate
+  enable_tooltip: >-
+    Dezactivați dacă veți implementa propriul sistem de comenzi rapide folosind
+    clientul UI Seelen
+  labels:
+    create_new_workspace: Creați un spațiu de lucru nou
+    cycle_stack_next: Ciclism Stack în continuare
+    cycle_stack_prev: Stack cycle anterior
+    cycle_wallpaper_next: Schimbați la următorul tapet
+    cycle_wallpaper_prev: Schimbați la tapetul anterior
+    decrease_height: Scăderea înălțimii
+    decrease_width: Scăderea lățimii
+    destroy_current_workspace: Distrugeți spațiul de lucru actual
+    focus_bottom: Focus Fund
+    focus_latest: Concentrați -vă cel mai recent
+    focus_left: Concentrați -vă la stânga
+    focus_right: Concentrați -vă corect
+    focus_top: Focus top
+    increase_height: Crește înălțimea
+    increase_width: Creșteți lățimea
+    misc_force_quit: Forța a renunțat
+    misc_force_restart: Forțați repornirea
+    misc_open_settings: Setări deschise
+    misc_toggle_lock_tracing: Comutarea blocării de blocare (jurnalele)
+    misc_toggle_win_event_tracing: Toggle Win Win Tracing (Jurnals)
+    move_to_workspace: Treceți la Workspace {{0}}
+    move_window_down: Mutați fereastra în jos
+    move_window_left: Mutați fereastra în stânga
+    move_window_right: Mutați fereastra spre dreapta
+    move_window_up: Mutați fereastra în partea de sus
+    pause_tiling: Pauză manager de ferestre de gresie
+    reserve_bottom: Rezervați fundul
+    reserve_float: Rezervați plutitorul
+    reserve_left: Rezerva stânga
+    reserve_right: Rezervați drept
+    reserve_stack: Rezerva stivă
+    reserve_top: Rezervați vârful
+    restore_sizes: Restaurați dimensiunile
+    send_to_workspace: Trimiteți la Workspace {{0}}
+    start_weg_app: Focus sau Start Application {{0}}
+    switch_to_next_workspace: Treceți la următorul spațiu de lucru
+    switch_to_previous_workspace: Treceți la spațiul de lucru anterior
+    switch_workspace: Treceți la Workspace {{0}}
+    toggle_float: Comutați modul de plutire a ferestrei
+    toggle_launcher: Toggle Launcher
+    toggle_monocle: Comutați modul monocle al spațiului de lucru
+  readonly_tooltip: Aceasta este o scurtătură numai pentru citire
+  reset: Resetați la valorile implicite
+sides:
+  bottom: Fund
+  left: Stânga
+  right: Dreapta
+  top: Top
+start:
+  message: >-
+    Bine ați venit la Seelen UI, mediul de desktop final cu un manager Windows
+    de gresie încorporat pentru a vă îmbunătăți experiența Windows! Explorați o
+    nouă eră de eficiență și multitasking cu interfața noastră intuitivă și
+    caracteristicile avansate.
+  message_accent: Optimizează -ți productivitatea cu stil!
+  title: Bine ati venit!
+toolbar:
+  auto_hide: Ascunde auto
+  delay_to_hide: Întârzie să te ascunzi
+  delay_to_show: Întârzieți afișarea
+  dock_side: Poziția
+  dynamic_color: Culoare dinamică
+  dynamic_color_tooltip: >-
+    Activați culorile dinamice de fundal și prim-plan în funcție de fereastra
+    focalizată. (Culorile pot fi înlocuite de teme)
+  enable: Activați bara de instrumente fantezistă
+  height: Înălţime
+  hide_mode:
+    always: Întotdeauna
+    never: Nu
+    on_overlap: Pe suprapunere
+  label: Bara de instrumente
+  placeholder: {}
+  show_hibernate: Afișați butonul de hibernare în meniul de pornire
+update:
+  available: Actualizare disponibilă!
+  channel: Actualizare canal
+  downloading: Descărcare ...
+wall:
+  backgrounds: Imagini de fundal
+  blur: Ceață
+  contrast: Contrast
+  enable: Activați manager de tapet
+  fit:
+    contain: Conține
+    cover: Acoperire
+    fill: Umpleți
+  flipHorizontal: Flip orizontal
+  flipVertical: Flip vertical
+  hours: ore
+  interval: Schimbați tapet fiecare
+  minutes: minute
+  muted: Dezactivați sunetul video
+  no_background: Slideshow gol, folosind în schimb fundalul temei.
+  objectFit: Potrivire în fundal
+  objectPosition: Poziția de fundal
+  overlayColor: Culoare suprapunere
+  overlayMixBlendMode: Mod de amestecare suprapunere Mix
+  playback: Viteza de redare
+  position:
+    bottom: Fund
+    center: Centrul
+    left: Stânga
+    right: Corect
+    top: Sus
+  random: Prezentare de diapozitive aleatorie
+  saturation: Saturație
+  seconds: secunde
+  withOverlay: Cu suprapunere
+weg:
+  auto_hide: Ascundere automată
+  delay_to_hide: Întârzie să te ascunzi
+  delay_to_show: Întârzieți afișarea
+  dock_side: Poziţie
+  enable: Activați Dock/Bara de activități
+  filtering: Filtrarea elementelor
+  gap: Decalaj
+  hide_mode:
+    always: Întotdeauna
+    never: Nu
+    on_overlap: Pe suprapunere
+  items:
+    gap: Spațiu între articole
+    label: Articole
+    pinned_visibility:
+      always: Întotdeauna
+      label: Vizibilitatea elementelor fixate
+      when_primary: Când monitorul este principal
+    show_instance_counter: Afișați contorul ferestrelor deschise
+    show_window_title: Afișează titlul ferestrei deschise (numai orizontal)
+    size: Dimensiunea articolului
+    temporal_visibility:
+      all: Toate
+      label: Vizibilitatea elementelor nefixate
+      on_monitor: Pe monitor
+    thumbnail_generation_enabled: Generarea de miniaturi la trecerea elementului
+    visible_separators: Separatoare vizibile
+  label: Dock/Bara de activități
+  margin: Marjă
+  mode:
+    full_width: Lățimea ecranului complet
+    min_content: Cât de mic poate fi
+  padding: Căptușeală
+  show_end_task: Afișarea sarcinii finale în bara de activități
+  width: Lăţime
+widget:
+  enable: Activați acest widget
+  enable_for_monitor: Activați pe acest monitor
+  instances: Instanțe
+wm:
+  animations:
+    duration: Durata de animație (MS)
+    ease_function: Funcția de ușurare a animației
+    enable: Activați animațiile Window
+  author: Autor
+  border:
+    enable: Activați granița ferestrei
+    offset: Offset de frontieră
+    width: Lățimea graniței
+  description: Descriere
+  enable: Activați managerul de ferestre de gresie
+  layout: Aspect
+  resize_delta: Redimensionați delta (%)
+  space_between_containers: Spațiu între containere
+  workspace_offset: Spații de lucru Offset (marje)
+  workspace_padding: Padding spații de lucru
+'yes': Da

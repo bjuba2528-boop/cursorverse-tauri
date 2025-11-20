@@ -1,0 +1,339 @@
+action:
+  confirm: Дали сте сигурни?
+  confirm_body: Оваа акција не може да се разоткрие.
+app_launcher:
+  enable: Овозможете фрлач на апликации
+  launch_on:
+    mouse_over: Глувчето над
+    primary: Примарен
+  monitor: Монитор за да се покаже
+  runners:
+    cmd: Команда
+    explorer: Трчај
+    label: Тркачи
+apps_configurations:
+  app:
+    bindings: Обврзувачки (Забележете дека се потребни и двете опции)
+    category: Категорија
+    category_placeholder: Ништо
+    monitor: Монитор
+    monitor_placeholder: Ништо
+    name: Име
+    ok_create: Креирај
+    ok_edit: Ажурирање
+    ok_readonly: Уреди како ново
+    options:
+      NoInteractive: Нема интерактивна
+      VdPinned: Прикажи во сите работни простори
+      WmFloat: Twm - Почнете да лебдите
+      WmForce: Twm - Управување со сила
+      WmUnmanage: Twm - Не управувај
+    options_label: Дополнителни опции
+    title_create: Креирање {{име}}
+    title_edit: Уредување {{име}}
+    title_readonly: Гледање {{име}}
+    weg_options_label: Опции на пристаништето/лентата со задачи
+    wm_options_label: Опции за управување со прозорецот
+    workspace: Работен простор
+    workspace_placeholder: Ништо
+  bundled_msg: >-
+    Овие конфигурации во комплет не се уредни и се дизајнирани да ви обезбедат
+    најдобро искуство без прилагодување. Тие автоматски ги конфигурираат
+    најчестите апликации за вас.
+  bundled_title: Конфигурирана апликација во комплет со Селен
+  confirm_delete: Дали сте сигурни дека сакате да ја избришете оваа конфигурација/а?
+  confirm_delete_title: Потврдете го Избриши
+  delete: Избриши
+  export: Извоз
+  export_full: Извезувајте ги поставките по апликација
+  extra_info: >-
+    UI UI Користете само еден идентификатор по апликација (пронајден прв
+    натпревар), така што нарачката за тоа е важна е важна, најновиот додаден ќе
+    биде приоритет, бидејќи белешката табелата е сортирана стандардно од
+    најновата до стара.
+  identifier:
+    add_block: Додадете блок
+    and: И
+    id: Идентификатор
+    kind: Идентификувајте од
+    matching_strategy: Стратегија за појавување
+    matching_strategy_option:
+      contains: Содржи
+      ends_with: Завршува со
+      equals: Еднакви
+      regex: Редовно изразување
+      starts_with: Започнува со
+    negation: Негираат совпаѓање
+    or: Или
+    remove: Избриши блок
+    type:
+      class: Класа
+      exe: Exe
+      path: Пат
+      title: Наслов
+  import: Увоз
+  import_full: Увезете ги поставките по апликација
+  new: Ново
+  search: Пребарување
+  swap: Разменување
+cancel: Откажи
+close: Затвори
+delete: Избриши
+devtools:
+  app_folders: Папки со апликации
+  custom_config_file: Вчитајте ја датотеката за прилагодена конфигурација
+  data_folder: Папка со податоци
+  enable: Овозможете алатки за развивачи
+  install_folder: Папка за инсталација
+  load: Оптоварување
+  settings_file: Датотека за поставки
+  simulate_fullscreen: Симулирајте настан на цел екран
+extras:
+  clear_icons: Јасна кеш за икони на системот
+  clear_icons_tooltip: >-
+    Може да се бара рестартирање за целосно да се стапат на сила на сите
+    додатоци
+  exit: Откажете/излез
+  links: Официјални врски
+  relaunch: Повторно започнување
+  version: Верзија
+general:
+  accent_color: Боја на акцент
+  date_format: Формат на датум
+  icon_pack:
+    available: Достапни пакети со икони
+    selected: Пакети со активни икони
+  language: Јазик
+  performance_mode:
+    on_battery: На батеријата
+    on_energy_saver: На заштеда на енергија
+    options:
+      disabled: Оневозможено
+      extreme: Екстремни
+      minimal: Минимално
+    plugged: Вклучен или полнење
+  startup: Стартувам на стартување?
+  theme:
+    available: Достапни теми
+    selected: Активни теми
+header:
+  labels:
+    config: Конфигурации
+    developer: За развивачи
+    extras: Додатоци
+    general: Општо
+    home: Дома
+    icon_pack_editor: Зачувани икони
+    iconpack: Икони пакувања
+    monitors: Монитори
+    plugin: Приклучоци
+    resources: Ресурси
+    shortcuts: Кратенки
+    soundpack: Звучни пакувања
+    specific_apps: Поставки по апликација
+    theme: Теми
+    virtual_desk: Виртуелни работна површина
+    wallpaper: Позадини
+    widget: Додатоци
+home:
+  new_resources: Нови ресурси
+inherit: Наследник
+inProgress: Во тек...
+insert: Вметнете
+loading: Вчитување ...
+miscellaneous: Различни
+monitors_configurations:
+  label: Монитор {{индекс}}
+more: Повеќе
+'no': Не
+open: Отворено
+quit: Откажете се
+remove: Отстранете
+reset_all_to_default: Ресетирајте ги сите на стандардните вредности
+reset_to_default: Ресетирање на стандардна вредност
+resources:
+  app_outdated: Овој ресурс бара понова верзија на Seelen UI да работи правилно.
+  delete: Избришете ресурс
+  discover: Откријте повеќе ресурси
+  has_update: Достапно е ажурирање
+  import_wallpapers: Увезете локални позадини
+  open_folder: Отворена папка со ресурси
+  outdated: >-
+    Овој ресурс беше дизајниран за постара верзија на Seelen UI и можеби нема да
+    работи правилно.
+save: Зачувај
+save_and_restart: Зачувај и рестартирај
+see_more: Погледнете повеќе
+shortcuts:
+  enable: Овозможете вграден систем за кратенки
+  enable_tooltip: >-
+    Оневозможете ако го имплементирате вашиот сопствен систем на кратенки со
+    помош на клиентот Seelen UI
+  labels:
+    create_new_workspace: Создадете нов работен простор
+    cycle_stack_next: Оџак на циклус следно
+    cycle_stack_prev: Магаци за циклус Претходно
+    cycle_wallpaper_next: Промена на следната позадина
+    cycle_wallpaper_prev: Промена во претходната позадина
+    decrease_height: Намалување на висината
+    decrease_width: Намалување на ширината
+    destroy_current_workspace: Уништи сегашниот работен простор
+    focus_bottom: Фокус дното
+    focus_latest: Фокусирајте се најновите
+    focus_left: Фокусот лево
+    focus_right: Фокусирајте се десно
+    focus_top: Фокус врвот
+    increase_height: Зголемете ја висината
+    increase_width: Зголемете ја ширината
+    misc_force_quit: Сила откажана
+    misc_force_restart: Рестартирање на силата
+    misc_open_settings: Отворете ги поставките
+    misc_toggle_lock_tracing: Следење на заклучување на заклучување (логови)
+    misc_toggle_win_event_tracing: Вклучување
+    move_to_workspace: Преместете се на работниот простор {{0}}
+    move_window_down: Поместете го прозорецот до дното
+    move_window_left: Поместете го прозорецот кон лево
+    move_window_right: Поместете го прозорецот надесно
+    move_window_up: Поместете го прозорецот до врвот
+    pause_tiling: Пауза менаџер на прозорецот со плочки
+    reserve_bottom: Резервно дно
+    reserve_float: Резерва плови
+    reserve_left: Резерва лево
+    reserve_right: Резервирајте десно
+    reserve_stack: Резервен магацин
+    reserve_top: Резервен врв
+    restore_sizes: Врати големини
+    send_to_workspace: Испрати на работниот простор {{0}}
+    start_weg_app: Фокус или започнете апликација {{0}
+    switch_to_next_workspace: Префрлете се на следниот работен простор
+    switch_to_previous_workspace: Префрлете се на претходниот работен простор
+    switch_workspace: Префрлете се на работниот простор {{0}}
+    toggle_float: Вклучување на режимот на плови на прозорецот
+    toggle_launcher: Завртете го фрлачот
+    toggle_monocle: Вклучете го режимот на монокет на работниот простор
+  readonly_tooltip: Ова е кратенка само за читање
+  reset: Ресетирање на стандардно
+sides:
+  bottom: Дно
+  left: Лево
+  right: Десно
+  top: Врв
+start:
+  message: >-
+    Добредојдовте во Seelen UI, крајната околина за десктоп со вграден менаџер
+    за прозорци за Windows за подобрување на вашето искуство со Windows!
+    Истражете нова ера на ефикасност и мултитаскинг со нашиот интуитивен
+    интерфејс и напредни карактеристики.
+  message_accent: Оптимизирајте ја вашата продуктивност со стил!
+  title: Добредојдовте!
+toolbar:
+  auto_hide: Автоматско скриј
+  delay_to_hide: Одложување за сокривање
+  delay_to_show: Одложување за прикажување
+  dock_side: Позиција
+  dynamic_color: Динамична боја
+  dynamic_color_tooltip: >-
+    Овозможете динамични бои во позадина и преден план врз основа на фокусиран
+    прозорец. (Боите можат да бидат презаситени од темите)
+  enable: Овозможете фенси лента со алатки
+  height: Висина
+  hide_mode:
+    always: Секогаш
+    never: Никогаш
+    on_overlap: На преклопување
+  label: Лента со алатки
+  placeholder: {}
+  show_hibernate: Покажете го копчето Hibernate на менито за напојување
+update:
+  available: Ажурирање достапно!
+  channel: Ажурирање на каналот
+  downloading: Преземање ...
+wall:
+  backgrounds: Позадини
+  blur: Замаглување
+  contrast: Контраст
+  enable: Овозможете менаџер на тапети
+  fit:
+    contain: Содржат
+    cover: Покритие
+    fill: Пополнете
+  flipHorizontal: Флип хоризонтално
+  flipVertical: Флип вертикална
+  hours: часови
+  interval: Променете ја позадината на секој
+  minutes: минути
+  muted: Исклучете го звукот на видеото
+  no_background: Празен слајдшоу, наместо тоа, користејќи ја позадината на темата.
+  objectFit: Подготвување на позадината
+  objectPosition: Позиција во позадина
+  overlayColor: Боја на преклопување
+  overlayMixBlendMode: Режим на мешавина од мешавина од преклопување
+  playback: Брзина на репродукција
+  position:
+    bottom: Дно
+    center: Центар
+    left: Лево
+    right: Десно
+    top: Горе
+  random: Рандомизирајте го слајдшоу
+  saturation: Заситеност
+  seconds: секунди
+  withOverlay: Со преклоп
+weg:
+  auto_hide: Автоматско скриј
+  delay_to_hide: Одложување за сокривање
+  delay_to_show: Одложување за прикажување
+  dock_side: Позиција
+  enable: Овозможете пристаниште/лента со задачи
+  filtering: Филтрирање на артикли
+  gap: Јаз
+  hide_mode:
+    always: Секогаш
+    never: Никогаш
+    on_overlap: На преклопување
+  items:
+    gap: Простор помеѓу предмети
+    label: Предмети
+    pinned_visibility:
+      always: Секогаш
+      label: Видливост на закачени ставки
+      when_primary: Кога мониторот е примарен
+    show_instance_counter: Покажете бројач на отворени прозорци
+    show_window_title: Покажете го насловот на отворен прозорец (само хоризонтално)
+    size: Големина на артикалот
+    temporal_visibility:
+      all: Сите
+      label: Видливост на откачени ставки
+      on_monitor: На монитор
+    thumbnail_generation_enabled: Генерираат сликички на лебди на артикли
+    visible_separators: Видливи сепаратори
+  label: Док/лента со задачи
+  margin: Маргина
+  mode:
+    full_width: Ширина на цел екран
+    min_content: Мала колку што може
+  padding: Подлога
+  show_end_task: Покажете задача за крај во лентата со задачи
+  width: Ширина
+widget:
+  enable: Овозможете го овој додаток
+  enable_for_monitor: Овозможете на овој монитор
+  instances: Примери
+wm:
+  animations:
+    duration: Времетраење на анимација (МС)
+    ease_function: Функција за олеснување на анимацијата
+    enable: Овозможете ги анимациите на прозорецот
+  author: Автор
+  border:
+    enable: Овозможете ја границата на прозорецот
+    offset: Офсет за граница
+    width: Ширина на границата
+  description: Опис
+  enable: Овозможете менаџер на прозорецот за плочки
+  layout: Распоред
+  resize_delta: Променете ја големината на Делта (%)
+  space_between_containers: Простор помеѓу контејнери
+  workspace_offset: Работни места за неутрализирање (маргини)
+  workspace_padding: Подлога за работни места
+'yes': Да

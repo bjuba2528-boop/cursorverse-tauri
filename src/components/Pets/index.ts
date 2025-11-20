@@ -1,0 +1,1 @@
+export { PetsManager } from './PetsManager';

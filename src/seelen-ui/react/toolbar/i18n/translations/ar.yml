@@ -1,0 +1,93 @@
+bluetooth:
+  available: الأجهزة المتوفرة (غير مقترنة)
+  cancel: إلغاء
+  connected: الأجهزة المتصلة
+  forget: انسى
+  lowenergy: طاقة منخفضة
+  more: المزيد من إعدادات البلوتوث
+  not_found: لم يتم العثور على أجهزة بلوتوث
+  pair: زوج
+  paired: الأجهزة المحفوظة
+  placeholder:
+    passphrase: عبارة المرور أو الرمز أو رقم التعريف الشخصي
+  scanning: المسح الضوئي للأجهزة
+context_menu:
+  add_custom_text: إضافة عنصر نص مخصص
+  modules: الوحدات النمطية
+  remove: إزالة الوحدة النمطية
+  reorder_disable: قفل شريط الأدوات
+  reorder_enable: فتح شريط الأدوات
+  restore: الاستعادة إلى الوضع الافتراضي
+  settings: إعدادات
+  task_manager: مدير المهام
+keyboard:
+  more: المزيد من إعدادات لوحة المفاتيح
+  title: تخطيط لوحة المفاتيح
+media:
+  default_multimedia_volume: حجم الوسائط المتعددة
+  device:
+    channel:
+      system: أصوات النظام
+    comunications: مجال الاتصالات
+    missing: الجهاز المفقود
+    mixer: خلاط الصوت
+    multimedia: الوسائط المتعددة
+    settings: المزيد من إعدادات الجهاز
+    volume: حجم الجهاز
+  input_devices: أجهزة الإدخال
+  output_devices: أجهزة الإخراج
+  players: مشغلات الوسائط
+network:
+  available: الشبكات المتاحة
+  connect: يتصل
+  connected: متصل
+  disconnect: قطع الاتصال
+  hidden: الشبكة المخفية
+  more: المزيد من إعدادات الشبكة
+  not_found: لم يتم العثور على شبكات
+  placeholder:
+    password: كلمة المرور
+  saved: الشبكات المحفوظة
+  scanning: البحث عن شبكات
+  secured: شبكة مشفرة
+notifications:
+  clear: مسح الكل
+  empty: لا توجد إخطارات
+  settings: المزيد من إعدادات الإشعارات
+  title: الإشعارات
+placeholder:
+  battery_remaining: ٪ متبقي
+  bluetooth_devices: بلوتوث
+  ethernet_connected: خدمة الإنترنت
+  ethernet_disconnected: لا يوجد اتصال بالإنترنت
+  notifications: الإشعارات
+  settings: الإعدادات السريعة
+  smart_charge: '- الشحن الذكي'
+  volume: الصوت
+settings:
+  app_settings: إعدادات التطبيقات
+  brightness: السطوع
+  power: الطاقة
+  restart: إعادة التشغيل
+  title: إعدادات
+userhome:
+  empty_list: لا توجد عناصر
+  folders:
+    desktop: سطح المكتب
+    documents: المستندات
+    downloads: التنزيلات
+    more_items: اعرض المزيد...
+    music: الموسيقى
+    pictures: الصور
+    recent: استُخدمت مؤخراً
+    reduce_items: عرض أقل...
+    title: أدلة المستخدم
+    videos: مقاطع الفيديو
+  profile:
+    accounts: فتح إعدادات الحساب
+    open_onedrive: فتح دليل OneDrive
+    open_user_folder: فتح دليل المستخدم
+  seelen_options:
+    open_installation_folder: افتح مجلد إعدادات سيلين
+    open_log_folder: افتح مجلد سجل سيلين
+    title: دلائل سيلين

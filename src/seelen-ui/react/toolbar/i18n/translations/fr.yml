@@ -1,0 +1,93 @@
+bluetooth:
+  available: Appareils disponibles (non appairés)
+  cancel: Annuler
+  connected: Appareils connectés
+  forget: Oublier
+  lowenergy: Faible énergie
+  more: Autres paramètres Bluetooth
+  not_found: Aucun appareil Bluetooth n'a été trouvé
+  pair: Appairer
+  paired: Appareils sauvegardés
+  placeholder:
+    passphrase: Passphrase, code ou PIN
+  scanning: Recherche d'appareils
+context_menu:
+  add_custom_text: Ajouter un texte personnalisé
+  modules: Modules
+  remove: Retirer le module
+  reorder_disable: Verrouiller la barre d'outils
+  reorder_enable: Déverrouiller la barre d'outils
+  restore: Rétablir la valeur par défaut
+  settings: Paramètres
+  task_manager: Gestionnaire des tâches
+keyboard:
+  more: Autres paramètres du clavier
+  title: Disposition du clavier
+media:
+  default_multimedia_volume: Volume multimédia
+  device:
+    channel:
+      system: Sons du système
+    comunications: Communications
+    missing: Dispositif manquant
+    mixer: Mélangeur de volume
+    multimedia: Multimédia
+    settings: Autres paramètres de l'appareil
+    volume: Volume de l'appareil
+  input_devices: Dispositifs d'entrée
+  output_devices: Dispositifs de sortie
+  players: Lecteurs multimédias
+network:
+  available: Réseaux disponibles
+  connect: Connecter
+  connected: Connecté à
+  disconnect: Déconnecter
+  hidden: Réseau caché
+  more: Plus de paramètres réseau
+  not_found: Aucun réseau trouvé
+  placeholder:
+    password: Mot de passe
+  saved: Réseaux enregistrés
+  scanning: Recherche de réseaux
+  secured: Réseau crypté
+notifications:
+  clear: Tout effacer
+  empty: Aucune notification
+  settings: Autres paramètres de notification
+  title: Notifications
+placeholder:
+  battery_remaining: '% restants'
+  bluetooth_devices: Bluetooth
+  ethernet_connected: Accès Internet
+  ethernet_disconnected: Pas d'accès Internet
+  notifications: Notifications
+  settings: Réglages rapides
+  smart_charge: '- Chargement intelligent'
+  volume: Volume
+settings:
+  app_settings: Paramètres de l'application
+  brightness: Luminosité
+  power: Marche/Arrêt
+  restart: Redémarrer
+  title: Paramètres
+userhome:
+  empty_list: Aucun élément
+  folders:
+    desktop: Bureau
+    documents: Documents
+    downloads: Téléchargements
+    more_items: Afficher plus...
+    music: Musique
+    pictures: Images
+    recent: Documents récents
+    reduce_items: Montrer moins...
+    title: Dossiers utilisateur
+    videos: Vidéos
+  profile:
+    accounts: Ouvrir les paramètres du compte
+    open_onedrive: Ouvrir le dossier OneDrive
+    open_user_folder: Ouvrir le dossier utilisateur
+  seelen_options:
+    open_installation_folder: Dossier d'installation de Seelen
+    open_log_folder: Dossier des logs de Seelen
+    title: Dossiers Seelen

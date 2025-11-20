@@ -1,0 +1,93 @@
+bluetooth:
+  available: อุปกรณ์ที่มีอยู่ (ไม่จับคู่)
+  cancel: ยกเลิก
+  connected: อุปกรณ์ที่เชื่อมต่อ
+  forget: ลืม
+  lowenergy: พลังงานต่ำ
+  more: การตั้งค่าบลูทู ธ เพิ่มเติม
+  not_found: ไม่พบอุปกรณ์บลูทู ธ
+  pair: คู่
+  paired: อุปกรณ์ที่บันทึกไว้
+  placeholder:
+    passphrase: รหัสผ่านรหัสหรือพิน
+  scanning: การสแกนสำหรับอุปกรณ์
+context_menu:
+  add_custom_text: เพิ่มรายการข้อความที่กำหนดเอง
+  modules: โมดูล
+  remove: ลบโมดูล
+  reorder_disable: ล็อคแถบเครื่องมือ
+  reorder_enable: ปลดล็อคแถบเครื่องมือ
+  restore: คืนค่าเป็นค่าเริ่มต้น
+  settings: การตั้งค่า
+  task_manager: ตัวจัดการงาน
+keyboard:
+  more: การตั้งค่าแป้นพิมพ์เพิ่มเติม
+  title: เค้าโครงแป้นพิมพ์
+media:
+  default_multimedia_volume: ปริมาณมัลติมีเดีย
+  device:
+    channel:
+      system: เสียงของระบบ
+    comunications: การสื่อสาร
+    missing: อุปกรณ์ที่หายไป
+    mixer: เครื่องผสมระดับเสียง
+    multimedia: มัลติมีเดีย
+    settings: การตั้งค่าอุปกรณ์เพิ่มเติม
+    volume: ปริมาณอุปกรณ์
+  input_devices: อุปกรณ์อินพุต
+  output_devices: อุปกรณ์เอาต์พุต
+  players: เครื่องเล่นสื่อ
+network:
+  available: เครือข่ายที่มีอยู่
+  connect: เชื่อมต่อ
+  connected: เชื่อมต่อกับ
+  disconnect: ตัดการเชื่อมต่อ
+  hidden: เครือข่ายที่ซ่อน
+  more: การตั้งค่าเครือข่ายเพิ่มเติม
+  not_found: ไม่พบเครือข่าย
+  placeholder:
+    password: รหัสผ่าน
+  saved: เครือข่ายที่บันทึกไว้
+  scanning: กำลังสแกนหาเครือข่าย
+  secured: เครือข่ายที่เข้ารหัส
+notifications:
+  clear: ล้างทั้งหมด
+  empty: ไม่มีการแจ้งเตือน
+  settings: การตั้งค่าการแจ้งเตือนเพิ่มเติม
+  title: การแจ้งเตือน
+placeholder:
+  battery_remaining: '% ที่เหลืออยู่'
+  bluetooth_devices: บลูทู ธ และอุปกรณ์
+  ethernet_connected: การเข้าถึงอินเทอร์เน็ต
+  ethernet_disconnected: ไม่มีการเข้าถึงอินเทอร์เน็ต
+  notifications: การแจ้งเตือน
+  settings: การตั้งค่าอย่างรวดเร็ว
+  smart_charge: '- ชาร์จอัจฉริยะ'
+  volume: ปริมาณ
+settings:
+  app_settings: การตั้งค่าแอป
+  brightness: ความสว่าง
+  power: พลัง
+  restart: เริ่มต้นใหม่
+  title: การตั้งค่า
+userhome:
+  empty_list: ไม่มีรายการ
+  folders:
+    desktop: เดสก์ท็อป
+    documents: เอกสาร
+    downloads: การดาวน์โหลด
+    more_items: แสดงเพิ่มเติม ...
+    music: ดนตรี
+    pictures: รูปภาพ
+    recent: ใช้เมื่อเร็ว ๆ นี้
+    reduce_items: แสดงน้อยลง ...
+    title: ไดเรกทอรีผู้ใช้
+    videos: วิดีโอ
+  profile:
+    accounts: เปิดการตั้งค่าบัญชี
+    open_onedrive: เปิดไดเรกทอรี OneDrive
+    open_user_folder: เปิดไดเรกทอรีผู้ใช้
+  seelen_options:
+    open_installation_folder: เปิดโฟลเดอร์การตั้งค่า Seelen
+    open_log_folder: เปิดโฟลเดอร์ Seelen Log
+    title: ไดเรกทอรี Seelen

@@ -1,0 +1,93 @@
+bluetooth:
+  available: Perangkat yang Tersedia (Tidak Dipasangkan)
+  cancel: Batal
+  connected: Perangkat yang Terhubung
+  forget: Lupakan.
+  lowenergy: Energi Rendah
+  more: Pengaturan Bluetooth lainnya
+  not_found: Tidak ditemukan perangkat Bluetooth
+  pair: Pasangan
+  paired: Perangkat yang Disimpan
+  placeholder:
+    passphrase: Frasa Sandi, Kode atau PIN
+  scanning: Memindai perangkat
+context_menu:
+  add_custom_text: Menambahkan item teks khusus
+  modules: Modul
+  remove: Hapus modul
+  reorder_disable: Mengunci bilah alat
+  reorder_enable: Buka kunci bilah alat
+  restore: Kembalikan ke Default
+  settings: Pengaturan
+  task_manager: Manajer Tugas
+keyboard:
+  more: Pengaturan Papan Ketik Lainnya
+  title: Tata Letak Papan Ketik
+media:
+  default_multimedia_volume: Volume Multimedia
+  device:
+    channel:
+      system: Suara sistem
+    comunications: Komunikasi
+    missing: Perangkat Hilang
+    mixer: Pengaduk Volume
+    multimedia: Multimedia
+    settings: Pengaturan Perangkat Lainnya
+    volume: Volume Perangkat
+  input_devices: Perangkat input
+  output_devices: Perangkat keluaran
+  players: Pemain Media
+network:
+  available: Jaringan yang tersedia
+  connect: Menghubung
+  connected: Terhubung ke
+  disconnect: Memutuskan
+  hidden: Jaringan tersembunyi
+  more: Lebih banyak pengaturan jaringan
+  not_found: Tidak ada jaringan yang ditemukan
+  placeholder:
+    password: Kata sandi
+  saved: Jaringan yang disimpan
+  scanning: Memindai jaringan
+  secured: Jaringan terenkripsi
+notifications:
+  clear: Hapus semua
+  empty: Tidak ada pemberitahuan
+  settings: Pengaturan Pemberitahuan Lainnya
+  title: Pemberitahuan
+placeholder:
+  battery_remaining: '% tersisa'
+  bluetooth_devices: Bluetooth & perangkat
+  ethernet_connected: Akses internet
+  ethernet_disconnected: Tidak ada akses internet
+  notifications: Pemberitahuan
+  settings: Pengaturan Cepat
+  smart_charge: '- Biaya Cerdas'
+  volume: Volume
+settings:
+  app_settings: Pengaturan aplikasi
+  brightness: Kecerahan
+  power: Kekuatan
+  restart: Mengulang kembali
+  title: Pengaturan
+userhome:
+  empty_list: Tidak ada item
+  folders:
+    desktop: Desktop
+    documents: Dokumen
+    downloads: Unduhan
+    more_items: Tampilkan lebih banyak...
+    music: Musik
+    pictures: Gambar
+    recent: Baru-baru ini digunakan
+    reduce_items: Tampilkan lebih sedikit...
+    title: Direktori pengguna
+    videos: Video
+  profile:
+    accounts: Buka pengaturan akun
+    open_onedrive: Buka direktori OneDrive
+    open_user_folder: Buka direktori pengguna
+  seelen_options:
+    open_installation_folder: Buka folder pengaturan Seelen
+    open_log_folder: Buka folder log Seelen
+    title: Direktori Seelen
