@@ -1,0 +1,2 @@
+./voice-lucy-assistant/src/styles
+./voice-lucy-assistant/src/styles/main.css

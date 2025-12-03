@@ -1,0 +1,20 @@
+styleSheet.textContent = voiceRecognitionStyles;
+document.head.appendChild(styleSheet);
+
+// Инициализация при загрузке DOM
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🎤 Initializing Voice Recognition system...');
+    window.voiceRecognition = new VoiceRecognition();
+    
+    // Делаем доступным глобально для LucyAssistant
+    window.VoiceRecognition = VoiceRecognition;
+    
+    console.log('✅ Voice Recognition system ready');
+});
+
+// Экспорт для использования в других модулях
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = VoiceRecognition;
+}
+
+console.log('🎤 Voice Recognition module loaded');

@@ -1,0 +1,115 @@
+86-    height: 12px;
+87-    border-radius: 50%;
+88-    transition: all 0.3s ease;
+89-}
+90-
+91:.status-dot.inactive {
+92-    background: var(--danger-color);
+93-    box-shadow: 0 0 10px var(--danger-color);
+94-}
+95-
+96:.status-dot.active {
+97-    background: var(--success-color);
+98-    box-shadow: 0 0 20px var(--success-color);
+99-    animation: pulse 2s infinite;
+100-}
+101-
+102-.status-dot.listening {
+103-    background: var(--warning-color);
+104-    box-shadow: 0 0 25px var(--warning-color);
+105-    animation: pulse 1s infinite;
+106-}
+--
+126-    flex-direction: column;
+127-    align-items: center;
+128-    gap: 2rem;
+129-}
+130-
+131:.voice-button-container {
+132-    position: relative;
+133-    display: flex;
+134-    justify-content: center;
+135-    align-items: center;
+136-    padding: 2rem;
+137-}
+138-
+139:.voice-button {
+140-    position: relative;
+141-    width: 200px;
+142-    height: 200px;
+143-    border: none;
+144-    border-radius: 50%;
+145-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+146-    color: white;
+147-    font-size: 1.1rem;
+148-    font-weight: 600;
+149-    cursor: pointer;
+--
+155-    justify-content: center;
+156-    align-items: center;
+157-    gap: 0.5rem;
+158-}
+159-
+160:.voice-button:hover {
+161-    transform: translateY(-2px);
+162-    box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.2);
+163-}
+164-
+165:.voice-button:active {
+166-    transform: translateY(0);
+167-}
+168-
+169:.voice-button.active {
+170-    background: linear-gradient(135deg, var(--success-color), var(--warning-color));
+171-    animation: listening-pulse 1.5s infinite;
+172-}
+173-
+174:.voice-button.listening {
+175-    background: linear-gradient(135deg, var(--warning-color), var(--danger-color));
+176-    animation: listening-pulse 1s infinite;
+177-}
+178-
+179-@keyframes listening-pulse {
+180-    0%, 100% { transform: scale(1); }
+181-    50% { transform: scale(1.05); }
+182-}
+183-
+184-.button-content {
+--
+211-    border: 3px solid var(--primary-light);
+212-    opacity: 0;
+213-    pointer-events: none;
+214-}
+215-
+216:.voice-button.active .pulse-ring {
+217-    animation: pulse-ring-animation 2s infinite;
+218-}
+219-
+220:.voice-button.active .pulse-ring-2 {
+221-    animation: pulse-ring-animation 2s infinite 1s;
+222-}
+223-
+224-@keyframes pulse-ring-animation {
+225-    0% {
+226-        transform: translate(-50%, -50%) scale(1);
+227-        opacity: 0.8;
+228-    }
+229-    100% {
+230-        transform: translate(-50%, -50%) scale(1.5);
+--
+444-    
+445-    .title {
+446-        font-size: 1.5rem;
+447-    }
+448-    
+449:    .voice-button {
+450-        width: 150px;
+451-        height: 150px;
+452-    }
+453-    
+454-    .button-content i {
+455-        font-size: 2rem;
+456-    }
+457-    
+458-    .controls {
+459-        flex-direction: column;

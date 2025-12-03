@@ -1,0 +1,15 @@
+=== Voice Components Directory ===
+total 56
+drwxr-xr-x 2 root root  4096 Dec  3 18:01 .
+drwxr-xr-x 5 user user  4096 Dec  3 18:01 ..
+-rw-r--r-- 1 root root 23587 Dec  3 18:01 audio-processor.js
+-rw-r--r-- 1 root root 22350 Dec  3 18:01 voice-recognition.js
+
+=== Components Directory ===
+total 80
+drwxr-xr-x 2 root root  4096 Dec  3 17:27 .
+drwxr-xr-x 4 root root  4096 Dec  3 17:27 ..
+-rw-r--r-- 1 root root 18796 Dec  3 17:27 audio-processor.js
+-rw-r--r-- 1 root root 18994 Dec  3 17:27 chat-interface.js
+-rw-r--r-- 1 root root 14256 Dec  3 17:27 clap-detection.js
+-rw-r--r-- 1 root root 12419 Dec  3 17:27 voice-recognition.js

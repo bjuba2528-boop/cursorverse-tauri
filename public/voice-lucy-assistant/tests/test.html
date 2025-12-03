@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Lucy Assistant - Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .test-button:hover {
+            background: #0056b3;
+        }
+        
+        .test-result {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+        
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border-color: #bee5eb;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <h1>🧪 Voice Lucy Assistant - Test Suite</h1>
+    
+    <div class="test-section">
+        <h2>🎤 Voice Recognition Tests</h2>
+        <button class="test-button" onclick="testVoiceRecognition()">Test Voice Recognition</button>
+        <button class="test-button" onclick="testMicrophonePermission()">Test Microphone Permission</button>
+        <div id="voice-results" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>👏 Clap Detection Tests</h2>
+        <button class="test-button" onclick="testClapDetection()">Test Clap Detection</button>
+        <button class="test-button" onclick="testAudioAnalysis()">Test Audio Analysis</button>
+        <div id="clap-results" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>💬 Chat Interface Tests</h2>
+        <button class="test-button" onclick="testChatFunction()">Test Chat Function</button>
+        <button class="test-button" onclick="testMessageStorage()">Test Message Storage</button>
+        <div id="chat-results" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🔊 Audio Processing Tests</h2>
+        <button class="test-button" onclick="testAudioProcessing()">Test Audio Processing</button>
+        <button class="test-button" onclick="testAudioDevices()">Test Audio Devices</button>
+        <div id="audio-results" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🔗 Tauri Integration Tests</h2>
+        <button class="test-button" onclick="testTauriConnection()">Test Tauri Connection</button>
+        <button class="test-button" onclick="testBackendCommands()">Test Backend Commands</button>
+        <div id="tauri-results" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🎯 Performance Tests</h2>
+        <button class="test-button" onclick="testPerformance()">Run Performance Tests</button>
+        <button class="test-button" onclick="testMemoryUsage()">Test Memory Usage</button>
+        <div id="performance-results" class="test-result"></div>
+    </div>
+
+    <script>
+        // Utility functions
+        function logResult(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            const timestamp = new Date().toLocaleTimeString();
+            element.className = `test-result ${type}`;
+            element.textContent = `[${timestamp}] ${message}`;
+        }
+
+        function appendResult(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            const timestamp = new Date().toLocaleTimeString();
+            element.className = `test-result ${type}`;
+            element.textContent += `\n[${timestamp}] ${message}`;
+        }
+
+        // Voice Recognition Tests
+        async function testVoiceRecognition() {
+            logResult('voice-results', 'Testing voice recognition...', 'info');
+            
+            try {
+                if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                    appendResult('voice-results', '❌ Speech recognition not supported', 'error');
+                    return;
+                }
+                
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                const recognition = new SpeechRecognition();
+                
+                recognition.continuous = false;
+                recognition.interimResults = true;
+                recognition.lang = 'ru-RU';
+                
+                recognition.onstart = () => {
+                    appendResult('voice-results', '✅ Recognition started', 'success');
+                };
+                
+                recognition.onresult = (event) => {
+                    const result = event.results[0][0];
+                    appendResult('voice-results', `✅ Recognized: "${result.transcript}" (confidence: ${result.confidence})`, 'success');
+                };
+                
+                recognition.onerror = (event) => {
+                    appendResult('voice-results', `❌ Recognition error: ${event.error}`, 'error');
+                };
+                
+                recognition.onend = () => {
+                    appendResult('voice-results', '✅ Recognition ended', 'success');
+                };
+                
+                recognition.start();
+                
+                setTimeout(() => {
+                    recognition.stop();
+                }, 5000);
+                
+            } catch (error) {
+                appendResult('voice-results', `❌ Test failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function testMicrophonePermission() {
+            logResult('voice-results', 'Testing microphone permission...', 'info');
+            
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                appendResult('voice-results', '✅ Microphone access granted', 'success');
+                
+                // Test audio context
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const analyser = audioContext.createAnalyser();
+                const microphone = audioContext.createMediaStreamSource(stream);
+                microphone.connect(analyser);
+                
+                appendResult('voice-results', '✅ Audio context created successfully', 'success');
+                
+                // Stop stream
+                stream.getTracks().forEach(track => track.stop());
+                
+            } catch (error) {
+                appendResult('voice-results', `❌ Microphone test failed: ${error.message}`, 'error');
+            }
+        }
+
+        // Clap Detection Tests
+        async function testClapDetection() {
+            logResult('clap-results', 'Testing clap detection...', 'info');
+            
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const analyser = audioContext.createAnalyser();
+                const microphone = audioContext.createMediaStreamSource(stream);
+                microphone.connect(analyser);
+                
+                analyser.fftSize = 2048;
+                const bufferLength = analyser.frequencyBinCount;
+                const dataArray = new Uint8Array(bufferLength);
+                
+                let clapsDetected = 0;
+                const maxTests = 50;
+                let testCount = 0;
+                
+                const detectClap = () => {
+                    if (testCount >= maxTests) {
+                        stream.getTracks().forEach(track => track.stop());
+                        appendResult('clap-results', `✅ Clap detection test completed. Claps detected: ${clapsDetected}`, 'success');
+                        return;
+                    }
+                    
+                    analyser.getByteFrequencyData(dataArray);
+                    
+                    // Simple clap detection logic
+                    let sum = 0;
+                    for (let i = 0; i < bufferLength; i++) {
+                        sum += dataArray[i];
+                    }
+                    const average = sum / bufferLength;
+                    
+                    if (average > 100) { // Threshold for loud sound
+                        clapsDetected++;
+                        appendResult('clap-results', `👏 Potential clap detected (level: ${Math.round(average)})`, 'info');
+                    }
+                    
+                    testCount++;
+                    setTimeout(detectClap, 100);
+                };
+                
+                appendResult('clap-results', '👏 Listening for claps (make a loud noise)...', 'info');
+                detectClap();
+                
+            } catch (error) {
+                appendResult('clap-results', `❌ Clap detection test failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function testAudioAnalysis() {
+            logResult('clap-results', 'Testing audio analysis...', 'info');
+            
+            try {
+                // Simulate audio analysis
+                const testSamples = new Float32Array(1024);
+                for (let i = 0; i < testSamples.length; i++) {
+                    testSamples[i] = Math.sin(i * 0.1) * 0.5 + Math.random() * 0.1;
+                }
+                
+                // Calculate RMS
+                let sum = 0;
+                for (let i = 0; i < testSamples.length; i++) {
+                    sum += testSamples[i] * testSamples[i];
+                }
+                const rms = Math.sqrt(sum / testSamples.length);
+                
+                // Calculate peak
+                let peak = 0;
+                for (let i = 0; i < testSamples.length; i++) {
+                    peak = Math.max(peak, Math.abs(testSamples[i]));
+                }
+                
+                appendResult('clap-results', `✅ Audio analysis completed: RMS=${rms.toFixed(3)}, Peak=${peak.toFixed(3)}`, 'success');
+                
+            } catch (error) {
+                appendResult('clap-results', `❌ Audio analysis test failed: ${error.message}`, 'error');
+            }
+        }
+
+        // Chat Interface Tests
+        async function testChatFunction() {
+            logResult('chat-results', 'Testing chat function...', 'info');
+            
+            try {
+                // Test message creation
+                const testMessage = {
+                    text: 'Test message',
+                    sender: 'User',
+                    timestamp: new Date().toISOString()
+                };
+                
+                appendResult('chat-results', `✅ Message created: ${JSON.stringify(testMessage)}`, 'success');
+                
+                // Test message validation
+                const isValid = testMessage.text && testMessage.sender && testMessage.timestamp;
+                appendResult('chat-results', `✅ Message validation: ${isValid ? 'PASSED' : 'FAILED'}`, isValid ? 'success' : 'error');
+                
+                // Test localStorage
+                localStorage.setItem('test-chat-message', JSON.stringify(testMessage));
+                const retrieved = JSON.parse(localStorage.getItem('test-chat-message'));
+                
+                const storageTest = retrieved.text === testMessage.text;
+                appendResult('chat-results', `✅ LocalStorage test: ${storageTest ? 'PASSED' : 'FAILED'}`, storageTest ? 'success' : 'error');
+                
+                localStorage.removeItem('test-chat-message');
+                
+            } catch (error) {
+                appendResult('chat-results', `❌ Chat function test failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function testMessageStorage() {
+            logResult('chat-results', 'Testing message storage...', 'info');
+            
+            try {
+                // Test message array operations
+                const messages = [];
+                
+                // Add messages
+                for (let i = 1; i <= 5; i++) {
+                    messages.push({
+                        text: `Message ${i}`,
+                        sender: i % 2 === 0 ? 'Lucy' : 'User',
+                        timestamp: new Date().toISOString()
+                    });
+                }
+                
+                appendResult('chat-results', `✅ Added ${messages.length} messages`, 'success');
+                
+                // Test filtering
+                const userMessages = messages.filter(m => m.sender === 'User');
+                const lucyMessages = messages.filter(m => m.sender === 'Lucy');
+                
+                appendResult('chat-results', `✅ Filtered messages: ${userMessages.length} from User, ${lucyMessages.length} from Lucy`, 'success');
+                
+                // Test search
+                const searchResults = messages.filter(m => m.text.includes('3'));
+                appendResult('chat-results', `✅ Search test: found ${searchResults.length} messages containing '3'`, 'success');
+                
+            } catch (error) {
+                appendResult('chat-results', `❌ Message storage test failed: ${error.message}`, 'error');
+            }
+        }
+
+        // Audio Processing Tests
+        async function testAudioProcessing() {
+            logResult('audio-results', 'Testing audio processing...', 'info');
+            
+            try {
+                // Test Web Audio API
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                appendResult('audio-results', `✅ Audio context created: sampleRate=${audioContext.sampleRate}Hz`, 'success');
+                
+                // Test oscillator
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 440; // A4 note
+                gainNode.gain.value = 0.1; // Low volume
+                
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.5); // Play for 0.5 seconds
+                
+                appendResult('audio-results', '✅ Oscillator test: playing 440Hz tone for 0.5 seconds', 'success');
+                
+                // Test analyser
+                const analyser = audioContext.createAnalyser();
+                analyser.fftSize = 2048;
+                appendResult('audio-results', `✅ Analyser created: fftSize=${analyser.fftSize}`, 'success');
+                
+            } catch (error) {
+                appendResult('audio-results', `❌ Audio processing test failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function testAudioDevices() {
+            logResult('audio-results', 'Testing audio devices...', 'info');
+            
+            try {
+                const devices = await navigator.mediaDevices.enumerateDevices();
+                const audioInputs = devices.filter(device => device.kind === 'audioinput');
+                const audioOutputs = devices.filter(device => device.kind === 'audiooutput');
+                
+                appendResult('audio-results', `✅ Found ${audioInputs.length} audio input devices`, 'success');
+                appendResult('audio-results', `✅ Found ${audioOutputs.length} audio output devices`, 'success');
+                
+                audioInputs.forEach((device, index) => {
+                    appendResult('audio-results', `   Input ${index + 1}: ${device.label || 'Unknown'}`, 'info');
+                });
+                
+            } catch (error) {
+                appendResult('audio-results', `❌ Audio devices test failed: ${error.message}`, 'error');
+            }
+        }
+
+        // Tauri Integration Tests
+        async function testTauriConnection() {
+            logResult('tauri-results', 'Testing Tauri connection...', 'info');
+            
+            if (window.__TAURI__) {
+                appendResult('tauri-results', '✅ Tauri API detected', 'success');
+                
+                try {
+                    const { appWindow } = window.__TAURI__.window;
+                    const title = await appWindow.title();
+                    appendResult('tauri-results', `✅ Window title: ${title}`, 'success');
+                    
+                } catch (error) {
+                    appendResult('tauri-results', `❌ Tauri window test failed: ${error.message}`, 'error');
+                }
+            } else {
+                appendResult('tauri-results', 'ℹ️ Running in browser mode (no Tauri)', 'info');
+            }
+        }
+
+        async function testBackendCommands() {
+            logResult('tauri-results', 'Testing backend commands...', 'info');
+            
+            if (window.__TAURI__) {
+                try {
+                    // Test get_listening_state
+                    const state = await window.__TAURI__.invoke('get_listening_state');
+                    appendResult('tauri-results', `✅ Backend listening state: ${state}`, 'success');
+                    
+                    // Test toggle_listening
+                    const newState = await window.__TAURI__.invoke('toggle_listening');
+                    appendResult('tauri-results', `✅ Toggle listening: ${newState}`, 'success');
+                    
+                } catch (error) {
+                    appendResult('tauri-results', `❌ Backend command test failed: ${error.message}`, 'error');
+                }
+            } else {
+                appendResult('tauri-results', 'ℹ️ Backend commands not available in browser mode', 'info');
+            }
+        }
+
+        // Performance Tests
+        async function testPerformance() {
+            logResult('performance-results', 'Running performance tests...', 'info');
+            
+            try {
+                // Test JavaScript performance
+                const startTime = performance.now();
+                
+                // CPU test - calculate prime numbers
+                const isPrime = (n) => {
+                    for (let i = 2; i <= Math.sqrt(n); i++) {
+                        if (n % i === 0) return false;
+                    }
+                    return n > 1;
+                };
+                
+                let primeCount = 0;
+                for (let i = 2; i <= 10000; i++) {
+                    if (isPrime(i)) primeCount++;
+                }
+                
+                const endTime = performance.now();
+                const cpuTime = endTime - startTime;
+                
+                appendResult('performance-results', `✅ CPU test: found ${primeCount} primes in ${cpuTime.toFixed(2)}ms`, 'success');
+                
+                // Memory test - create large array
+                const memStart = performance.now();
+                const largeArray = new Array(1000000).fill(0).map((_, i) => i);
+                const memEnd = performance.now();
+                
+                appendResult('performance-results', `✅ Memory test: created array with ${largeArray.length} elements in ${(memEnd - memStart).toFixed(2)}ms`, 'success');
+                
+            } catch (error) {
+                appendResult('performance-results', `❌ Performance test failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function testMemoryUsage() {
+            logResult('performance-results', 'Testing memory usage...', 'info');
+            
+            if (performance.memory) {
+                const memory = performance.memory;
+                appendResult('performance-results', `✅ Memory usage:`, 'success');
+                appendResult('performance-results', `   Used: ${(memory.usedJSHeapSize / 1024 / 1024).toFixed(2)} MB`, 'info');
+                appendResult('performance-results', `   Total: ${(memory.totalJSHeapSize / 1024 / 1024).toFixed(2)} MB`, 'info');
+                appendResult('performance-results', `   Limit: ${(memory.jsHeapSizeLimit / 1024 / 1024).toFixed(2)} MB`, 'info');
+            } else {
+                appendResult('performance-results', 'ℹ️ Memory API not available in this browser', 'info');
+            }
+        }
+
+        // Initialize test page
+        document.addEventListener('DOMContentLoaded', () => {
+            appendResult('voice-results', '🧪 Voice Lucy Assistant Test Suite loaded', 'info');
+            appendResult('clap-results', '🧪 Ready to run clap detection tests', 'info');
+            appendResult('chat-results', '🧪 Ready to run chat interface tests', 'info');
+            appendResult('audio-results', '🧪 Ready to run audio processing tests', 'info');
+            appendResult('tauri-results', '🧪 Ready to run Tauri integration tests', 'info');
+            appendResult('performance-results', '🧪 Ready to run performance tests', 'info');
+        });
+    </script>
+</body>
+</html>

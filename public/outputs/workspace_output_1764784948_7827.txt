@@ -1,0 +1,7 @@
+total 24
+drwxr-xr-x 3 root root 4096 Dec  3 17:26 .
+drwxr-xr-x 6 root root 4096 Dec  3 17:28 ..
+-rw-r--r-- 1 root root  594 Dec  3 17:26 Cargo.toml
+-rw-r--r-- 1 root root   38 Dec  3 17:26 build.rs
+drwxr-xr-x 5 root root 4096 Dec  3 17:28 src
+-rw-r--r-- 1 root root 1395 Dec  3 17:26 tauri.conf.json

@@ -1,0 +1,9 @@
+./voice-components/audio-processor.js
+./voice-components/voice-recognition.js
+./voice-lucy-assistant/tests/test.html
+./voice-lucy-assistant/src/index.html
+./voice-lucy-assistant/src/components/audio-processor.js
+./voice-lucy-assistant/src/components/chat-interface.js
+./voice-lucy-assistant/src/components/voice-recognition.js
+./voice-lucy-assistant/src/components/clap-detection.js
+./voice-lucy-assistant/src/main.js

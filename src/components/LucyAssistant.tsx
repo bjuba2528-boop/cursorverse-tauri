@@ -101,10 +101,57 @@ const LucyAssistant: React.FC = () => {
 
   // ============= ГОЛОСОВОЕ РАСПОЗНАВАНИЕ =============
 
+  useEffect(() => {
+    // Подписываемся на события голосовой системы
+    const handleVoiceRecognized = (event: any) => {
+      const text = event.detail?.text
+      if (text) {
+        console.log('🎤 Voice recognized:', text)
+        setInputText(text)
+        handleSubmit(text)
+      }
+    }
+
+    const handleVoiceStart = () => {
+      console.log('🎤 Voice started')
+      setIsListening(true)
+    }
+
+    const handleVoiceEnd = () => {
+      console.log('🎤 Voice ended')
+      setIsListening(false)
+    }
+
+    const handleClapDetected = () => {
+      console.log('👏 Clap detected - auto-starting voice')
+      setIsListening(true)
+    }
+
+    window.addEventListener('voice-recognized', handleVoiceRecognized)
+    window.addEventListener('voice-start', handleVoiceStart)
+    window.addEventListener('voice-end', handleVoiceEnd)
+    window.addEventListener('clap-detected', handleClapDetected)
+
+    return () => {
+      window.removeEventListener('voice-recognized', handleVoiceRecognized)
+      window.removeEventListener('voice-start', handleVoiceStart)
+      window.removeEventListener('voice-end', handleVoiceEnd)
+      window.removeEventListener('clap-detected', handleClapDetected)
+    }
+  }, [])
+
   const toggleVoiceRecognition = () => {
+    // Используем новое API от main.js
+    const voiceLucy = (window as any).voiceLucy
+    if (voiceLucy && voiceLucy.toggleVoice) {
+      voiceLucy.toggleVoice()
+      return
+    }
+
+    // Fallback к старому методу
     const vr = (window as any).voiceRecognition
     if (!vr) {
-      alert('Модуль голосового распознавания не загружен')
+      alert('Модуль голосового распознавания не загружен. Проверьте консоль браузера.')
       return
     }
 
@@ -112,19 +159,30 @@ const LucyAssistant: React.FC = () => {
       vr.stop()
       setIsListening(false)
     } else {
-      setIsListening(true)
-      vr.start()
-      
-      // Подписываемся на результат распознавания
+      // Интегрируем с Lucy Assistant
       const originalSendToLucy = vr.sendToLucy?.bind(vr)
       if (originalSendToLucy) {
         vr.sendToLucy = async (text: string) => {
+          console.log('📤 Sending voice text to Lucy:', text)
           setIsListening(false)
           setInputText(text)
           await handleSubmit(text)
           return originalSendToLucy(text)
         }
       }
+      
+      vr.start()
+      setIsListening(true)
+    }
+  }
+
+  const toggleClapDetection = () => {
+    const voiceLucy = (window as any).voiceLucy
+    if (voiceLucy && voiceLucy.toggleClap) {
+      voiceLucy.toggleClap()
+      voiceLucy.notify('Детекция хлопков переключена', 'info')
+    } else {
+      alert('Clap Detection не загружен')
     }
   }
 
@@ -795,9 +853,16 @@ IMPORTANT: Always respond naturally first, then add commands. Be creative and he
                   className={`btn-voice ${isListening ? 'listening' : ''} ${isProcessing ? 'disabled' : ''}`}
                   onClick={toggleVoiceRecognition}
                   disabled={isProcessing}
-                  title={isListening ? 'Остановить распознавание' : 'Начать распознавание голоса'}
+                  title={isListening ? 'Остановить распознавание (Ctrl+K)' : 'Начать распознавание голоса (Ctrl+K)'}
                 >
                   <span className="mic-icon">🎤</span>
+                </button>
+                <button
+                  className="btn-clap"
+                  onClick={toggleClapDetection}
+                  title="Переключить детекцию хлопков (Ctrl+Shift+C)"
+                >
+                  <span className="clap-icon">👏</span>
                 </button>
                 <button
                   className="btn-send"

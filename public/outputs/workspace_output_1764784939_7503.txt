@@ -1,0 +1,50 @@
+// Voice Recognition Component for CursorVerse Tauri
+// Исправленная версия с обработкой ошибок и поддержкой разных браузеров
+
+class VoiceRecognition {
+    constructor() {
+        this.recognition = null;
+        this.isListening = false;
+        this.finalTranscript = '';
+        this.interimTranscript = '';
+        this.confidence = 0;
+        this.retryCount = 0;
+        this.maxRetries = 3;
+        
+        this.initializeRecognition();
+        this.bindEvents();
+        console.log('🎤 Voice Recognition initialized');
+    }
+
+    initializeRecognition() {
+        try {
+            // Проверяем поддержку Speech Recognition API
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            
+            if (!SpeechRecognition) {
+                console.error('❌ Speech recognition not supported in this browser');
+                this.showError('Распознавание речи не поддерживается в вашем браузере. Используйте Chrome, Edge или Safari.');
+                return false;
+            }
+
+            // Создаем экземпляр распознавания
+            this.recognition = new SpeechRecognition();
+            
+            // Настраиваем параметры
+            this.recognition.continuous = false;
+            this.recognition.interimResults = true;
+            this.recognition.lang = 'ru-RU';
+            this.recognition.maxAlternatives = 1;
+            
+            // Обработчики событий
+            this.setupEventHandlers();
+            
+            console.log('✅ Speech recognition initialized successfully');
+            return true;
+            
+        } catch (error) {
+            console.error('❌ Failed to initialize speech recognition:', error);
+            this.showError('Не удалось инициализировать распознавание речи: ' + error.message);
+            return false;
+        }
+    }

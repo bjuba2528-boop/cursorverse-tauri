@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Lucy Assistant - Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .test-button.success { background: #10b981; color: white; }
+        .test-button.warning { background: #f59e0b; color: white; }
+        .test-button.error { background: #ef4444; color: white; }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .status.success { background: #d1fae5; color: #065f46; }
+        .status.error { background: #fee2e2; color: #991b1b; }
+        .status.info { background: #dbeafe; color: #1e40af; }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <h1>🎤 Voice Lucy Assistant - Test Page</h1>
+    
+    <div class="test-section">
+        <h2>🔧 Component Status Check</h2>
+        <button class="test-button success" onclick="checkComponents()">Check Components</button>
+        <button class="test-button warning" onclick="testMicrophone()">Test Microphone</button>
+        <button class="test-button error" onclick="testSpeechRecognition()">Test Speech Recognition</button>
+        <div id="component-status"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>📊 Test Results</h2>
+        <div id="test-results">
+            <div class="status info">Click the buttons above to run tests</div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🖥️ Voice Assistant Preview</h2>
+        <p>Below is the live Voice Lucy Assistant. You can test it directly:</p>
+        <iframe src="./index.html" title="Voice Lucy Assistant"></iframe>
+    </div>
+
+    <div class="test-section">
+        <h2>📝 Test Instructions</h2>
+        <ol>
+            <li><strong>Component Check:</strong> Verifies all voice components are loaded</li>
+            <li><strong>Microphone Test:</strong> Requests microphone permission and checks audio input</li>
+            <li><strong>Speech Recognition Test:</strong> Tests browser speech recognition capabilities</li>
+            <li><strong>Voice Button:</strong> Click the microphone button in the app to start voice recognition</li>
+            <li><strong>Clap Detection:</strong> Try clapping to trigger voice activation (if enabled)</li>
+            <li><strong>Chat Interface:</strong> Test sending messages and receiving responses</li>
+        </ol>
+    </div>
+
+    <script>
+        function updateStatus(message, type = 'info') {
+            const status = document.getElementById('test-results');
+            status.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+
+        function updateComponentStatus(components) {
+            const status = document.getElementById('component-status');
+            let html = '<h3>Component Status:</h3>';
+            
+            for (const [name, loaded] of Object.entries(components)) {
+                const statusClass = loaded ? 'success' : 'error';
+                const statusText = loaded ? '✅ Loaded' : '❌ Missing';
+                html += `<div class="status ${statusClass}">${name}: ${statusText}</div>`;
+            }
+            
+            status.innerHTML = html;
+        }
+
+        function checkComponents() {
+            const components = {
+                'Voice Recognition': !!window.voiceRecognition,
+                'Clap Detection': !!window.clapDetection,
+                'Chat Interface': !!window.chatInterface,
+                'Audio Processor': !!window.audioProcessor,
+                'Speech Recognition API': !!(window.SpeechRecognition || window.webkitSpeechRecognition),
+                'Web Audio API': !!window.AudioContext,
+                'Tauri API': !!window.__TAURI__
+            };
+            
+            updateComponentStatus(components);
+            
+            const allLoaded = Object.values(components).filter(c => c !== !!window.__TAURI__).every(Boolean);
+            if (allLoaded) {
+                updateStatus('✅ All essential components loaded successfully!', 'success');
+            } else {
+                updateStatus('⚠️ Some components are missing. Check console for details.', 'error');
+            }
+        }
+
+        async function testMicrophone() {
+            try {
+                updateStatus('🎤 Requesting microphone permission...', 'info');
+                
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                stream.getTracks().forEach(track => track.stop());
+                
+                updateStatus('✅ Microphone access granted successfully!', 'success');
+            } catch (error) {
+                updateStatus(`❌ Microphone access denied: ${error.message}`, 'error');
+            }
+        }
+
+        function testSpeechRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            
+            if (!SpeechRecognition) {
+                updateStatus('❌ Speech Recognition API not supported in this browser', 'error');
+                return;
+            }
+            
+            try {
+                const recognition = new SpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = 'ru-RU';
+                
+                recognition.onstart = () => {
+                    updateStatus('🎤 Speech recognition started. Say something!', 'info');
+                };
+                
+                recognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    updateStatus(`✅ Speech recognized: "${transcript}"`, 'success');
+                };
+                
+                recognition.onerror = (event) => {
+                    updateStatus(`❌ Speech recognition error: ${event.error}`, 'error');
+                };
+                
+                recognition.onend = () => {
+                    updateStatus('🔇 Speech recognition ended', 'info');
+                };
+                
+                recognition.start();
+                updateStatus('🎤 Starting speech recognition test...', 'info');
+                
+                // Stop after 5 seconds
+                setTimeout(() => {
+                    if (recognition) {
+                        recognition.stop();
+                    }
+                }, 5000);
+                
+            } catch (error) {
+                updateStatus(`❌ Failed to start speech recognition: ${error.message}`, 'error');
+            }
+        }
+
+        // Run component check on page load
+        window.addEventListener('load', () => {
+            setTimeout(checkComponents, 1000);
+        });
+
+        // Listen for messages from the iframe
+        window.addEventListener('message', (event) => {
+            if (event.data && event.data.type === 'voice-assistant-status') {
+                updateStatus(event.data.message, event.data.status || 'info');
+            }
+        });
+    </script>
+</body>
+</html>

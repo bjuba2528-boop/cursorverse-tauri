@@ -1,0 +1,5 @@
+
+> voice-lucy-assistant@1.0.0 dev
+> tauri dev
+
+       Error failed to get cargo metadata: No such file or directory (os error 2)

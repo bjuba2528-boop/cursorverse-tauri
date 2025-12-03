@@ -1,0 +1,20 @@
+styleSheet.textContent = clapDetectionStyles;
+document.head.appendChild(styleSheet);
+
+// Initialize clap detection when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    window.clapDetection = new ClapDetection();
+    
+    // Auto-start clap detection
+    setTimeout(() => {
+        if (window.clapDetection) {
+            window.clapDetection.start();
+            console.log('Clap detection auto-started');
+        }
+    }, 1000);
+});
+
+// Export for use in other modules
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = ClapDetection;
+}

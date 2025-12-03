@@ -1,0 +1,38 @@
+88-        };
+89-    }
+90-
+91-    bindEvents() {
+92-        // Глобальные события для интеграции с LucyAssistant
+93:        window.addEventListener('voice-recognized', (event) => {
+94-            this.onVoiceRecognized(event.detail);
+95-        });
+96-
+97-        // Клавиатурные сокращения
+98:        document.addEventListener('keydown', (event) => {
+99-            // Пробел для toggle
+100-            if (event.code === 'Space' && event.target.tagName !== 'INPUT' && event.target.tagName !== 'TEXTAREA') {
+101-                event.preventDefault();
+102-                this.toggle();
+103-            }
+104-            
+105-            // Escape для остановки
+106-            if (event.code === 'Escape') {
+107-                this.stop();
+108-            }
+--
+642-const styleSheet = document.createElement('style');
+643-styleSheet.textContent = voiceRecognitionStyles;
+644-document.head.appendChild(styleSheet);
+645-
+646-// Инициализация при загрузке DOM
+647:document.addEventListener('DOMContentLoaded', () => {
+648-    console.log('🎤 Initializing Voice Recognition system...');
+649-    window.voiceRecognition = new VoiceRecognition();
+650-    
+651-    // Делаем доступным глобально для LucyAssistant
+652-    window.VoiceRecognition = VoiceRecognition;
+653-    
+654-    console.log('✅ Voice Recognition system ready');
+655-});
+656-
+657-// Экспорт для использования в других модулях

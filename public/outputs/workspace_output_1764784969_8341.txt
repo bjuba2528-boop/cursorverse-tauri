@@ -1,0 +1,6 @@
+9:<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+93:    <script src="components/voice-recognition.js"></script>
+94:    <script src="components/clap-detection.js"></script>
+95:    <script src="components/chat-interface.js"></script>
+96:    <script src="components/audio-processor.js"></script>
+97:    <script src="main.js"></script>

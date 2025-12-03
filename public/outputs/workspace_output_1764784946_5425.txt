@@ -1,0 +1,1 @@
+./voice-lucy-assistant/src-tauri

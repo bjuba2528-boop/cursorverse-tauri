@@ -75,13 +75,18 @@
 .input-wrapper textarea:focus { outline:none; border-color:var(--elfen-crimson); background:rgba(139,0,0,0.55); }
 .input-wrapper textarea::placeholder { color:rgba(255,255,255,0.45); }
 .input-actions { display:flex; gap:10px; }
-.btn-voice, .btn-send { width:50px; height:50px; border:none; border-radius:50%; font-size:20px; cursor:pointer; transition:all .3s ease; }
+.btn-voice, .btn-clap, .btn-send { width:50px; height:50px; border:none; border-radius:50%; font-size:20px; cursor:pointer; transition:all .3s ease; }
 .btn-voice { background:linear-gradient(135deg, var(--elfen-crimson), var(--elfen-red)); border:2px solid var(--elfen-crimson); color:#fff; position:relative; overflow:hidden; box-shadow:0 0 15px rgba(220,20,60,0.6); }
 .btn-voice:hover:not(.disabled) { transform:scale(1.08); filter:brightness(1.15); }
 .btn-voice.listening { animation:pulse-mic 1.2s ease-in-out infinite; background:linear-gradient(135deg, #ff1744, var(--elfen-crimson)); box-shadow:0 0 25px rgba(255,23,68,0.8), 0 0 35px rgba(220,20,60,0.6); }
 @keyframes pulse-mic { 0%,100%{ box-shadow:0 0 0 0 rgba(255,23,68,0.7);} 50%{ box-shadow:0 0 0 10px rgba(255,23,68,0);} }
 .btn-voice.disabled { opacity:.35; cursor:not-allowed; box-shadow:none; }
 .mic-icon { font-size:20px; display:flex; align-items:center; justify-content:center; }
+.btn-clap { background:linear-gradient(135deg, #9c27b0, #673ab7); border:2px solid #9c27b0; color:#fff; position:relative; overflow:hidden; box-shadow:0 0 15px rgba(156,39,176,0.6); }
+.btn-clap:hover { transform:scale(1.08); filter:brightness(1.15); }
+.btn-clap.active { animation:pulse-clap 1.5s ease-in-out infinite; background:linear-gradient(135deg, #e040fb, #9c27b0); box-shadow:0 0 25px rgba(224,64,251,0.8), 0 0 35px rgba(156,39,176,0.6); }
+@keyframes pulse-clap { 0%,100%{ box-shadow:0 0 0 0 rgba(224,64,251,0.7);} 50%{ box-shadow:0 0 0 10px rgba(224,64,251,0);} }
+.clap-icon { font-size:20px; display:flex; align-items:center; justify-content:center; }
 .btn-send { background:linear-gradient(135deg, rgba(39,174,96,0.6), rgba(21,128,61,0.7)); color:#fff; border:2px solid rgba(39,174,96,0.6); box-shadow:0 0 12px rgba(39,174,96,0.6); }
 .btn-send:hover:not(:disabled) { transform:scale(1.08); filter:brightness(1.2); }
 .btn-send:disabled { opacity:.3; cursor:not-allowed; }

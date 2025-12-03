@@ -1,0 +1,75 @@
+404-    onConnectionChange(isOnline) {
+405-        console.log('Connection changed:', isOnline ? 'online' : 'offline');
+406-        this.updateConnectionStatus();
+407-        
+408-        if (!isOnline) {
+409:            this.showNotification('Соединение потеряно. Работаем в оффлайн режиме.', 'warning');
+410-        } else {
+411:            this.showNotification('Соединение восстановлено.', 'success');
+412-        }
+413-    }
+414-
+415-    handleResize() {
+416-        // Responsive adjustments
+--
+481-
+482-    async toggleFullscreen() {
+483-        try {
+484-            if (!document.fullscreenElement) {
+485-                await document.documentElement.requestFullscreen();
+486:                this.showNotification('Полноэкранный режим включен', 'info');
+487-            } else {
+488-                await document.exitFullscreen();
+489:                this.showNotification('Полноэкранный режим выключен', 'info');
+490-            }
+491-        } catch (error) {
+492-            console.error('Error toggling fullscreen:', error);
+493-        }
+494-    }
+495-
+496:    showNotification(message, type = 'info') {
+497:        if (window.showNotification) {
+498:            window.showNotification(message, type);
+499-        }
+500-    }
+501-
+502-    showError(message) {
+503-        console.error('App Error:', message);
+504:        this.showNotification(message, 'error');
+505-    }
+506-
+507-    // Settings methods
+508-    updateSetting(key, value) {
+509-        this.settings[key] = value;
+--
+519-            clapDetection: true,
+520-            voiceActivation: true
+521-        };
+522-        this.saveSettings();
+523-        this.updateUI();
+524:        this.showNotification('Настройки сброшены', 'info');
+525-    }
+526-
+527-    // Cleanup
+528-    cleanup() {
+529-        console.log('Cleaning up Voice Lucy Assistant...');
+--
+564-}
+565-
+566-// Global error handler
+567-window.addEventListener('error', (event) => {
+568-    console.error('Global error:', event.error);
+569:    if (window.showNotification) {
+570:        window.showNotification('Произошла ошибка в приложении', 'error');
+571-    }
+572-});
+573-
+574-// Global unhandled promise rejection handler
+575-window.addEventListener('unhandledrejection', (event) => {
+576-    console.error('Unhandled promise rejection:', event.reason);
+577:    if (window.showNotification) {
+578:        window.showNotification('Произошла ошибка при выполнении операции', 'error');
+579-    }
+580-});
+581-
+582-console.log('Voice Lucy Assistant main script loaded');
