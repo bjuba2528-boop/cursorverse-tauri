@@ -1,0 +1,12 @@
+
+
+[2025-12-01 19:03:16] Client version: 1763795194
+[2025-12-01 19:03:16] Failed to read store 'install' from 'C:\Users\shust\Desktop\cursorverse-tauri\config\config.vdf.tmp'
+[2025-12-01 19:03:16] Failed to read store 'install' from 'C:\Users\shust\Desktop\cursorverse-tauri\config\config.vdf.tmp'
+[2025-12-01 19:03:16] Failed to read store 'install' from 'C:\Users\shust\Desktop\cursorverse-tauri\config\config.vdf.tmp'
+[2025-12-01 19:03:16] Failed to read store 'install' from 'C:\Users\shust\Desktop\cursorverse-tauri\config\config.vdf.tmp'
+[2025-12-01 19:03:17] Flushed store 'install' to 'C:\Users\shust\Desktop\cursorverse-tauri\config\config.vdf'
+[2025-12-01 19:03:17] Loaded store 'install' from 'C:\Users\shust\Desktop\cursorverse-tauri\config\config.vdf' successfully
+[2025-12-01 19:03:19] Failed to read store 'userlocal' from 'C:\Users\shust\Desktop\cursorverse-tauri\userdata\anonymous\config\localconfig.vdf.tmp'
+[2025-12-01 19:03:19] Flushed store 'install' to 'C:\Users\shust\Desktop\cursorverse-tauri\config\config.vdf'
+[2025-12-01 19:03:20] Flushed store 'userlocal' to 'C:\Users\shust\Desktop\cursorverse-tauri\userdata\anonymous\config\localconfig.vdf'

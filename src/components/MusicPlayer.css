@@ -1,0 +1,334 @@
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  background: linear-gradient(135deg, #0a0000 0%, #1a0000 50%, #330000 100%);
+  border: 2px solid var(--elfen-crimson);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(220, 20, 60, 0.4),
+    inset 0 0 30px rgba(139, 0, 0, 0.2);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.player-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.song-icon {
+  font-size: 2.5rem;
+  animation: pulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px var(--elfen-red));
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px var(--elfen-red));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px var(--elfen-crimson));
+  }
+}
+
+.song-info {
+  flex: 1;
+}
+
+.song-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff1744, #dc143c, #8b0000, #dc143c, #ff1744);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease infinite;
+  margin-bottom: 4px;
+}
+
+.song-artist {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 5px rgba(220, 20, 60, 0.3);
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.play-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--elfen-blood) 0%, var(--elfen-crimson) 100%);
+  border: 2px solid var(--elfen-crimson);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 15px rgba(220, 20, 60, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 6px 25px rgba(220, 20, 60, 0.7),
+    0 0 30px rgba(255, 23, 68, 0.5),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, var(--elfen-crimson) 0%, var(--elfen-red) 100%);
+}
+
+.play-button:active {
+  transform: scale(0.95);
+}
+
+.play-button.playing {
+  animation: playingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes playingPulse {
+  0%, 100% {
+    box-shadow: 
+      0 4px 15px rgba(220, 20, 60, 0.5),
+      inset 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 6px 25px rgba(220, 20, 60, 0.8),
+      0 0 40px rgba(255, 23, 68, 0.6),
+      inset 0 0 15px rgba(255, 255, 255, 0.2);
+  }
+}
+
+.time-display {
+  flex: 1;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(220, 20, 60, 0.4);
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-container {
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(139, 0, 0, 0.3);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--elfen-red), var(--elfen-crimson));
+  cursor: pointer;
+  box-shadow: 
+    0 0 10px rgba(220, 20, 60, 0.6),
+    0 0 20px rgba(255, 23, 68, 0.4);
+  transition: all 0.2s ease;
+}
+
+.progress-bar::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 
+    0 0 15px rgba(220, 20, 60, 0.8),
+    0 0 30px rgba(255, 23, 68, 0.6);
+}
+
+.progress-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--elfen-red), var(--elfen-crimson));
+  cursor: pointer;
+  border: none;
+  box-shadow: 
+    0 0 10px rgba(220, 20, 60, 0.6),
+    0 0 20px rgba(255, 23, 68, 0.4);
+  transition: all 0.2s ease;
+}
+
+.progress-bar::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 
+    0 0 15px rgba(220, 20, 60, 0.8),
+    0 0 30px rgba(255, 23, 68, 0.6);
+}
+
+.volume-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.volume-icon {
+  color: var(--elfen-red);
+  filter: drop-shadow(0 0 5px rgba(220, 20, 60, 0.4));
+  flex-shrink: 0;
+}
+
+.volume-slider {
+  flex: 1;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(139, 0, 0, 0.3);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--elfen-red), var(--elfen-crimson));
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(220, 20, 60, 0.5);
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(220, 20, 60, 0.7);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--elfen-red), var(--elfen-crimson));
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 8px rgba(220, 20, 60, 0.5);
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(220, 20, 60, 0.7);
+}
+
+.volume-percent {
+  min-width: 40px;
+  text-align: right;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 5px rgba(220, 20, 60, 0.3);
+}
+
+/* Декоративные элементы "кровавые капли" */
+.player-decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.blood-drop {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, var(--elfen-red), var(--elfen-blood));
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(45deg);
+  opacity: 0.3;
+  animation: dropFloat 4s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(220, 20, 60, 0.4);
+}
+
+.drop-1 {
+  top: 10%;
+  right: 15%;
+  animation-delay: 0s;
+}
+
+.drop-2 {
+  top: 50%;
+  right: 5%;
+  animation-delay: 1.5s;
+  width: 6px;
+  height: 6px;
+}
+
+.drop-3 {
+  bottom: 20%;
+  right: 25%;
+  animation-delay: 3s;
+  width: 10px;
+  height: 10px;
+}
+
+@keyframes dropFloat {
+  0%, 100% {
+    transform: rotate(45deg) translateY(0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: rotate(45deg) translateY(-10px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

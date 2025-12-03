@@ -1,0 +1,15 @@
+# Замените этот файл на GIF анимацию Alastor в состоянии покоя (idle)
+
+Рекомендуемые источники:
+- GIPHY: https://giphy.com/search/alastor-idle
+- Tenor: https://tenor.com/search/alastor-standing
+- DeviantArt: Поиск "Alastor animated gif"
+
+Требования к файлу:
+- Формат: GIF с прозрачным фоном
+- Размер: 128x128 до 512x512 пикселей
+- Вес: < 500 КБ
+- Длительность: 0.5-2 секунды
+
+После замены обновите путь в dpet.json:
+"idle": ["animations/idle/ваш_файл.gif"]

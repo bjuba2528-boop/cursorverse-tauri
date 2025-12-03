@@ -19,6 +19,18 @@ function Modal({ isOpen, onClose, title, children, type = 'info' }: ModalProps) 
     }
   }, [isOpen, animationState])
 
+  // Закрытие по Esc
+  useEffect(() => {
+    if (!isOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose()
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [isOpen, onClose])
+
   const handleAnimationEnd = () => {
     if (animationState === 'leave') {
       setAnimationState('')
@@ -36,8 +48,9 @@ function Modal({ isOpen, onClose, title, children, type = 'info' }: ModalProps) 
       <div 
         className={`modal-frame state-${animationState}`}
         onAnimationEnd={handleAnimationEnd}
+        onClick={onClose}
       >
-        <div className="modal">
+        <div className="modal" onClick={(e) => e.stopPropagation()}>
           <div className="modal-inset">
             <span className="close" onClick={onClose}>
               <svg width="20" height="20" viewBox="0 0 20 20">

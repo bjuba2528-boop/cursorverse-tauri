@@ -3,6 +3,7 @@ import { check } from '@tauri-apps/plugin-updater'
 import { relaunch } from '@tauri-apps/plugin-process'
 import { open } from '@tauri-apps/plugin-shell'
 import Modal from './Modal'
+import { useI18n } from '../i18n'
 
 interface UpdateCheckerProps {
   onUpdateComplete?: () => void
@@ -11,6 +12,7 @@ interface UpdateCheckerProps {
 const MANUAL_DOWNLOAD_URL = 'https://github.com/ShustovCarleone/Cursor-Galaxy/releases/latest'
 
 function UpdateChecker({ onUpdateComplete }: UpdateCheckerProps) {
+  const { t } = useI18n()
   const [updateAvailable, setUpdateAvailable] = useState(false)
   const [updateVersion, setUpdateVersion] = useState('')
   const [downloading, setDownloading] = useState(false)
@@ -37,16 +39,16 @@ function UpdateChecker({ onUpdateComplete }: UpdateCheckerProps) {
       if (update?.available) {
         setUpdateAvailable(true)
         setUpdateVersion(update.version)
-        setStatusMessage(`Доступна версия ${update.version}`)
+        setStatusMessage(`${t('update_status_available_prefix')} ${update.version}`)
       } else {
-        setStatusMessage('У вас последняя версия')
+        setStatusMessage(t('update_status_latest'))
         setTimeout(() => setStatusMessage(''), 3000)
       }
     } catch (err: any) {
       console.error('Failed to check for updates:', err)
-      const errorMsg = err?.message || String(err) || 'Ошибка проверки обновлений'
+      const errorMsg = err?.message || String(err) || t('update_error_check_generic')
       setError(errorMsg)
-      setStatusMessage('Не удалось проверить обновления')
+      setStatusMessage(t('update_error_check_failed'))
       setTimeout(() => {
         setError('')
         setStatusMessage('')
@@ -70,7 +72,7 @@ function UpdateChecker({ onUpdateComplete }: UpdateCheckerProps) {
       const update = await check()
       
       if (!update?.available) {
-        setError('Обновление не найдено')
+        setError(t('update_error_not_found'))
         setDownloading(false)
         return
       }
@@ -95,7 +97,7 @@ function UpdateChecker({ onUpdateComplete }: UpdateCheckerProps) {
       
     } catch (err: any) {
       console.error('Failed to install update:', err)
-      const errorMsg = err?.message || String(err) || 'Не удалось установить обновление'
+      const errorMsg = err?.message || String(err) || t('update_error_install_failed')
       setError(errorMsg)
       setDownloading(false)
       setDownloadProgress(0)
@@ -135,16 +137,16 @@ function UpdateChecker({ onUpdateComplete }: UpdateCheckerProps) {
           {checking && (
             <span style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
               <span style={{ animation: 'spin 1s linear infinite', display: 'inline-block' }}>⟳</span>
-              Проверка...
+              {t('update_checking')}
             </span>
           )}
           {!checking && updateAvailable && (
             <span style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
               <span style={{ fontSize: 16 }}>🔔</span>
-              Обновление {updateVersion}
+              {t('update_button_available_prefix')} {updateVersion}
             </span>
           )}
-          {!checking && !updateAvailable && 'Проверить обновления'}
+          {!checking && !updateAvailable && t('update_button_check')}
         </button>
         
         {statusMessage && !error && (
@@ -178,7 +180,7 @@ function UpdateChecker({ onUpdateComplete }: UpdateCheckerProps) {
           isOpen={showModal}
           onClose={handleDismiss}
           type="info"
-          title="Доступно обновление"
+          title={t('update_modal_title')}
         >
           <div style={{ padding: '16px 0' }}>
             {error && (
@@ -195,7 +197,7 @@ function UpdateChecker({ onUpdateComplete }: UpdateCheckerProps) {
             )}
             
             <p style={{ marginBottom: 16, fontSize: 15, lineHeight: 1.6 }}>
-              Найдена новая версия <strong style={{ color: '#FF0080' }}>{updateVersion}</strong>
+              {t('update_modal_found_prefix')} <strong style={{ color: '#FF0080' }}>{updateVersion}</strong>
             </p>
             
             {downloading ? (
@@ -216,7 +218,7 @@ function UpdateChecker({ onUpdateComplete }: UpdateCheckerProps) {
                   }} />
                 </div>
                 <div style={{ fontSize: 12, opacity: 0.9, textAlign: 'center' }}>
-                  Загрузка и установка... {downloadProgress}%
+                  {t('update_downloading')} {downloadProgress}%
                 </div>
               </div>
             ) : (
@@ -230,7 +232,7 @@ function UpdateChecker({ onUpdateComplete }: UpdateCheckerProps) {
                       fontWeight: 600
                     }}
                   >
-                    ✓ Установить сейчас
+                    {t('update_install_now')}
                   </button>
                   <button 
                     onClick={handleDismiss} 
@@ -241,7 +243,7 @@ function UpdateChecker({ onUpdateComplete }: UpdateCheckerProps) {
                       border: '1px solid rgba(255, 255, 255, 0.2)'
                     }}
                   >
-                    Позже
+                    {t('later')}
                   </button>
                 </div>
                 <button 
@@ -253,7 +255,7 @@ function UpdateChecker({ onUpdateComplete }: UpdateCheckerProps) {
                     border: '1px solid rgba(157, 0, 255, 0.3)'
                   }}
                 >
-                  📥 Скачать вручную с GitHub
+                  {t('update_manual_download')}
                 </button>
               </div>
             )}

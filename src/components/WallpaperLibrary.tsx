@@ -24,6 +24,8 @@ function WallpaperLibrary() {
   const [error, setError] = useState('')
   const [contextMenu, setContextMenu] = useState<{x: number, y: number, wallpaper: WallpaperWithPreview} | null>(null)
   const [deleteModal, setDeleteModal] = useState<{isOpen: boolean, wallpaperId: string, title: string}>({isOpen: false, wallpaperId: '', title: ''})
+  const [nativeMode, setNativeMode] = useState(true) // По умолчанию нативные обои
+  const [importing, setImporting] = useState(false)
 
   useEffect(() => {
     loadWallpapers()
@@ -32,12 +34,14 @@ function WallpaperLibrary() {
     const handleClick = () => setContextMenu(null)
     window.addEventListener('click', handleClick)
     return () => window.removeEventListener('click', handleClick)
-  }, [])
+  }, [nativeMode])
 
   const loadWallpapers = async () => {
     try {
       setLoading(true)
-      const items = await invoke<WallpaperItem[]>('get_lively_wallpapers')
+      const items = nativeMode 
+        ? await invoke<WallpaperItem[]>('get_native_wallpapers')
+        : await invoke<WallpaperItem[]>('get_lively_wallpapers')
       
       // Сначала показываем обои без превью
       setWallpapers(items)
@@ -74,10 +78,9 @@ function WallpaperLibrary() {
 
   const handleSetWallpaper = async (wallpaperId: string) => {
     try {
-      const result = await invoke<string>('set_lively_wallpaper', {
-        wallpaperId,
-        monitor: null
-      })
+      const result = nativeMode
+        ? await invoke<string>('set_native_wallpaper', { wallpaperId })
+        : await invoke<string>('set_lively_wallpaper', { wallpaperId, monitor: null })
       console.log(result)
       setContextMenu(null)
     } catch (err) {
@@ -96,7 +99,9 @@ function WallpaperLibrary() {
     setDeleteModal({isOpen: false, wallpaperId: '', title: ''})
     
     try {
-      const result = await invoke<string>('delete_wallpaper', { wallpaperId })
+      const result = nativeMode
+        ? await invoke<string>('delete_native_wallpaper', { wallpaperId })
+        : await invoke<string>('delete_wallpaper', { wallpaperId })
       console.log(result)
       await loadWallpapers()
     } catch (err) {
@@ -135,7 +140,9 @@ function WallpaperLibrary() {
       if (selected && typeof selected === 'string') {
         setLoading(true)
         try {
-          const result = await invoke<string>('add_wallpaper_to_library', { filePath: selected })
+          const result = nativeMode
+            ? await invoke<string>('add_native_wallpaper', { filePath: selected })
+            : await invoke<string>('add_wallpaper_to_library', { filePath: selected })
           console.log(result)
           // Перезагружаем библиотеку
           await loadWallpapers()
@@ -163,13 +170,80 @@ function WallpaperLibrary() {
     return types[type] || 'Неизвестно'
   }
 
+  const handleImportFromLively = async () => {
+    setImporting(true)
+    try {
+      const result = await invoke<string>('import_from_lively')
+      console.log(result)
+      await loadWallpapers()
+      setError('✅ ' + result)
+    } catch (err) {
+      console.error('Ошибка импорта:', err)
+      setError(String(err))
+    } finally {
+      setImporting(false)
+    }
+  }
+
   return (
     <div className="wallpaper-library">
       <div className="library-header">
         <h2>Библиотека обоев</h2>
-        <button className="add-wallpaper-btn" onClick={handleAddWallpaper} title="Добавить обои">
-          <span className="plus-icon">+</span>
-        </button>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          {/* Переключатель режима */}
+          <button 
+            onClick={() => {
+              setNativeMode(!nativeMode)
+              setWallpapers([])
+              setError('')
+            }}
+            style={{
+              padding: '8px 16px',
+              background: nativeMode 
+                ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' 
+                : 'linear-gradient(135deg, #DC143C 0%, #FF1493 100%)',
+              border: 'none',
+              borderRadius: 8,
+              color: 'white',
+              cursor: 'pointer',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              transition: 'all 0.3s'
+            }}
+            title={nativeMode ? 'Переключить на Lively Wallpaper' : 'Переключить на нативные обои'}
+          >
+            {nativeMode ? '🎨 Нативные обои' : '🔗 Lively Wallpaper'}
+          </button>
+          
+          {/* Кнопка импорта (только в нативном режиме) */}
+          {nativeMode && (
+            <button 
+              onClick={handleImportFromLively}
+              disabled={importing}
+              style={{
+                padding: '8px 16px',
+                background: importing 
+                  ? 'rgba(0,0,0,0.3)' 
+                  : 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                border: 'none',
+                borderRadius: 8,
+                color: 'white',
+                cursor: importing ? 'not-allowed' : 'pointer',
+                fontSize: '0.9rem',
+                fontWeight: 600,
+                transition: 'all 0.3s',
+                opacity: importing ? 0.6 : 1
+              }}
+              title="Импортировать все обои из Lively Wallpaper"
+            >
+              {importing ? '⏳ Импорт...' : '📥 Импорт из Lively'}
+            </button>
+          )}
+          
+          <button className="add-wallpaper-btn" onClick={handleAddWallpaper} title="Добавить обои">
+            <span className="plus-icon">+</span>
+          </button>
+        </div>
       </div>
 
       {error && (

@@ -4,7 +4,49 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Permissions-Policy" content="microphone=(self), camera=(self)" />
     <title>CursorVerse</title>
+    <script>
+      // Автоматический retry для автозапуска
+      // Решает проблему ERR_CONNECTION_REFUSED когда frontend загружается быстрее backend
+      (function() {
+        let retryCount = 0;
+        const maxRetries = 10;
+        const retryDelay = 500; // мс
+        
+        function checkBackend() {
+          // Проверяем доступность Tauri API
+          if (window.__TAURI__) {
+            console.log('✅ Tauri backend готов');
+            return true;
+          }
+          return false;
+        }
+        
+        function waitForBackend() {
+          if (checkBackend()) {
+            console.log('✅ Backend подключен, загружаем приложение...');
+            return;
+          }
+          
+          retryCount++;
+          if (retryCount < maxRetries) {
+            console.log(`⏳ Ожидание backend... попытка ${retryCount}/${maxRetries}`);
+            setTimeout(waitForBackend, retryDelay);
+          } else {
+            console.warn('⚠️ Backend не отвечает после', maxRetries, 'попыток');
+            // Все равно пробуем загрузить - может заработает
+          }
+        }
+        
+        // Запускаем проверку при автозапуске
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', waitForBackend);
+        } else {
+          waitForBackend();
+        }
+      })();
+    </script>
   </head>
   <body>
     <!-- SVG фильтр для эффекта "goo" -->
@@ -16,6 +58,14 @@
       </filter>
     </svg>
     <div id="root"></div>
+    
+    <!-- Voice Lucy Assistant модули -->
+    <script src="/voice-components/audio-processor.js"></script>
+    <script src="/voice-components/voice-recognition.js"></script>
+    <script src="/voice-components/clap-detection.js"></script>
+    <script src="/voice-components/chat-interface.js"></script>
+    <script src="/voice-components/main.js"></script>
+    
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

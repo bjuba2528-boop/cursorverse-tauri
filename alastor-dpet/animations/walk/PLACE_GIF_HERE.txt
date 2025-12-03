@@ -1,0 +1,4 @@
+# Замените этот файл на GIF анимацию Alastor при ходьбе (walk)
+
+После замены обновите путь в dpet.json:
+"walk": ["animations/walk/ваш_файл.gif"]

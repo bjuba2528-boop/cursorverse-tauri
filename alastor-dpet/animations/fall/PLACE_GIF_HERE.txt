@@ -1,0 +1,4 @@
+# Замените этот файл на GIF анимацию Alastor при падении (fall)
+
+После замены обновите путь в dpet.json:
+"fall": ["animations/fall/ваш_файл.gif"]

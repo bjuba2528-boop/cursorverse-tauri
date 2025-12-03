@@ -374,6 +374,61 @@ pub fn check_cursorlib() -> Result<String, String> {
     }
 }
 
+#[tauri::command]
+pub async fn check_cursorlib_files() -> Result<serde_json::Value, String> {
+    let base = get_config_path()?;
+    let anime = base.join("Anime");
+    let classic = base.join("Classic");
+    
+    // Проверяем наличие основных папок
+    let anime_exists = anime.exists();
+    let classic_exists = classic.exists();
+    
+    let mut missing_folders = Vec::new();
+    let mut total_folders = 0;
+    
+    // Если папки существуют, проверяем их содержимое
+    if anime_exists {
+        if let Ok(entries) = std::fs::read_dir(&anime) {
+            for entry in entries.flatten() {
+                if entry.path().is_dir() {
+                    total_folders += 1;
+                }
+            }
+        }
+    } else {
+        missing_folders.push("Anime");
+    }
+    
+    if classic_exists {
+        if let Ok(entries) = std::fs::read_dir(&classic) {
+            for entry in entries.flatten() {
+                if entry.path().is_dir() {
+                    total_folders += 1;
+                }
+            }
+        }
+    } else {
+        missing_folders.push("Classic");
+    }
+    
+    // Если нет ни одной папки - нужна полная установка
+    let needs_download = !anime_exists || !classic_exists || total_folders == 0;
+    
+    Ok(serde_json::json!({
+        "needs_download": needs_download,
+        "anime_exists": anime_exists,
+        "classic_exists": classic_exists,
+        "total_folders": total_folders,
+        "missing_folders": missing_folders,
+        "message": if needs_download {
+            "Библиотека курсоров не найдена или неполная. Требуется загрузка."
+        } else {
+            "Библиотека курсоров установлена."
+        }
+    }))
+}
+
 use tauri::Emitter;
 
 #[tauri::command]
@@ -454,3 +509,76 @@ pub async fn get_preview_base64(path: String) -> Result<String, String> {
     .await
     .map_err(|e| e.to_string())?
 }
+
+// ============= МАСШТАБИРОВАНИЕ КУРСОРА =============
+
+/// Получить текущий размер курсора (масштаб) из реестра Windows
+#[tauri::command]
+pub fn get_cursor_size() -> Result<i32, String> {
+    #[cfg(target_os = "windows")]
+    {
+        let hkcu = RegKey::predef(HKEY_CURRENT_USER);
+        let size = if let Ok(cursor_key) = hkcu.open_subkey("Control Panel\\Cursors") {
+            match cursor_key.get_value::<u32, _>("CursorBaseSize") {
+                Ok(val) => val,
+                Err(_) => {
+                    cursor_key
+                        .get_value::<String, _>("CursorBaseSize")
+                        .ok()
+                        .and_then(|s| s.parse::<u32>().ok())
+                        .unwrap_or(32)
+                }
+            }
+        } else {
+            32 // По умолчанию
+        };
+
+        // Конвертируем в проценты (1=100%, 2=200%, 3=300% или 32=100%, 48=150%, 64=200%, 96=300%)
+        let percentage = if size <= 4 {
+            // Новый формат (1-4)
+            size as i32 * 100
+        } else {
+            // Старый формат (32, 48, 64, 96)
+            match size {
+                32 => 100,
+                48 => 150,
+                64 => 200,
+                96 => 300,
+                _ => ((size as f32 / 32.0) * 100.0) as i32,
+            }
+        };
+
+        Ok(percentage)
+    }
+    
+    #[cfg(not(target_os = "windows"))]
+    {
+        Ok(100) // На других платформах возвращаем 100%
+    }
+}
+
+/// Открыть системные настройки Windows для изменения размера курсора
+#[tauri::command]
+pub fn open_cursor_size_settings() -> Result<(), String> {
+    #[cfg(target_os = "windows")]
+    {
+        use std::process::Command;
+        
+        // Открываем настройки "Специальные возможности > Указатель мыши"
+        let result = Command::new("cmd")
+            .args(&["/C", "start", "ms-settings:easeofaccess-mouse"])
+            .spawn();
+        
+        match result {
+            Ok(_) => Ok(()),
+            Err(e) => Err(format!("Не удалось открыть настройки: {}", e))
+        }
+    }
+    
+    #[cfg(not(target_os = "windows"))]
+    {
+        Err("Доступно только на Windows".to_string())
+    }
+}
+
+

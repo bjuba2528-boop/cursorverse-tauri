@@ -1,8 +1,9 @@
 use std::fs;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use base64::{Engine as _, engine::general_purpose};
 use std::sync::{Arc, Mutex};
 use once_cell::sync::Lazy;
+use serde::{Serialize, Deserialize};
 #[cfg(target_os = "windows")]
 use std::ffi::OsStr;
 #[cfg(target_os = "windows")]
@@ -11,6 +12,166 @@ use std::os::windows::ffi::OsStrExt;
 static ORIGINAL_WALLPAPER_PATH: Lazy<Arc<Mutex<Option<String>>>> = Lazy::new(|| {
     Arc::new(Mutex::new(None))
 });
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct WallpaperInfo {
+    pub path: String,
+    pub title: Option<String>,
+    pub copyright: Option<String>,
+    pub source: String, // "spotlight", "theme", "user"
+}
+
+/// Получает путь к папке Windows Spotlight
+fn get_spotlight_path() -> Option<PathBuf> {
+    #[cfg(target_os = "windows")]
+    {
+        let local_appdata = std::env::var("LOCALAPPDATA").ok()?;
+        let spotlight_path = PathBuf::from(local_appdata)
+            .join("Packages")
+            .join("Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy")
+            .join("LocalState")
+            .join("Assets");
+        
+        if spotlight_path.exists() {
+            Some(spotlight_path)
+        } else {
+            None
+        }
+    }
+    
+    #[cfg(not(target_os = "windows"))]
+    {
+        None
+    }
+}
+
+/// Получает путь к папке с темами Windows
+fn get_themes_wallpapers_path() -> Option<PathBuf> {
+    #[cfg(target_os = "windows")]
+    {
+        let windows_path = PathBuf::from("C:\\Windows\\Web\\Wallpaper");
+        if windows_path.exists() {
+            Some(windows_path)
+        } else {
+            None
+        }
+    }
+    
+    #[cfg(not(target_os = "windows"))]
+    {
+        None
+    }
+}
+
+/// Сканирует папку Windows Spotlight и возвращает список обоев
+#[tauri::command]
+pub fn get_spotlight_wallpapers() -> Result<Vec<WallpaperInfo>, String> {
+    #[cfg(target_os = "windows")]
+    {
+        let spotlight_path = get_spotlight_path()
+            .ok_or("Windows Spotlight не найден")?;
+        
+        let mut wallpapers = Vec::new();
+        
+        if let Ok(entries) = fs::read_dir(&spotlight_path) {
+            for entry in entries.filter_map(|e| e.ok()) {
+                let path = entry.path();
+                
+                // Пропускаем не-файлы
+                if !path.is_file() {
+                    continue;
+                }
+                
+                // Проверяем размер файла (Spotlight обои обычно > 100KB)
+                if let Ok(metadata) = fs::metadata(&path) {
+                    if metadata.len() < 100_000 {
+                        continue;
+                    }
+                }
+                
+                // Пытаемся определить, это изображение или нет
+                // Spotlight файлы не имеют расширений, проверяем по сигнатуре
+                if let Ok(mut file) = fs::File::open(&path) {
+                    use std::io::Read;
+                    let mut buffer = [0u8; 12];
+                    if file.read(&mut buffer).is_ok() {
+                        // JPEG сигнатура: FF D8 FF
+                        // PNG сигнатура: 89 50 4E 47
+                        if (buffer[0] == 0xFF && buffer[1] == 0xD8 && buffer[2] == 0xFF) ||
+                           (buffer[0] == 0x89 && buffer[1] == 0x50 && buffer[2] == 0x4E && buffer[3] == 0x47) {
+                            wallpapers.push(WallpaperInfo {
+                                path: path.to_string_lossy().to_string(),
+                                title: None,
+                                copyright: Some("Windows Spotlight".to_string()),
+                                source: "spotlight".to_string(),
+                            });
+                        }
+                    }
+                }
+            }
+        }
+        
+        Ok(wallpapers)
+    }
+    
+    #[cfg(not(target_os = "windows"))]
+    {
+        Err("Windows Spotlight доступен только на Windows".to_string())
+    }
+}
+
+/// Сканирует папку с темами Windows и возвращает список обоев
+#[tauri::command]
+pub fn get_windows_theme_wallpapers() -> Result<Vec<WallpaperInfo>, String> {
+    #[cfg(target_os = "windows")]
+    {
+        let themes_path = get_themes_wallpapers_path()
+            .ok_or("Папка с темами Windows не найдена")?;
+        
+        let mut wallpapers = Vec::new();
+        
+        // Рекурсивно ищем все изображения в папке
+        fn scan_dir(dir: &Path, wallpapers: &mut Vec<WallpaperInfo>) -> std::io::Result<()> {
+            if dir.is_dir() {
+                for entry in fs::read_dir(dir)? {
+                    let entry = entry?;
+                    let path = entry.path();
+                    
+                    if path.is_dir() {
+                        scan_dir(&path, wallpapers)?;
+                    } else if let Some(ext) = path.extension() {
+                        let ext_str = ext.to_string_lossy().to_lowercase();
+                        if ["jpg", "jpeg", "png", "bmp"].contains(&ext_str.as_str()) {
+                            let theme_name = path.parent()
+                                .and_then(|p| p.file_name())
+                                .and_then(|n| n.to_str())
+                                .unwrap_or("Windows");
+                            
+                            wallpapers.push(WallpaperInfo {
+                                path: path.to_string_lossy().to_string(),
+                                title: Some(format!("{} - {}", theme_name, 
+                                    path.file_stem().unwrap_or_default().to_string_lossy())),
+                                copyright: Some("Microsoft Corporation".to_string()),
+                                source: "theme".to_string(),
+                            });
+                        }
+                    }
+                }
+            }
+            Ok(())
+        }
+        
+        scan_dir(&themes_path, &mut wallpapers)
+            .map_err(|e| format!("Ошибка сканирования папки тем: {}", e))?;
+        
+        Ok(wallpapers)
+    }
+    
+    #[cfg(not(target_os = "windows"))]
+    {
+        Err("Темы Windows доступны только на Windows".to_string())
+    }
+}
 
 #[tauri::command]
 pub fn get_file_base64(path: String) -> Result<String, String> {
@@ -46,259 +207,63 @@ pub fn get_file_base64(path: String) -> Result<String, String> {
     Ok(format!("data:{};base64,{}", mime_type, base64_str))
 }
 
+/// Устанавливает статические обои (изображение)
 #[tauri::command]
-pub fn set_wallpaper(path: String, wallpaper_type: String) -> Result<String, String> {
+pub fn set_wallpaper(path: String) -> Result<String, String> {
     let file_path = Path::new(&path);
     
     if !file_path.exists() {
         return Err("Файл не найден".to_string());
     }
 
-    match wallpaper_type.as_str() {
-        "image" => {
-            #[cfg(target_os = "windows")]
-            {
-                use winapi::um::winuser::{SystemParametersInfoW, SPIF_UPDATEINIFILE, SPIF_SENDCHANGE, SPI_SETDESKWALLPAPER};
-
-                // Сохраняем оригинальные обои один раз
-                {
-                    let mut orig = ORIGINAL_WALLPAPER_PATH.lock().unwrap();
-                    if orig.is_none() {
-                        if let Ok(reg) = winreg::RegKey::predef(winreg::enums::HKEY_CURRENT_USER).open_subkey("Control Panel\\Desktop") {
-                            if let Ok(val) = reg.get_value::<String, _>("Wallpaper") {
-                                if !val.trim().is_empty() {
-                                    *orig = Some(val);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                let wide_path: Vec<u16> = OsStr::new(&path)
-                    .encode_wide()
-                    .chain(std::iter::once(0))
-                    .collect();
-
-                unsafe {
-                    let result = SystemParametersInfoW(
-                        SPI_SETDESKWALLPAPER,
-                        0,
-                        wide_path.as_ptr() as *mut _,
-                        SPIF_UPDATEINIFILE | SPIF_SENDCHANGE,
-                    );
-
-                    if result == 0 {
-                        return Err("Не удалось установить обои".to_string());
-                    }
-                }
-                
-                Ok("Обои успешно установлены".to_string())
-            }
-            
-            #[cfg(not(target_os = "windows"))]
-            {
-                Err("Функция доступна только на Windows".to_string())
-            }
-        },
-        "gif" | "video" => {
-            Err("Для видео обоев используйте команду set_animated_wallpaper".to_string())
-        },
-        _ => Err("Неизвестный тип обоев".to_string())
-    }
-}
-
-// Проверяет, установлен ли Lively Wallpaper (встроенный или системный)
-fn check_lively_installed() -> Result<String, String> {
     #[cfg(target_os = "windows")]
     {
-        // Сначала проверяем встроенную версию
-        let embedded_path = std::env::current_exe()
-            .ok()
-            .and_then(|exe| exe.parent().map(|p| p.join("lively").join("lively.exe")))
-            .filter(|p| p.exists());
+        use winapi::um::winuser::{SystemParametersInfoW, SPIF_UPDATEINIFILE, SPIF_SENDCHANGE, SPI_SETDESKWALLPAPER};
 
-        if let Some(path) = embedded_path {
-            return Ok(path.to_string_lossy().to_string());
-        }
-
-        // Проверяем реестр Windows
-        if let Ok(reg) = winreg::RegKey::predef(winreg::enums::HKEY_CURRENT_USER)
-            .open_subkey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall") 
+        // Сохраняем оригинальные обои один раз
         {
-            for key_name in reg.enum_keys().filter_map(|k| k.ok()) {
-                if key_name.to_lowercase().contains("lively") {
-                    if let Ok(subkey) = reg.open_subkey(&key_name) {
-                        if let Ok(install_location) = subkey.get_value::<String, _>("InstallLocation") {
-                            let exe_path = Path::new(&install_location).join("Lively.exe");
-                            if exe_path.exists() {
-                                return Ok(exe_path.to_string_lossy().to_string());
-                            }
+            let mut orig = ORIGINAL_WALLPAPER_PATH.lock().unwrap();
+            if orig.is_none() {
+                if let Ok(reg) = winreg::RegKey::predef(winreg::enums::HKEY_CURRENT_USER)
+                    .open_subkey("Control Panel\\Desktop") 
+                {
+                    if let Ok(val) = reg.get_value::<String, _>("Wallpaper") {
+                        if !val.trim().is_empty() {
+                            *orig = Some(val);
                         }
                     }
                 }
             }
         }
 
-        // Если нет встроенной - ищем системную
-        let appdata = std::env::var("APPDATA").unwrap_or_default();
-        let localappdata = std::env::var("LOCALAPPDATA").unwrap_or_default();
-        
-        let possible_paths = vec![
-            format!("{}\\Programs\\Lively Wallpaper\\Lively.exe", localappdata),
-            format!("{}\\Lively Wallpaper\\lively.exe", localappdata),
-            format!("{}\\lively\\lively.exe", localappdata),
-            "C:\\Program Files\\Lively Wallpaper\\lively.exe".to_string(),
-            "C:\\Program Files (x86)\\Lively Wallpaper\\lively.exe".to_string(),
-            format!("{}\\..\\Local\\lively\\lively.exe", appdata),
-            format!("{}\\..\\Local\\Lively Wallpaper\\lively.exe", appdata),
-        ];
+        let wide_path: Vec<u16> = OsStr::new(&path)
+            .encode_wide()
+            .chain(std::iter::once(0))
+            .collect();
 
-        for path in possible_paths {
-            if Path::new(&path).exists() {
-                return Ok(path.to_string());
+        unsafe {
+            let result = SystemParametersInfoW(
+                SPI_SETDESKWALLPAPER,
+                0,
+                wide_path.as_ptr() as *mut _,
+                SPIF_UPDATEINIFILE | SPIF_SENDCHANGE,
+            );
+
+            if result == 0 {
+                return Err("Не удалось установить обои".to_string());
             }
         }
-
-        Err("Не удалось найти Lively Wallpaper. Установите его и перезапустите приложение.".to_string())
-    }
-
-    #[cfg(not(target_os = "windows"))]
-    {
-        Err("Lively Wallpaper доступен только на Windows".to_string())
-    }
-}
-
-// Запускает Lively Wallpaper с видео
-fn launch_lively_with_video(lively_path: &str, video_path: &str) -> Result<(), String> {
-    #[cfg(target_os = "windows")]
-    {
-        use std::process::Command;
-
-        // Запускаем Lively с параметрами командной строки
-        Command::new(lively_path)
-            .arg("--wallpaper")
-            .arg(video_path)
-            .spawn()
-            .map_err(|e| format!("Не удалось запустить Lively Wallpaper: {}", e))?;
-
-        Ok(())
-    }
-
-    #[cfg(not(target_os = "windows"))]
-    {
-        Err("Lively Wallpaper доступен только на Windows".to_string())
-    }
-}
-
-#[tauri::command]
-pub fn set_animated_wallpaper(_app: tauri::AppHandle, path: String, _wallpaper_type: String) -> Result<String, String> {
-    #[cfg(target_os = "windows")]
-    {
-        if !Path::new(&path).exists() {
-            return Err("Файл не найден".to_string());
-        }
-
-        // Проверяем, установлен ли Lively Wallpaper
-        let lively_path = check_lively_installed()?;
         
-        // Запускаем Lively с видео
-        launch_lively_with_video(&lively_path, &path)?;
-        
-        Ok(format!("Видео обои установлены через Lively Wallpaper: {}", path))
+        Ok("Обои успешно установлены".to_string())
     }
     
     #[cfg(not(target_os = "windows"))]
     {
-        Err("Анимированные обои поддерживаются только на Windows".to_string())
+        Err("Функция доступна только на Windows".to_string())
     }
 }
 
-// Скачивает и устанавливает Lively Wallpaper во встроенную папку
-#[tauri::command]
-pub fn install_lively_wallpaper() -> Result<String, String> {
-    #[cfg(target_os = "windows")]
-    {
-        use std::io::Write;
-
-        // Получаем путь к папке приложения
-        let exe_path = std::env::current_exe()
-            .map_err(|e| format!("Не удалось получить путь к exe: {}", e))?;
-        let app_dir = exe_path.parent()
-            .ok_or("Не удалось получить директорию приложения")?;
-        let lively_dir = app_dir.join("lively");
-
-        // Создаём папку если её нет
-        std::fs::create_dir_all(&lively_dir)
-            .map_err(|e| format!("Не удалось создать папку: {}", e))?;
-
-        // URL последней версии Lively (setup installer)
-        let download_url = "https://github.com/rocksdanister/lively/releases/latest/download/lively_setup_x86_full_v2210.exe";
-        
-        // Скачиваем архив
-        let response = reqwest::blocking::get(download_url)
-            .map_err(|e| format!("Ошибка скачивания: {}", e))?;
-
-        if !response.status().is_success() {
-            return Err(format!("Ошибка HTTP: {}", response.status()));
-        }
-
-        let bytes = response.bytes()
-            .map_err(|e| format!("Ошибка чтения данных: {}", e))?;
-
-        // Сохраняем во временный файл
-        let temp_installer = lively_dir.join("lively_setup.exe");
-        let mut file = std::fs::File::create(&temp_installer)
-            .map_err(|e| format!("Не удалось создать файл: {}", e))?;
-        file.write_all(&bytes)
-            .map_err(|e| format!("Не удалось записать файл: {}", e))?;
-        
-        // Закрываем файл перед запуском
-        drop(file);
-        
-        // Автоматически запускаем установщик
-        use std::process::Command;
-        Command::new(&temp_installer)
-            .spawn()
-            .map_err(|e| format!("Не удалось запустить установщик: {}", e))?;
-        
-        Ok(format!("Установщик Lively запущен!\n\nСледуйте инструкциям на экране для установки.\nПосле установки перезапустите Cursorverse."))
-    }
-
-    #[cfg(not(target_os = "windows"))]
-    {
-        Err("Доступно только на Windows".to_string())
-    }
-}
-
-#[tauri::command]
-pub fn check_lively_status() -> serde_json::Value {
-    match check_lively_installed() {
-        Ok(path) => serde_json::json!({
-            "installed": true,
-            "path": path,
-            "message": "Lively Wallpaper установлен"
-        }),
-        Err(msg) => serde_json::json!({
-            "installed": false,
-            "path": "",
-            "message": msg
-        })
-    }
-}
-
-#[tauri::command]
-pub fn get_animated_wallpaper_status() -> serde_json::Value {
-    serde_json::json!({ 
-        "active": false, 
-        "message": "Видео обои управляются через Lively Wallpaper" 
-    })
-}
-
-#[tauri::command]
-pub fn stop_animated_wallpaper() -> Result<String, String> {
-    Ok("Остановите видео обои через настройки Lively Wallpaper".to_string())
-}
-
+/// Сброс обоев на стандартные Windows
 #[tauri::command]
 pub fn reset_wallpaper() -> Result<String, String> {
     #[cfg(target_os = "windows")]
@@ -324,6 +289,27 @@ pub fn reset_wallpaper() -> Result<String, String> {
         }
 
         Ok("Обои сброшены".to_string())
+    }
+    
+    #[cfg(not(target_os = "windows"))]
+    {
+        Err("Функция доступна только на Windows".to_string())
+    }
+}
+
+/// Получает текущие установленные обои
+#[tauri::command]
+pub fn get_current_wallpaper() -> Result<String, String> {
+    #[cfg(target_os = "windows")]
+    {
+        if let Ok(reg) = winreg::RegKey::predef(winreg::enums::HKEY_CURRENT_USER)
+            .open_subkey("Control Panel\\Desktop") 
+        {
+            if let Ok(val) = reg.get_value::<String, _>("Wallpaper") {
+                return Ok(val);
+            }
+        }
+        Err("Не удалось получить путь к текущим обоям".to_string())
     }
     
     #[cfg(not(target_os = "windows"))]

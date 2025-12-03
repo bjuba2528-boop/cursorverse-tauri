@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест Микрофона</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .test-block {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid #dc143c;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #dc143c, #8b0000);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success { background: rgba(34, 197, 94, 0.2); border: 1px solid #22c55e; }
+        .error { background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; }
+        .info { background: rgba(59, 130, 246, 0.2); border: 1px solid #3b82f6; }
+        #log {
+            background: #000;
+            padding: 15px;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .log-entry {
+            margin: 3px 0;
+            padding: 3px;
+        }
+        canvas {
+            width: 100%;
+            height: 100px;
+            background: #000;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎤 Тест Микрофона CursorVerse</h1>
+    <p>Этот файл проверяет работу микрофона и Web APIs</p>
+
+    <div class="test-block">
+        <h2>1️⃣ Тест MediaDevices API</h2>
+        <button onclick="testMediaDevices()">Проверить API</button>
+        <div id="mediaStatus"></div>
+    </div>
+
+    <div class="test-block">
+        <h2>2️⃣ Тест доступа к микрофону</h2>
+        <button onclick="testMicrophone()">Запросить доступ</button>
+        <div id="micStatus"></div>
+    </div>
+
+    <div class="test-block">
+        <h2>3️⃣ Тест Speech Recognition API</h2>
+        <button onclick="testSpeechRecognition()">Проверить распознавание</button>
+        <button onclick="startRecognition()" id="startBtn" disabled>Начать распознавание</button>
+        <button onclick="stopRecognition()" id="stopBtn" disabled>Остановить</button>
+        <div id="speechStatus"></div>
+        <div id="transcript" style="margin-top:10px; padding:10px; background:#000; border-radius:5px;"></div>
+    </div>
+
+    <div class="test-block">
+        <h2>4️⃣ Визуализация звука (Детектор хлопков)</h2>
+        <button onclick="startClapDetection()">Запустить детектор</button>
+        <button onclick="stopClapDetection()">Остановить</button>
+        <canvas id="visualizer"></canvas>
+        <div id="clapStatus"></div>
+    </div>
+
+    <div class="test-block">
+        <h2>📋 Лог событий</h2>
+        <button onclick="clearLog()">Очистить</button>
+        <div id="log"></div>
+    </div>
+
+    <script>
+        let recognition = null;
+        let audioContext = null;
+        let analyser = null;
+        let animationId = null;
+
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            const timestamp = new Date().toLocaleTimeString();
+            entry.innerHTML = `[${timestamp}] ${message}`;
+            
+            if (type === 'error') entry.style.color = '#ef4444';
+            else if (type === 'success') entry.style.color = '#22c55e';
+            else if (type === 'warn') entry.style.color = '#f59e0b';
+            
+            logDiv.appendChild(entry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function clearLog() {
+            document.getElementById('log').innerHTML = '';
+        }
+
+        function testMediaDevices() {
+            log('🔍 Проверка MediaDevices API...');
+            const status = document.getElementById('mediaStatus');
+            
+            if (!navigator.mediaDevices) {
+                status.className = 'status error';
+                status.textContent = '❌ MediaDevices API не поддерживается';
+                log('❌ MediaDevices API не найден', 'error');
+                return;
+            }
+            
+            if (!navigator.mediaDevices.getUserMedia) {
+                status.className = 'status error';
+                status.textContent = '❌ getUserMedia не поддерживается';
+                log('❌ getUserMedia не найден', 'error');
+                return;
+            }
+            
+            status.className = 'status success';
+            status.textContent = '✅ MediaDevices API поддерживается';
+            log('✅ MediaDevices API доступен', 'success');
+            
+            // Проверяем доступные устройства
+            navigator.mediaDevices.enumerateDevices()
+                .then(devices => {
+                    const mics = devices.filter(d => d.kind === 'audioinput');
+                    log(`📱 Найдено микрофонов: ${mics.length}`, 'success');
+                    mics.forEach((mic, i) => {
+                        log(`  ${i + 1}. ${mic.label || 'Безымянный микрофон'}`);
+                    });
+                })
+                .catch(err => {
+                    log(`❌ Ошибка перечисления устройств: ${err.message}`, 'error');
+                });
+        }
+
+        async function testMicrophone() {
+            log('📋 Запрос доступа к микрофону...');
+            const status = document.getElementById('micStatus');
+            
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                status.className = 'status success';
+                status.textContent = '✅ Доступ к микрофону получен';
+                log('✅ Доступ к микрофону разрешен', 'success');
+                
+                // Получаем информацию о треке
+                const track = stream.getAudioTracks()[0];
+                const settings = track.getSettings();
+                log(`🎤 Настройки: ${JSON.stringify(settings)}`);
+                
+                // Останавливаем стрим
+                stream.getTracks().forEach(track => track.stop());
+                log('🛑 Стрим остановлен');
+                
+            } catch (error) {
+                status.className = 'status error';
+                status.textContent = `❌ Ошибка: ${error.name}`;
+                log(`❌ Ошибка доступа: ${error.name} - ${error.message}`, 'error');
+                
+                if (error.name === 'NotAllowedError') {
+                    log('🔒 Доступ запрещен пользователем', 'warn');
+                } else if (error.name === 'NotFoundError') {
+                    log('🎤 Микрофон не найден', 'warn');
+                }
+            }
+        }
+
+        function testSpeechRecognition() {
+            log('🔍 Проверка Speech Recognition API...');
+            const status = document.getElementById('speechStatus');
+            
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            
+            if (!SpeechRecognition) {
+                status.className = 'status error';
+                status.textContent = '❌ Speech Recognition не поддерживается';
+                log('❌ Speech Recognition API не найден', 'error');
+                log('💡 Используйте Chrome, Edge или Chromium-браузер', 'warn');
+                return;
+            }
+            
+            status.className = 'status success';
+            status.textContent = '✅ Speech Recognition поддерживается';
+            log('✅ Speech Recognition API доступен', 'success');
+            
+            document.getElementById('startBtn').disabled = false;
+        }
+
+        function startRecognition() {
+            log('🎤 Запуск распознавания речи...');
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            
+            recognition = new SpeechRecognition();
+            recognition.lang = 'ru-RU';
+            recognition.continuous = false;
+            recognition.interimResults = true;
+            
+            recognition.onstart = () => {
+                log('✅ Распознавание запущено', 'success');
+                document.getElementById('startBtn').disabled = true;
+                document.getElementById('stopBtn').disabled = false;
+                document.getElementById('transcript').innerHTML = '<em>Слушаю...</em>';
+            };
+            
+            recognition.onresult = (event) => {
+                const transcript = Array.from(event.results)
+                    .map(result => result[0].transcript)
+                    .join('');
+                
+                document.getElementById('transcript').textContent = transcript;
+                log(`🗣️ Распознано: ${transcript}`);
+            };
+            
+            recognition.onerror = (event) => {
+                log(`❌ Ошибка: ${event.error}`, 'error');
+            };
+            
+            recognition.onend = () => {
+                log('🛑 Распознавание завершено');
+                document.getElementById('startBtn').disabled = false;
+                document.getElementById('stopBtn').disabled = true;
+            };
+            
+            recognition.start();
+        }
+
+        function stopRecognition() {
+            if (recognition) {
+                recognition.stop();
+                log('🛑 Остановка распознавания...');
+            }
+        }
+
+        async function startClapDetection() {
+            log('👏 Запуск детектора хлопков...');
+            const status = document.getElementById('clapStatus');
+            const canvas = document.getElementById('visualizer');
+            const ctx = canvas.getContext('2d');
+            
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioContext.createAnalyser();
+                const microphone = audioContext.createMediaStreamSource(stream);
+                
+                analyser.fftSize = 512;
+                analyser.smoothingTimeConstant = 0.3;
+                microphone.connect(analyser);
+                
+                status.className = 'status success';
+                status.textContent = '✅ Детектор активен. Хлопните 2 раза!';
+                log('✅ Детектор хлопков активирован', 'success');
+                
+                const dataArray = new Uint8Array(analyser.frequencyBinCount);
+                let lastClapTime = 0;
+                let clapCount = 0;
+                
+                function draw() {
+                    if (!analyser) return;
+                    
+                    animationId = requestAnimationFrame(draw);
+                    
+                    analyser.getByteFrequencyData(dataArray);
+                    
+                    // Визуализация
+                    ctx.fillStyle = '#000';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    const barWidth = canvas.width / dataArray.length;
+                    let x = 0;
+                    
+                    for (let i = 0; i < dataArray.length; i++) {
+                        const barHeight = (dataArray[i] / 255) * canvas.height;
+                        ctx.fillStyle = `hsl(${(dataArray[i] / 255) * 360}, 100%, 50%)`;
+                        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                        x += barWidth;
+                    }
+                    
+                    // Детекция хлопков
+                    const average = dataArray.reduce((a, b) => a + b) / dataArray.length;
+                    
+                    if (average > 180) {
+                        const now = Date.now();
+                        const timeSince = now - lastClapTime;
+                        
+                        if (timeSince < 700 && timeSince > 100) {
+                            clapCount++;
+                            log(`👏 Хлопок ${clapCount}`);
+                            
+                            if (clapCount === 2) {
+                                log('✨ ДВОЙНОЙ ХЛОПОК ОБНАРУЖЕН!', 'success');
+                                status.textContent = '✨ Двойной хлопок обнаружен!';
+                                clapCount = 0;
+                            }
+                        } else if (timeSince >= 700) {
+                            clapCount = 1;
+                            log('👏 Хлопок 1');
+                        }
+                        
+                        lastClapTime = now;
+                    }
+                }
+                
+                draw();
+                
+            } catch (error) {
+                status.className = 'status error';
+                status.textContent = `❌ Ошибка: ${error.name}`;
+                log(`❌ Ошибка детектора: ${error.message}`, 'error');
+            }
+        }
+
+        function stopClapDetection() {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+            if (audioContext) {
+                audioContext.close();
+                audioContext = null;
+                analyser = null;
+            }
+            document.getElementById('clapStatus').textContent = '🛑 Детектор остановлен';
+            log('🛑 Детектор хлопков остановлен');
+        }
+
+        // Инициализация
+        log('🚀 Тестовая страница загружена', 'success');
+        log('💡 Нажимайте кнопки для проверки функций');
+    </script>
+</body>
+</html>

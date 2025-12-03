@@ -2,47 +2,80 @@ import { useEffect, useState } from 'react'
 import { invoke } from '@tauri-apps/api/core'
 import { listen } from '@tauri-apps/api/event'
 import CursorBrowser from './components/CursorBrowser'
-import WallpaperLibrary from './components/WallpaperLibrary'
 import Modal from './components/Modal'
 import StartScreen from './components/StartScreen'
 import MatterBackground from './components/MatterBackground'
 import AnimatedGradient from './components/AnimatedGradient'
 import UpdateChecker from './components/UpdateChecker'
-import { PetsManager } from './components/Pets'
+import LucyAssistant from './components/LucyAssistant'
+import LLMSettings from './components/LLMSettings'
+import DPETManager from './components/DPETManager'
 import './App.css'
+import { useI18n } from './i18n'
+import { initDiscordRPC, updatePresence, disconnectDiscordRPC } from './utils/discordRpc'
 
-type Tab = 'cursor' | 'wallpaper' | 'pets'
+type Tab = 'cursor' | 'lucy' | 'dpet'
 
 function App() {
+  const { t } = useI18n()
   const [showStartScreen, setShowStartScreen] = useState(true)
   const [activeTab, setActiveTab] = useState<Tab>('cursor')
   const [needCursorLib, setNeedCursorLib] = useState(false)
   const [downloading, setDownloading] = useState(false)
   const [progress, setProgress] = useState(0)
   const [supportOpen, setSupportOpen] = useState(false)
-  const [heartActive, setHeartActive] = useState(false)
-  const [showPetsManager, setShowPetsManager] = useState(false)
-  const toggleSupport = () => { setHeartActive(true); setSupportOpen(true) }
   const closeSupport = () => { setSupportOpen(false) }
 
   useEffect(() => {
     (async () => {
       try {
-        const path = await invoke<string>('check_cursorlib')
-        if (!path) setNeedCursorLib(true)
-      } catch {}
+        const result = await invoke<{needs_download: boolean, anime_exists: boolean, classic_exists: boolean, total_folders: number, missing_folders: string[], message: string}>('check_cursorlib_files')
+        if (result.needs_download) {
+          setNeedCursorLib(true)
+          console.log('Требуется загрузка библиотеки курсоров:', result.message)
+        } else {
+          console.log('Библиотека курсоров найдена:', result.total_folders, 'папок')
+        }
+      } catch (e) {
+        console.error('Ошибка проверки библиотеки курсоров:', e)
+        setNeedCursorLib(true)
+      }
     })()
-
-    // Listen for tray icon "show-pets" event
-    const unlisten = listen('show-pets', () => {
-      setActiveTab('pets')
-      setShowPetsManager(true)
-    })
-    
-    return () => {
-      unlisten.then(fn => fn())
-    }
   }, [])
+
+  // Инициализация Discord Rich Presence
+  useEffect(() => {
+    initDiscordRPC();
+
+    return () => {
+      disconnectDiscordRPC();
+    };
+  }, []);
+
+  // Обновление Discord presence при смене вкладки
+  useEffect(() => {
+    const tabDetails: Record<Tab, { details: string; state: string }> = {
+      cursor: {
+        details: '🖱️ Просматривает курсоры',
+        state: 'В библиотеке курсоров'
+      },
+      lucy: {
+        details: '🤖 Общается с Lucy AI',
+        state: 'Использует голосового ассистента'
+      },
+      dpet: {
+        details: '🐾 Управляет питомцами',
+        state: 'В библиотеке питомцев'
+      }
+    };
+
+    updatePresence({
+      details: tabDetails[activeTab].details,
+      state: tabDetails[activeTab].state,
+      largeImage: 'cursorverse_logo',
+      largeText: 'CursorVerse v1.5.0'
+    });
+  }, [activeTab]);
 
   // Предзагрузка библиотеки курсоров при старте приложения (в фоне)
   useEffect(() => {
@@ -77,8 +110,12 @@ function App() {
       await invoke<string>('download_cursorlib')
       setProgress(100)
       setNeedCursorLib(false)
+      
+      // Показываем сообщение о необходимости перезапуска
+      alert(t('cursorlib_install_success'))
     } catch (e) {
       console.error(e)
+      alert(t('cursorlib_install_error') + ' ' + e)
     } finally {
       setDownloading(false)
     }
@@ -101,36 +138,32 @@ function App() {
           <MatterBackground />
 
       <div className="sidebar">
-        <h1 className="logo">CursorVerse</h1>
-        {!showStartScreen && (
-          <button onClick={() => setShowStartScreen(true)} className="back-to-menu">
-            ← Главное меню
-          </button>
-        )}
-        <button onClick={toggleSupport} className={"support-btn" + (heartActive ? " active" : "")} title="Поддержать проект ❤️">
-          <div className="heart-support">
-            <div className="heart"></div>
-          </div>
-        </button>
+        <h1 className="logo">{t('start_title')}</h1>
+        <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+          <button onClick={() => setShowStartScreen(true)} className="back-to-menu">← {t('start_button')}</button>
+        </div>
         <UpdateChecker />
         <nav className="nav">
           <button 
             className={(activeTab === 'cursor' ? 'active ' : '')}
             onClick={() => setActiveTab('cursor')}
+            data-tab="cursors"
           >
-            🖱️ Курсоры
+            {t('tab_cursors')}
           </button>
           <button 
-            className={(activeTab === 'wallpaper' ? 'active ' : '')}
-            onClick={() => setActiveTab('wallpaper')}
+            className={(activeTab === 'lucy' ? 'active ' : '')}
+            onClick={() => setActiveTab('lucy')}
+            data-tab="lucy"
           >
-            🖼️ Обои
+            {t('tab_lucy')}
           </button>
           <button 
-            className={(activeTab === 'pets' ? 'active ' : '')}
-            onClick={() => { setActiveTab('pets'); setShowPetsManager(true); }}
+            className={(activeTab === 'dpet' ? 'active ' : '')}
+            onClick={() => setActiveTab('dpet')}
+            data-tab="dpet"
           >
-            🐾 Питомцы
+            🐾 Pets
           </button>
         </nav>
       </div>
@@ -158,13 +191,13 @@ function App() {
             position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50
           }}>
             <div style={{ width: 480, maxWidth: '90%', background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: 24 }}>
-              <h3 style={{ marginBottom: 12 }}>Нужна библиотека курсоров</h3>
-              <p style={{ opacity: 0.85 }}>Будет скачан архив CursorLib (~несколько сотен МБ) и распакован в ваш профиль. Продолжить?</p>
+              <h3 style={{ marginBottom: 12 }}>{t('cursorlib_needed_title')}</h3>
+              <p style={{ opacity: 0.85 }}>{t('cursorlib_needed_desc')}</p>
               <div style={{ marginTop: 16, display: 'flex', gap: 8, alignItems: 'center' }}>
                 {!downloading ? (
                   <>
-                    <button onClick={startDownload}>Скачать</button>
-                    <button onClick={() => setNeedCursorLib(false)} className="reset-btn">Позже</button>
+                    <button onClick={startDownload}>{t('download')}</button>
+                    <button onClick={() => setNeedCursorLib(false)} className="reset-btn">{t('later')}</button>
                   </>
                 ) : (
                   <div style={{ width: '100%' }}>
@@ -179,11 +212,14 @@ function App() {
           </div>
         )}
         {activeTab === 'cursor' && <CursorBrowser />}
-        {activeTab === 'wallpaper' && <WallpaperLibrary />}
-        {showPetsManager && <PetsManager onClose={() => { setShowPetsManager(false); setActiveTab('cursor'); }} />}
+        {activeTab === 'lucy' && <LucyAssistant />}
+        {activeTab === 'dpet' && <DPETManager />}
       </div>
         </div>
       )}
+      
+      {/* LLM Settings - Developer Panel */}
+      {!showStartScreen && <LLMSettings />}
     </>
   )
 }

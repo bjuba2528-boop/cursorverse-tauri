@@ -1,0 +1,28 @@
+{
+  "name": "Example Cat",
+  "author": "CursorVerse Team",
+  "fps": 24,
+  "scale": 1.0,
+  "behavior_change_rarity": 40.0,
+  
+  "can_move": true,
+  "can_drag": true,
+  "can_click": true,
+  "can_fall": true,
+  
+  "move_speed": 2.0,
+  
+  "physics": {
+    "max_velocity": 40.0,
+    "friction": 0.9,
+    "gravity": 2.0
+  },
+  
+  "animations": {
+    "idle": ["animations/idle/idle.gif"],
+    "walk": ["animations/walk/walk.gif"],
+    "fall": ["animations/fall/fall.gif"],
+    "drag": ["animations/drag/drag.gif"],
+    "click": ["animations/click/click.gif"]
+  }
+}

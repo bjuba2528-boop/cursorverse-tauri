@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Discord Application ID - Проверка</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .app-id {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            word-break: break-all;
+        }
+        .button {
+            display: inline-block;
+            background: #5865f2;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 10px 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #4752c4;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .success {
+            background: rgba(67, 181, 129, 0.3);
+            border: 2px solid #43b581;
+        }
+        .error {
+            background: rgba(240, 71, 71, 0.3);
+            border: 2px solid #f04747;
+        }
+        .warning {
+            background: rgba(250, 166, 26, 0.3);
+            border: 2px solid #faa61a;
+        }
+        .step {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border-left: 4px solid #5865f2;
+        }
+        .code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Discord RPC - Диагностика</h1>
+        
+        <div class="status warning">
+            <strong>⚠️ Проблема:</strong> Discord подключается, но активность не появляется
+        </div>
+
+        <h2>📋 Ваш Application ID:</h2>
+        <div class="app-id">
+            1444795416846663914
+        </div>
+
+        <h2>🔧 Шаги решения:</h2>
+
+        <div class="step">
+            <strong>1️⃣ Проверьте что приложение существует:</strong><br>
+            <a href="https://discord.com/developers/applications/1444795416846663914" target="_blank" class="button">
+                Открыть в Developer Portal
+            </a>
+            <br><br>
+            <strong>Ожидается:</strong>
+            <ul>
+                <li>✅ Страница открывается (не 404)</li>
+                <li>✅ Название: CursorVerse</li>
+            </ul>
+            <strong>Если 404 ошибка:</strong>
+            <ul>
+                <li>❌ Приложение удалено или не существует</li>
+                <li>🔧 Нужно создать новое приложение</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <strong>2️⃣ Включите Rich Presence:</strong><br>
+            В Developer Portal:
+            <ol>
+                <li>Откройте ваше приложение</li>
+                <li>Слева: <strong>Rich Presence</strong> → <strong>Visualizer</strong></li>
+                <li>Убедитесь что <strong>"Enable Rich Presence"</strong> включен ✅</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <strong>3️⃣ Добавьте картинку (опционально):</strong><br>
+            В Rich Presence → Art Assets:
+            <ol>
+                <li>Нажмите <strong>"Add Image(s)"</strong></li>
+                <li>Загрузите логотип CursorVerse</li>
+                <li>Назовите: <code>cursorverse_logo</code></li>
+                <li>Сохраните</li>
+            </ol>
+            <small>⏱️ Картинка может появиться через 5-10 минут (кеш Discord)</small>
+        </div>
+
+        <div class="step">
+            <strong>4️⃣ Если ничего не помогло - создайте новое приложение:</strong><br>
+            <a href="https://discord.com/developers/applications" target="_blank" class="button">
+                Discord Developer Portal
+            </a>
+            <br><br>
+            <ol>
+                <li>Нажмите <strong>"New Application"</strong></li>
+                <li>Название: <strong>CursorVerse</strong></li>
+                <li>Нажмите <strong>"Create"</strong></li>
+                <li>Скопируйте <strong>Application ID</strong></li>
+                <li>Замените в коде:</li>
+            </ol>
+            <div class="code">
+// src-tauri/src/discord_rpc.rs<br>
+const CLIENT_ID: &str = "<span style="color: #faa61a;">ВАШ_НОВЫЙ_ID</span>";
+            </div>
+            <div class="code">
+// Затем пересоберите:<br>
+cargo build --release --manifest-path src-tauri/Cargo.toml
+            </div>
+        </div>
+
+        <h2>🧪 Тест подключения:</h2>
+
+        <div class="step">
+            <strong>5️⃣ Правильная последовательность запуска:</strong><br>
+            <ol>
+                <li>Закройте CursorVerse (если открыт)</li>
+                <li>Закройте Discord <strong>ПОЛНОСТЬЮ</strong> (Ctrl+Q или через трей)</li>
+                <li>Запустите Discord</li>
+                <li>Подождите 5 секунд</li>
+                <li>Запустите CursorVerse</li>
+                <li>Откройте Lucy AI</li>
+                <li>Напишите любое сообщение</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <strong>6️⃣ Проверьте логи:</strong><br>
+            В CursorVerse нажмите <strong>F12</strong> и смотрите Console:
+            <div class="code" style="margin-top: 10px;">
+[Discord] Начало инициализации...<br>
+[Discord] Client ID: 1444795416846663914<br>
+[Discord] ✅ Успешно подключен к Discord IPC!<br>
+[Discord] ✅ Presence успешно обновлен!
+            </div>
+            Если видите эти логи - подключение работает! ✅
+        </div>
+
+        <div class="status success">
+            <strong>✅ Как проверить что работает:</strong><br>
+            1. В Discord откройте свой профиль (кликните на аватар)<br>
+            2. Должна появиться активность: <strong>"Играет в CursorVerse"</strong><br>
+            3. С деталями: "Lucy AI готова к работе"
+        </div>
+
+        <h2>❓ Часто задаваемые вопросы:</h2>
+
+        <div class="step">
+            <strong>Q: Логи показывают успех, но активности нет?</strong><br>
+            A: Application ID не зарегистрирован. Создайте новое приложение в Developer Portal.
+        </div>
+
+        <div class="step">
+            <strong>Q: Показывает "debug" вместо "CursorVerse"?</strong><br>
+            A: Это старая версия. Пересоберите проект: <code>cargo build --release</code>
+        </div>
+
+        <div class="step">
+            <strong>Q: Картинка не появляется?</strong><br>
+            A: Загрузите логотип в Art Assets с именем <code>cursorverse_logo</code>. Кеш обновляется ~10 минут.
+        </div>
+
+        <div class="step">
+            <strong>Q: Можно использовать без картинки?</strong><br>
+            A: Да! Текст будет отображаться, картинка опциональна.
+        </div>
+
+        <br>
+        <a href="#" onclick="window.close()" class="button">Закрыть</a>
+    </div>
+
+    <script>
+        console.log('%c🔍 Discord RPC Debug Info', 'color: #5865f2; font-size: 20px; font-weight: bold;');
+        console.log('Application ID:', '1444795416846663914');
+        console.log('Check URL:', 'https://discord.com/developers/applications/1444795416846663914');
+        console.log('Developer Portal:', 'https://discord.com/developers/applications');
+    </script>
+</body>
+</html>

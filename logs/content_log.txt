@@ -1,0 +1,21 @@
+
+
+[2025-12-01 19:03:19] Client version: 1763795194
+[2025-12-01 19:03:19] Load failed: C:\Users\shust\Desktop\cursorverse-tauri\steamapps\libraryfolders.vdf.
+[2025-12-01 19:03:19] Load failed: C:\Users\shust\Desktop\cursorverse-tauri\config\libraryfolders.vdf.
+[2025-12-01 19:03:19] Steam library folders configuration will be reset.
+[2025-12-01 19:03:19] No install folder configuration files found.
+[2025-12-01 19:03:19] Loaded 0 apps from install folder "C:\Users\shust\Desktop\cursorverse-tauri\steamapps\appmanifest_*.acf".
+[2025-12-01 19:03:19] Triggered async write of Steam library folders configuration (1 libraries).
+[2025-12-01 19:03:23] AppID 1980920 scheduler update : Priority First, not played for 1764608603 seconds, update disabled for 0 seconds
+[2025-12-01 19:03:23] AppID 1980920 Workshop update changed : Running Update,
+[2025-12-01 19:03:23] AppID 1980920 Workshop update changed : Running Update,Reconfiguring,
+[2025-12-01 19:03:23] AppID 1980920 Workshop update changed : Running Update,
+[2025-12-01 19:03:24] AppID 1980920 has no changes, 0 active:  0 target: 
+[2025-12-01 19:03:24] AppID 1980920 Workshop update changed : Running Update,Staging,
+[2025-12-01 19:03:24] AppID 1980920 Workshop update changed : Running Update,
+[2025-12-01 19:03:24] AppID 1980920 Workshop update changed : Running Update,Committing,
+[2025-12-01 19:03:24] AppID 1980920 starting commit from "C:\Users\shust\Desktop\cursorverse-tauri\steamapps\workshop/downloads/1980920" to "C:\Users\shust\Desktop\cursorverse-tauri\steamapps\workshop/content/1980920" : 0 updated, 0 moved, 0 deleted files
+[2025-12-01 19:03:24] AppID 1980920 Workshop update changed : Running Update,
+[2025-12-01 19:03:24] AppID 1980920 Workshop update changed : None
+[2025-12-01 19:03:24] AppID 1980920 scheduler finished : removed from schedule (result No Error, state 0x0) 

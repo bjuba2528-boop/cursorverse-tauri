@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPET</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow: hidden;
+            background: transparent;
+            cursor: default;
+            -webkit-app-region: no-drag;
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+
+        body:active {
+            cursor: grabbing;
+        }
+
+        #pet-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        #pet-sprite {
+            width: 128px;
+            height: 128px;
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+            background-size: auto;
+            pointer-events: auto;
+            -webkit-user-drag: none;
+            user-select: none;
+            image-rendering: pixelated;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            -webkit-app-region: no-drag;
+            box-shadow: none;
+            backdrop-filter: none;
+            filter: none;
+        }
+
+        .debug-info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 10px;
+            line-height: 1.4;
+            pointer-events: none;
+            display: none;
+        }
+
+        .debug-info.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="pet-container">
+        <div id="pet-sprite"></div>
+    </div>
+    
+    <div class="debug-info" id="debug">
+        <div>State: <span id="state">Idle</span></div>
+        <div>Frame: <span id="frame">0</span>/<span id="total-frames">0</span></div>
+        <div>FPS: <span id="fps">0</span></div>
+        <div>Velocity: <span id="velocity">0, 0</span></div>
+    </div>
+
+    <script type="module">
+        import { invoke } from '@tauri-apps/api/core';
+        import { getCurrentWindow, LogicalSize, LogicalPosition, currentMonitor } from '@tauri-apps/api/window';
+        
+        const appWindow = getCurrentWindow();
+        const petSprite = document.getElementById('pet-sprite');
+        const debugInfo = document.getElementById('debug');
+        
+        let petData = null;
+        let currentAnimation = null;
+        let currentFrameIndex = 0;
+        let currentAnimName = 'stand';
+        let lastFrameTime = 0;
+        let animAccumulator = 0; // накапливаем время для кадров анимации
+        const stateFps = {
+            stand: 10,
+            walk: 12,
+            drag: 10,
+            fall: 9,
+            jump: 9,
+            climb: 8,
+            sit: 8,
+            greet: 10,
+        };
+        let idleTimer = 0;
+        let nextIdleActionMs = 3000 + Math.random() * 5000;
+        let stateTimeMs = 0;
+        let phaseTimeMs = 0; // длительность текущей фазы поведения
+        let minStateDurationMs = 0;
+        const stateMinDurations = {
+            walk: 6000, // дольше ходить ~6с минимум
+            sit: 4000,  // дольше сидеть
+            greet: 3000, // подольше приветствие
+            jump: 500,   // коротко
+            fall: 0,
+            drag: 0,
+            stand: 0,
+            climb: 0
+        };
+        let isDragging = false;
+        let dragStart = { x: 0, y: 0 };
+        let velocity = { x: 0, y: 0 };
+        let position = { x: 0, y: 0 };
+        let isOnGround = false;
+        let spriteSheet = null;
+        let climbCooldown = 0; // кадры блокировки повторного карабканья после вершины
+        let climbEnabled = true; // флаг для разрешения карабканья
+        let lastDiscordUpdate = 0; // таймстамп последнего обновления Discord
+        const DISCORD_UPDATE_INTERVAL = 3000; // обновлять Discord раз в 3 секунды
+        // Плавное движение: целевая горизонтальная скорость и сторона
+        let targetVX = 0;
+        let lastFacing = 1; // 1 вправо, -1 влево
+        // Анти-дрожание: пороги и кеш последней целочисленной позиции
+        const VEL_EPS = 0.05;
+        const POS_EPS = 0.25;
+        let prevIntX = null, prevIntY = null;
+        let lastPersistTs = 0; // троттлинг сохранения позиции в backend
+        let persistIntX = null, persistIntY = null;
+        const PERSIST_EVERY_MS = 2000; // не чаще раза в 2 секунды
+        
+        // Получаем ID питомца из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const petId = urlParams.get('id');
+        
+        // Физические константы
+        const GRAVITY = 0.5;
+        const FRICTION = 0.92; // чуть плавнее замедление
+        const MAX_VELOCITY = 20;
+        const WALK_SPEED = 2.2; // средняя целевая скорость ходьбы
+        const ACCEL = 0.10;     // коэффициент плавного набора скорости
+        const DECEL = 0.12;     // коэффициент плавного торможения
+        const STAND_MS = 6000;  // увеличенная пауза стояния после падения
+
+        // Поведение по фазам: walk -> climb -> fall -> stand -> reverse
+        let behaviorDir = 1; // 1 вправо, -1 влево
+        let phase = 'walk';
+        function setPhase(p) {
+            phase = p;
+            stateTimeMs = 0;
+            phaseTimeMs = 0;
+            if (p === 'walk') {
+                targetVX = behaviorDir * WALK_SPEED;
+                if (petData.state !== 'walk') updateState('walk');
+            } else if (p === 'climb') {
+                targetVX = 0; updateState('climb');
+            } else if (p === 'fall') {
+                updateState('fall');
+            } else if (p === 'stand') {
+                targetVX = 0; updateState('stand');
+            }
+        }
+
+        // Stand ambient mini-actions (внутри фазы stand)
+        let standAmbientActive = false;
+        let standAmbientElapsed = 0;
+        let standAmbientDuration = 0;
+        let standAmbientCooldown = 1200; // задержка перед первым мини-действием
+        // Используем доступную высоту экрана (без панели задач) как землю
+        let GROUND_Y = (window.screen.availHeight ?? window.screen.height);
+        
+        // Загрузка данных питомца
+        async function loadPetData() {
+            try {
+                petData = await invoke('dpet_get_pet_data', { petId });
+                if (!petData) {
+                    console.error('Pet not found');
+                    return;
+                }
+                
+                console.log('Loaded pet:', petData);
+                
+                // Загружаем спрайтлист
+                await loadSpriteSheet();
+                
+                // Загрузка текущей анимации
+                await loadAnimation(petData.state || 'stand');
+                
+                // Получаем начальную позицию
+                const pos = await appWindow.outerPosition();
+                position = { x: pos.x, y: pos.y };
+                
+                // Устанавливаем размер окна по размеру спрайта только если значения известны
+                const spriteW = petData.config?.width ?? 128;
+                const spriteH = petData.config?.height ?? 128;
+                if (Number.isFinite(spriteW) && Number.isFinite(spriteH)) {
+                    await appWindow.setSize(new LogicalSize(spriteW, spriteH));
+                }
+
+                // Позиционируем питомца у нижней границы экрана (над панелью задач)
+                try {
+                    const monitor = await currentMonitor();
+                    if (monitor?.size) {
+                        const bottomY = monitor.size.height - ((spriteH ?? 128));
+                        position.y = bottomY;
+                        await appWindow.setPosition(new LogicalPosition(Math.round(position.x), Math.round(position.y)));
+                        isOnGround = true;
+                        updateState('stand');
+                    }
+                } catch (_) {}
+                
+                // Запускаем основной цикл
+                requestAnimationFrame(gameLoop);
+                
+            } catch (error) {
+                console.error('Failed to load pet data:', error);
+            }
+        }
+        
+        // Загрузка спрайтлиста
+        async function loadSpriteSheet() {
+            if (!petData?.config?.img) {
+                console.error('No sprite sheet defined');
+                return;
+            }
+            
+            try {
+                console.log('Loading sprite sheet for package:', petData.package_id);
+                
+                // Получаем base64 изображение через backend
+                const base64Data = await invoke('dpet_get_sprite_sheet', { 
+                    packageId: petData.package_id 
+                });
+                
+                // Устанавливаем фон для спрайта
+                spriteSheet = `data:image/png;base64,${base64Data}`;
+                petSprite.style.backgroundImage = `url(${spriteSheet})`;
+                console.log('Sprite sheet loaded successfully');
+                return Promise.resolve();
+            } catch (error) {
+                console.error('Failed to get sprite sheet:', error);
+                throw error;
+            }
+        }
+        
+        // Загрузка анимации для текущего состояния
+        function loadAnimation(state) {
+            const animePosCfg = petData?.config?.animePos ?? petData?.config?.anime_pos;
+            if (!animePosCfg) {
+                console.error('No anime_pos config');
+                // Фолбек: всегда показывать stand один кадр
+                currentAnimation = { line: 1, count: 1 };
+                currentAnimName = 'stand';
+                currentFrameIndex = 0;
+                updateSpriteFrame();
+                return;
+            }
+            
+            const animePos = animePosCfg;
+            let anim = null;
+            
+            // Map states to Shimeji animePos
+            switch (state.toLowerCase()) {
+                case 'idle':
+                case 'stand':
+                    anim = animePos.stand;
+                    currentAnimName = 'stand';
+                    break;
+                case 'walk':
+                    anim = animePos.walk;
+                    currentAnimName = 'walk';
+                    break;
+                case 'drag':
+                    anim = animePos.drag;
+                    currentAnimName = 'drag';
+                    break;
+                case 'fall':
+                case 'falling':
+                    anim = animePos.fall;
+                    currentAnimName = 'fall';
+                    break;
+                case 'sit':
+                    anim = animePos.sit;
+                    currentAnimName = 'sit';
+                    break;
+                case 'jump':
+                    anim = animePos.jump;
+                    currentAnimName = 'jump';
+                    break;
+                case 'greet':
+                    anim = animePos.greet;
+                    currentAnimName = 'greet';
+                    break;
+                case 'crawl':
+                    anim = animePos.crawl;
+                    currentAnimName = 'crawl';
+                    break;
+                case 'climb':
+                    anim = animePos.climb;
+                    currentAnimName = 'climb';
+                    break;
+            }
+            
+            if (!anim) {
+                console.warn('No animation for state:', state, '- using stand');
+                anim = animePos.stand;
+                currentAnimName = 'stand';
+            }
+            
+            if (!anim) {
+                console.error('No stand animation available');
+                return;
+            }
+            
+            currentAnimation = anim;
+            currentFrameIndex = 0;
+            updateSpriteFrame();
+        }
+        
+        // Обновление кадра спрайта
+        function updateSpriteFrame() {
+            if (!currentAnimation || !petData) return;
+            
+            const spriteWidth = petData.config.width || 128;
+            const spriteHeight = petData.config.height || 128;
+            const line = currentAnimation.line - 1; // Lines are 1-indexed
+            const frame = currentFrameIndex;
+            
+            // Сдвигаем фон на нужный кадр
+            const x = -frame * spriteWidth;
+            const y = -line * spriteHeight;
+            petSprite.style.backgroundPosition = `${x}px ${y}px`;
+            petSprite.style.width = `${spriteWidth}px`;
+            petSprite.style.height = `${spriteHeight}px`;
+        }
+        
+        // Основной игровой цикл
+        function gameLoop(timestamp) {
+            if (!petData) return;
+            
+            const deltaTime = Math.min(50, timestamp - lastFrameTime); // ограничим скачки
+            stateTimeMs += deltaTime;
+            phaseTimeMs += deltaTime;
+            update(deltaTime);
+            // Анимация: регулируем скорость кадров через аккумулятор
+            const baseFpsCfg = petData.config?.fps || 12;
+            const baseFps = stateFps[currentAnimName] ?? baseFpsCfg;
+            // Ускоряем анимацию при высоких скоростях, кроме climb (фиксированная скорость)
+            let speedFactor = 1.0;
+            if (petData.state !== 'climb') {
+                speedFactor = Math.min(1.6, 1 + (Math.abs(velocity.x) + Math.abs(velocity.y)) / 80);
+            }
+            const targetFrameTime = 1000 / (baseFps * speedFactor);
+            animAccumulator += deltaTime;
+            while (animAccumulator >= targetFrameTime) {
+                updateAnimationFrame();
+                animAccumulator -= targetFrameTime;
+            }
+            // Мини-анимации во время стояния (не сбивают фазовый таймер)
+            if (phase === 'stand') {
+                standAmbientElapsed += deltaTime;
+                if (!standAmbientActive) {
+                    if (standAmbientElapsed >= standAmbientCooldown) {
+                        const opts = [
+                            { s: 'greet', d: 1500 },
+                            { s: 'sit', d: 2500 },
+                        ];
+                        const pick = opts[Math.floor(Math.random() * opts.length)];
+                        updateState(pick.s);
+                        standAmbientActive = true;
+                        standAmbientDuration = pick.d;
+                        standAmbientElapsed = 0;
+                    }
+                } else {
+                    if (standAmbientElapsed >= standAmbientDuration) {
+                        updateState('stand');
+                        standAmbientActive = false;
+                        standAmbientElapsed = 0;
+                        standAmbientCooldown = 1400 + Math.random() * 2000;
+                    }
+                }
+            } else {
+                // сброс, если вышли из стояния
+                standAmbientActive = false;
+                standAmbientElapsed = 0;
+            }
+            render();
+            lastFrameTime = timestamp;
+            
+            requestAnimationFrame(gameLoop);
+        }
+        
+        // Обновление кадра анимации
+        function updateAnimationFrame() {
+            if (!currentAnimation) return;
+            
+            currentFrameIndex++;
+            if (currentFrameIndex >= currentAnimation.count) {
+                currentFrameIndex = 0;
+            }
+            updateSpriteFrame();
+        }
+        
+        // Обновление состояния
+        function update(deltaTime) {
+            const dt = Math.max(0.5, deltaTime) / (1000 / 60); // шкала под 60 FPS
+            if (isDragging || !petData.config.can_fall) return;
+            
+            // Гравитация (не во время карабканья!)
+            if (petData.state !== 'climb') {
+                if (position.y < GROUND_Y) {
+                    const gravity = petData.config?.physics?.gravity || 2.0;
+                    velocity.y += gravity * dt; // учитываем дельту времени
+                    
+                    if (petData.state !== 'fall' && petData.state !== 'jump') {
+                        updateState('fall');
+                    }
+                } else {
+                    position.y = GROUND_Y;
+                    velocity.y = 0;
+                    
+                    if (!isOnGround) {
+                        isOnGround = true;
+                        // дальнейшую фазу обработаем ниже в блоке переходов фаз
+                    }
+                }
+            }
+            
+            // Управляемая ходьба (фаза walk)
+            if (isOnGround && petData.config?.can_move && phase === 'walk') {
+                targetVX = behaviorDir * WALK_SPEED;
+                if (petData.state !== 'walk') updateState('walk');
+            }
+
+            // Визуальный разворот спрайта по направлению движения на земле
+            if (petData.state === 'walk' && petData.state !== 'climb') {
+                if (targetVX > 0.2) { lastFacing = 1; petSprite.style.transform = 'scaleX(1)'; }
+                else if (targetVX < -0.2) { lastFacing = -1; petSprite.style.transform = 'scaleX(-1)'; }
+            }
+
+            // Логика карабканья по бокам экрана (climb)
+            const petW = petData.config?.width || 128;
+            const screenWidth = window.screen.width;
+            const nearLeft = position.x <= 0;
+            const nearRight = position.x >= (screenWidth - petW);
+            const canClimb = climbEnabled && (position.y > 10); // не начинать прямо на вершине
+            if (phase === 'walk' && (nearLeft || nearRight) && petData.config?.animePos?.climb && climbCooldown <= 0 && canClimb) {
+                // Начать карабкаться вверх вдоль соответствующей стороны
+                targetVX = 0;
+                // Фиксированная скорость подъёма без лагов
+                velocity.y = -1.4;
+                // Зафиксировать X на краю, чтобы не дрожало
+                position.x = nearLeft ? 0 : (screenWidth - petW);
+                // Отразить спрайт: на левой стене зеркало, на правой — норм
+                petSprite.style.transform = nearLeft ? 'scaleX(-1)' : 'scaleX(1)';
+                setPhase('climb');
+            } else if (petData.state !== 'climb') {
+                // Не у стены и не карабкается — сохраняем последнюю сторону, чтобы не мигал
+                petSprite.style.transform = lastFacing === 1 ? 'scaleX(1)' : 'scaleX(-1)';
+            }
+            
+            // Во время climb держим X строго на краю
+            if (petData.state === 'climb') {
+                const onLeft = position.x < screenWidth / 2;
+                position.x = onLeft ? 0 : (screenWidth - petW);
+                targetVX = 0;
+            }
+            
+            // Трение
+            if (isOnGround) {
+                const friction = petData.config?.physics?.friction || FRICTION;
+                // Плавно тянем текущую скорость к целевой
+                const k = (Math.abs(targetVX) > 0.01 ? ACCEL : DECEL) * dt;
+                velocity.x += (targetVX - velocity.x) * k;
+                // Лёгкая экспоненциальная потеря скорости
+                velocity.x *= Math.pow(friction, dt);
+                // В фазе walk не переходим в stand сами — ждём стены
+                if (Math.abs(velocity.x) < VEL_EPS && Math.abs(targetVX) < VEL_EPS) {
+                    velocity.x = 0;
+                }
+            }
+            
+            // Ограничение скорости
+            const maxVel = petData.config?.physics?.max_velocity || 40;
+            const speed = Math.sqrt(velocity.x ** 2 + velocity.y ** 2);
+            if (speed > maxVel) {
+                velocity.x = (velocity.x / speed) * maxVel;
+                velocity.y = (velocity.y / speed) * maxVel;
+            }
+            
+            // Обновление позиции
+            position.x += velocity.x;
+            position.y += velocity.y;
+            
+            // Границы экрана
+            // reuse screenWidth computed above
+            // Только если не карабкается — предотвращаем дёрганье
+            if (petData.state !== 'climb') {
+                if (position.x < 0) {
+                    position.x = 0;
+                    velocity.x = 0; targetVX = 0;
+                } else if (position.x > screenWidth - (petData.config?.width || 128)) {
+                    // корректный учёт ширины питомца
+                    position.x = screenWidth - (petData.config?.width || 128);
+                    velocity.x = 0; targetVX = 0;
+                }
+            }
+
+            // Остановка карабканья на половине экрана: прыжок в сторону
+            if (petData.state === 'climb') {
+                const halfScreen = window.screen.availHeight / 2; // половина экрана
+                if (position.y <= halfScreen) {
+                    // Достиг половины — прыжок в сторону
+                    const petW = petData.config?.width || 128;
+                    const screenWidth = window.screen.width;
+                    const onLeft = position.x <= 10;
+                    
+                    // Анимация прыжка и отталкивание в сторону
+                    updateState('jump');
+                    velocity.y = -1; // лёгкий прыжок вверх
+                    velocity.x = onLeft ? 5 : -5; // сильный толчок в сторону от стены
+                    targetVX = onLeft ? WALK_SPEED : -WALK_SPEED; // плавно продолжим в сторону
+                    position.x = onLeft ? 60 : (screenWidth - petW - 60);
+                    
+                    // Через короткое время переход в падение
+                    setTimeout(() => {
+                        if (petData.state === 'jump') {
+                            setPhase('fall');
+                        }
+                    }, 200);
+                    
+                    isOnGround = false;
+                    climbCooldown = 90; // ~1.5 сек при 60 FPS
+                    climbEnabled = false; // временно запретить карабканье
+                }
+            }
+
+            // Таймер охлаждения карабканья
+            if (climbCooldown > 0) {
+                climbCooldown -= 1;
+                if (climbCooldown <= 0) {
+                    climbEnabled = true; // снова разрешить карабканье
+                }
+            }
+
+            // Переходы фаз после приземления
+            if (isOnGround) {
+                if (phase === 'fall' && petData.state !== 'stand') {
+                    setPhase('stand');
+                } else if (phase === 'stand' && phaseTimeMs >= STAND_MS && !standAmbientActive) {
+                    behaviorDir *= -1; // меняем направление
+                    setPhase('walk');
+                }
+            }
+            
+            // Обновляем позицию окна только когда целочисленные координаты реально изменились
+            const intX = Math.round(position.x);
+            const intY = Math.round(position.y);
+            if (prevIntX !== intX || prevIntY !== intY) {
+                prevIntX = intX; prevIntY = intY;
+                appWindow.setPosition(new LogicalPosition(intX, intY));
+            }
+            
+            // Сохраняем позицию в backend с троттлингом и только при заметном изменении
+            const now = performance.now();
+            if ((persistIntX !== intX || persistIntY !== intY) && (now - lastPersistTs) >= PERSIST_EVERY_MS) {
+                persistIntX = intX; persistIntY = intY; lastPersistTs = now;
+                invoke('dpet_update_position', {
+                    petId,
+                    x: intX,
+                    y: intY
+                }).catch(() => {});
+            }
+        }
+        
+        // Отрисовка
+        function render() {
+            if (debugInfo.classList.contains('show')) {
+                document.getElementById('state').textContent = petData.state;
+                document.getElementById('velocity').textContent = 
+                    `${velocity.x.toFixed(1)}, ${velocity.y.toFixed(1)}`;
+                document.getElementById('fps').textContent = petData.config.fps;
+            }
+        }
+        
+        // Обновление состояния
+        function updateState(newState) {
+            if (petData.state === newState) return;
+            
+            petData.state = newState;
+            stateTimeMs = 0;
+            minStateDurationMs = stateMinDurations[newState] || 0;
+            loadAnimation(newState);
+            
+            invoke('dpet_update_state', { petId, state: newState })
+                .catch(console.error);
+            // Обновим Discord RPC, если команда доступна (с троттлингом)
+            const now = Date.now();
+            if (now - lastDiscordUpdate >= DISCORD_UPDATE_INTERVAL) {
+                lastDiscordUpdate = now;
+                invoke('discord_set_activity', {
+                    state: newState,
+                    details: `Pet: ${petData.name}`,
+                }).catch(() => {});
+            }
+        }
+        
+        // Обработка перетаскивания
+        let mouseDownPos = null;
+        
+        document.addEventListener('mousedown', async (e) => {
+            if (!petData?.config?.can_drag) return;
+            
+            isDragging = true;
+            isOnGround = false;
+            mouseDownPos = { x: e.screenX, y: e.screenY };
+            const pos = await appWindow.outerPosition();
+            dragStart = { x: pos.x, y: pos.y };
+            velocity = { x: 0, y: 0 };
+            
+            if (petData.state !== 'drag') {
+                updateState('drag');
+            }
+        });
+        
+        document.addEventListener('mousemove', async (e) => {
+            if (!isDragging) return;
+            
+            const newX = dragStart.x + (e.screenX - mouseDownPos.x);
+            const newY = dragStart.y + (e.screenY - mouseDownPos.y);
+            
+            // Во время перетаскивания ограничиваем в пределах экрана,
+            // чтобы окно не "выпадало" за левую/правую границы
+            const petW = petData?.config?.width ?? 128;
+            const petH = petData?.config?.height ?? 128;
+            const sw = window.screen.width;
+            const sh = window.screen.availHeight ?? window.screen.height;
+            const clampedX = Math.max(0, Math.min(newX, sw - petW));
+            const clampedY = Math.max(0, Math.min(newY, sh - petH));
+
+            position.x = clampedX;
+            position.y = clampedY;
+            
+            await appWindow.setPosition(new LogicalPosition(Math.round(clampedX), Math.round(clampedY)));
+        });
+        
+        document.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            
+            isDragging = false;
+            
+            // Бросок с инерцией
+            const throwVelocity = {
+                x: (e.screenX - mouseDownPos.x) * 0.2,
+                y: (e.screenY - mouseDownPos.y) * 0.2
+            };
+            
+            velocity = throwVelocity;
+            // Если бросок вверх — короткое состояние jump, иначе fall
+            if (velocity.y < -2) {
+                updateState('jump');
+            } else {
+                updateState('fall');
+            }
+
+            // Зафиксируем последнюю позицию сразу после завершения перетаскивания
+            const intX = Math.round(position.x);
+            const intY = Math.round(position.y);
+            persistIntX = intX; persistIntY = intY; lastPersistTs = performance.now();
+            invoke('dpet_update_position', {
+                petId,
+                x: intX,
+                y: intY
+            }).catch(() => {});
+        });
+        
+        // Обработка клика
+        document.addEventListener('click', () => {
+            if (petData?.config?.can_click && !isDragging) {
+                updateState('greet');
+                setTimeout(() => updateState('stand'), 1000);
+            }
+        });
+        
+        // Инициализация
+        (async () => {
+            try {
+                const monitor = await currentMonitor();
+                if (monitor?.size) {
+                    const h = monitor.size.height;
+                    const ph = petData?.config?.height ?? 128;
+                    const availH = window.screen.availHeight ?? h;
+                    GROUND_Y = availH - ph; // без отступа 5px — ниже
+                }
+            } catch (_) {}
+            loadPetData();
+        })();
+    </script>
+</body>
+</html>

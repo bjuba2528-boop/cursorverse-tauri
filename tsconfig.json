@@ -16,11 +16,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/main.tsx", "src/App.tsx", "src/App.css", "src/components/**/*", "src/hooks/**/*", "src/*.css"],
   "exclude": [
     "Seelen-UI-master",
     "external/**",
     "src/seelen-ui/**"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "include": ["src"]
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { invoke } from '@tauri-apps/api/core'
 import Modal from './Modal'
+import { useI18n } from '../i18n'
 
 interface CursorScheme {
   name: string
@@ -10,6 +11,7 @@ interface CursorScheme {
 }
 
 function CursorBrowser() {
+  const { t } = useI18n()
   const [schemes, setSchemes] = useState<CursorScheme[]>([])
   const [favorites, setFavorites] = useState<string[]>([])
   const [searchQuery, setSearchQuery] = useState('')
@@ -25,11 +27,28 @@ function CursorBrowser() {
   const [favoritingScheme, setFavoritingScheme] = useState<string | null>(null)
   const [previewModalOpen, setPreviewModalOpen] = useState(false)
   const [previewModalImage, setPreviewModalImage] = useState('')
+  const [downloading, setDownloading] = useState(false)
+  const [downloadProgress, setDownloadProgress] = useState(0)
+  const [pageInputOpen, setPageInputOpen] = useState(false)
+  const [pageInputValue, setPageInputValue] = useState('')
+  const [cursorSize, setCursorSize] = useState<number | null>(null)
+  const [cursorSizeModalOpen, setCursorSizeModalOpen] = useState(false)
+  // const [checkingLib, setCheckingLib] = useState(false) // удалено: проверка библиотеки не используется
   const containerRef = useRef<HTMLDivElement | null>(null)
   const pageSize = 12
 
   useEffect(() => {
     loadCursors()
+  }, [])
+
+  // Текущий размер курсора
+  useEffect(() => {
+    (async () => {
+      try {
+        const size = await invoke<number>('get_cursor_size')
+        setCursorSize(size)
+      } catch {}
+    })()
   }, [])
 
   // Если библиотека была предзагружена на уровне приложения — используем её сразу
@@ -86,7 +105,7 @@ function CursorBrowser() {
       const favs = await invoke<string[]>('get_favorites')
       setFavorites(favs)
     } catch (error) {
-      showMessage('Ошибка загрузки курсоров: ' + error, 'error')
+      showMessage(t('error_loading_cursors') + ' ' + error, 'error')
     }
   }
 
@@ -169,6 +188,54 @@ function CursorBrowser() {
     }
   }
 
+  // Удалены handleIncreaseCursor и handleDecreaseCursor - теперь используется ползунок
+
+  const handlePageInputSubmit = () => {
+    const pageNum = parseInt(pageInputValue)
+    if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= totalPages) {
+      setPage(pageNum)
+      setPageInputOpen(false)
+      setPageInputValue('')
+    } else {
+      showMessage(`Страница должна быть от 1 до ${totalPages}`, 'warning')
+    }
+  }
+
+  // Убрана явная проверка библиотеки курсоров по кнопке
+
+  const handleDownloadCursorLib = async () => {
+    const confirmed = window.confirm(t('confirm_download_cursorlib'))
+    
+    if (!confirmed) return
+    
+    setDownloading(true)
+    setDownloadProgress(0)
+    
+    // Имитация прогресса загрузки
+    const progressInterval = setInterval(() => {
+      setDownloadProgress(prev => {
+        if (prev >= 90) return prev
+        return prev + Math.random() * 15
+      })
+    }, 300)
+    
+    try {
+      await invoke<string>('download_cursorlib')
+      setDownloadProgress(100)
+      clearInterval(progressInterval)
+      await new Promise(resolve => setTimeout(resolve, 500))
+      showMessage(t('cursorlib_install_success'), 'success')
+    } catch (error) {
+      clearInterval(progressInterval)
+      showMessage(t('cursorlib_install_error') + ' ' + error, 'error')
+    } finally {
+      setTimeout(() => {
+        setDownloading(false)
+        setDownloadProgress(0)
+      }, 1000)
+    }
+  }
+
   const filteredSchemes = schemes.filter((s: CursorScheme) => {
     const query = searchQuery.toLowerCase().trim()
     const nameMatch = s.name.toLowerCase().includes(query)
@@ -194,14 +261,15 @@ function CursorBrowser() {
   }, [searchQuery, category, onlyFavs])
 
   return (
+    <>
     <div className="cursor-browser" ref={containerRef}>
-      <h2>Библиотека курсоров</h2>
+      <h2>{t('cursorlib_title')}</h2>
       
       <Modal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)}
         type={modalType}
-        title={modalType === 'error' ? 'Ошибка' : modalType === 'success' ? 'Успешно' : 'Уведомление'}
+        title={modalType === 'error' ? t('modal_error') : modalType === 'success' ? t('modal_success') : t('modal_info')}
       >
         <p>{message}</p>
       </Modal>
@@ -210,7 +278,7 @@ function CursorBrowser() {
         isOpen={previewModalOpen}
         onClose={() => setPreviewModalOpen(false)}
         type="info"
-        title="Превью курсора"
+        title={t('cursor_preview_title')}
       >
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px' }}>
           <img 
@@ -225,27 +293,185 @@ function CursorBrowser() {
           />
         </div>
       </Modal>
+
+      <Modal
+        isOpen={pageInputOpen}
+        onClose={() => {
+          setPageInputOpen(false)
+          setPageInputValue('')
+        }}
+        type="info"
+        title="Перейти на страницу"
+      >
+        <div style={{ padding: '20px' }}>
+          <p style={{ 
+            marginBottom: 15, 
+            color: '#ffb3d9',
+            textShadow: '0 0 10px rgba(220,20,60,0.5)'
+          }}>
+            Введите номер страницы (от 1 до {totalPages}):
+          </p>
+          <input
+            type="number"
+            min="1"
+            max={totalPages}
+            value={pageInputValue}
+            onChange={(e) => setPageInputValue(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') handlePageInputSubmit()
+            }}
+            style={{
+              width: '100%',
+              padding: '12px',
+              fontSize: '1.1rem',
+              background: 'rgba(139,0,0,0.3)',
+              border: '2px solid rgba(220,20,60,0.6)',
+              borderRadius: 8,
+              color: 'white',
+              textAlign: 'center',
+              boxShadow: '0 0 20px rgba(220,20,60,0.3), inset 0 0 20px rgba(139,0,0,0.2)'
+            }}
+            autoFocus
+            placeholder={`1-${totalPages}`}
+          />
+          <button
+            onClick={handlePageInputSubmit}
+            style={{
+              width: '100%',
+              marginTop: 15,
+              padding: '12px',
+              fontSize: '1rem'
+            }}
+          >
+            Перейти
+          </button>
+        </div>
+      </Modal>
       
       <div className="search-bar">
         <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
-          <button className={category==='Anime'?'active':''} onClick={()=>setCategory('Anime')}>Аниме</button>
-          <button className={category==='Classic'?'active':''} onClick={()=>setCategory('Classic')}>Классика</button>
-          <button className={category==='All'?'active':''} onClick={()=>setCategory('All')}>Все</button>
+          <button className={category==='Anime'?'active':''} onClick={()=>setCategory('Anime')}>{t('category_anime')}</button>
+          <button className={category==='Classic'?'active':''} onClick={()=>setCategory('Classic')}>{t('category_classic')}</button>
+          <button className={category==='All'?'active':''} onClick={()=>setCategory('All')}>{t('category_all')}</button>
           <button className={onlyFavs?'active':''} onClick={()=>setOnlyFavs(v=>!v)}>
-            ⭐ Избранные {onlyFavs ? '(вкл)' : '(выкл)'}
+            ⭐ {t('favorites')} {onlyFavs ? `(${t('on')})` : `(${t('off')})`}
           </button>
         </div>
         <input 
           type="text" 
-          placeholder="Поиск схем курсоров..." 
+          placeholder={t('search_schemes_placeholder')} 
           value={searchQuery}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
         />
       </div>
 
-      <button onClick={handleResetCursor} className="reset-btn">
-        Сбросить к стандартным
-      </button>
+      <div style={{ display: 'flex', gap: 8, marginBottom: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+        <button onClick={handleResetCursor} className="reset-btn">
+          {t('reset_to_default')}
+        </button>
+
+        {/* Ползунок размера курсора в стиле Windows 11 */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          background: 'rgba(220, 20, 60, 0.15)',
+          border: '1px solid rgba(220, 20, 60, 0.4)',
+          borderRadius: 12,
+          padding: '12px 20px',
+          minWidth: 280,
+          transition: 'all 0.2s ease'
+        }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: 8
+          }}>
+            <span style={{
+              color: '#ff5e78',
+              fontSize: 13,
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              letterSpacing: 0.5,
+              textShadow: '0 0 8px rgba(220, 20, 60, 0.4)'
+            }}>
+              🖱️ Размер курсора
+            </span>
+            <span style={{
+              color: '#ff8099',
+              fontSize: 15,
+              fontWeight: 700,
+              padding: '2px 10px',
+              background: 'rgba(139, 0, 0, 0.3)',
+              borderRadius: 6,
+              border: '1px solid rgba(220, 20, 60, 0.3)',
+              minWidth: 50,
+              textAlign: 'center',
+              textShadow: '0 0 10px rgba(220, 20, 60, 0.6)'
+            }}>
+              {cursorSize ? `${cursorSize}%` : '100%'}
+            </span>
+          </div>
+
+          <button
+            onClick={() => setCursorSizeModalOpen(true)}
+            style={{
+              width: '100%',
+              padding: '12px 16px',
+              background: 'linear-gradient(135deg, #dc143c, #b00020)',
+              color: 'white',
+              border: '1px solid rgba(220, 20, 60, 0.5)',
+              borderRadius: 8,
+              fontSize: 14,
+              fontWeight: 600,
+              cursor: 'pointer',
+              boxShadow: '0 4px 12px rgba(220, 20, 60, 0.3)',
+              transition: 'all 0.3s ease',
+              marginTop: 8
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)'
+              e.currentTarget.style.boxShadow = '0 6px 16px rgba(220, 20, 60, 0.5)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(220, 20, 60, 0.3)'
+            }}
+          >
+            {t('cursor_size_change_button')}
+          </button>
+        </div>
+        
+        {/* Кнопка проверки библиотеки удалена по просьбе пользователя */}
+        <button 
+          onClick={handleDownloadCursorLib} 
+          className="reset-btn"
+          disabled={downloading}
+          style={{ 
+            position: 'relative',
+            overflow: 'hidden',
+            background: downloading ? 'rgba(0,0,0,0.5)' : 'linear-gradient(135deg, #DC143C, #FF1493)',
+            cursor: downloading ? 'not-allowed' : 'pointer',
+            transition: 'all 0.3s ease'
+          }}
+        >
+          {downloading && (
+            <div style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              height: `${downloadProgress}%`,
+              width: '100%',
+              background: 'linear-gradient(180deg, rgba(220,20,60,0.3), rgba(220,20,60,0.8))',
+              transition: 'height 0.3s ease',
+              zIndex: 0
+            }} />
+          )}
+          <span style={{ position: 'relative', zIndex: 1 }}>
+            {downloading ? `⏬ ${Math.round(downloadProgress)}%` : `📦 ${t('download_cursorlib_btn')}`}
+          </span>
+        </button>
+      </div>
 
       <div className="cursor-grid">
         {pagedSchemes.map((scheme: CursorScheme) => (
@@ -319,14 +545,14 @@ function CursorBrowser() {
                     />
                   </div>
                 ) : (
-                  <div style={{opacity:0.3, fontSize:'0.85rem'}}>Загрузка...</div>
+                  <div style={{opacity:0.3, fontSize:'0.85rem'}}>{t('loading')}</div>
                 )
               ) : (
-                <div style={{opacity:0.2, fontSize:'0.85rem'}}>Нет превью</div>
+                <div style={{opacity:0.2, fontSize:'0.85rem'}}>{t('no_preview')}</div>
               )}
             </div>
             <div className="cursor-info">
-              {Object.keys(scheme.cursors).length} курсоров
+              {Object.keys(scheme.cursors).length} {t('cursors_lower')}
             </div>
             <div className="cursor-actions">
               <button 
@@ -334,7 +560,7 @@ function CursorBrowser() {
                 onClick={() => handleApplyCursor(scheme)}
                 disabled={applyingScheme === scheme.name}
               >
-                <span className="button-text">Применить</span>
+                <span className="button-text">{t('apply')}</span>
                 <span className="button-icon-area">
                   <span className="icon-default">→</span>
                   <span className="icon-success">✓</span>
@@ -345,8 +571,8 @@ function CursorBrowser() {
                   className="animated-button remove-button"
                   onClick={() => handleRemoveFavorite(scheme.name)}
                 >
-                  <span>Убрать</span>
-                  <span className="button-icon">★</span>
+                  <span>{t('remove')}</span>
+                  <span className="button-icon">💔</span>
                 </button>
               ) : (
                 <button 
@@ -354,8 +580,8 @@ function CursorBrowser() {
                   onClick={() => handleAddFavorite(scheme.name)}
                   disabled={favoritingScheme === scheme.name}
                 >
-                  <span>В избранное</span>
-                  <span className="button-icon">★</span>
+                  <span>{t('to_favorites')}</span>
+                  <span className="button-icon">❤️</span>
                 </button>
               )}
             </div>
@@ -421,7 +647,15 @@ function CursorBrowser() {
                   {p}
                 </button>
               ) : (
-                <span key={`ellipsis-${idx}`} className="page-ellipsis">{p}</span>
+                <span 
+                  key={`ellipsis-${idx}`} 
+                  className="page-ellipsis clickable"
+                  onClick={() => setPageInputOpen(true)}
+                  title="Перейти на страницу..."
+                  style={{ cursor: 'pointer' }}
+                >
+                  {p}
+                </span>
               )
             )
           })()}
@@ -437,6 +671,91 @@ function CursorBrowser() {
         </button>
       </div>
     </div>
+
+    {/* Модальное окно изменения размера курсора */}
+    {cursorSizeModalOpen && (
+      <Modal
+        isOpen={cursorSizeModalOpen}
+        onClose={() => setCursorSizeModalOpen(false)}
+        title={t('cursor_size_modal_title')}
+      >
+        <div style={{
+          padding: '20px',
+          color: '#e0e0e0',
+          fontSize: 14,
+          lineHeight: 1.6
+        }}>
+          <div style={{
+            marginBottom: 20,
+            padding: 15,
+            background: 'rgba(220, 20, 60, 0.15)',
+            borderRadius: 8,
+            border: '1px solid rgba(220, 20, 60, 0.3)'
+          }}>
+            <p style={{ margin: '0 0 10px 0', fontSize: 15, fontWeight: 600 }}>
+              {t('cursor_size_apology_title')}
+            </p>
+            <p style={{ margin: 0 }}>
+              {t('cursor_size_apology_text')}
+            </p>
+          </div>
+
+          <div style={{
+            marginBottom: 20,
+            padding: 15,
+            background: 'rgba(139, 0, 0, 0.2)',
+            borderRadius: 8,
+            border: '1px solid rgba(220, 20, 60, 0.25)'
+          }}>
+            <p style={{ margin: '0 0 10px 0', fontSize: 15, fontWeight: 600 }}>
+              {t('cursor_size_instruction_title')}
+            </p>
+            <ol style={{ margin: 0, paddingLeft: 20 }}>
+              <li>{t('cursor_size_instruction_step1')}</li>
+              <li>{t('cursor_size_instruction_step2')}</li>
+              <li>{t('cursor_size_instruction_step3')}</li>
+              <li>{t('cursor_size_instruction_step4')}</li>
+            </ol>
+          </div>
+
+          <button
+            onClick={async () => {
+              try {
+                await invoke('open_cursor_size_settings')
+                setCursorSizeModalOpen(false)
+                showMessage(t('cursor_size_settings_opened'), 'success')
+              } catch (error) {
+                showMessage(t('cursor_size_settings_error') + ' ' + error, 'error')
+              }
+            }}
+            style={{
+              width: '100%',
+              padding: '14px 20px',
+              background: 'linear-gradient(135deg, #dc143c, #b00020)',
+              color: 'white',
+              border: '1px solid rgba(220, 20, 60, 0.5)',
+              borderRadius: 8,
+              fontSize: 15,
+              fontWeight: 600,
+              cursor: 'pointer',
+              boxShadow: '0 4px 16px rgba(220, 20, 60, 0.4)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)'
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(220, 20, 60, 0.6)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = '0 4px 16px rgba(220, 20, 60, 0.4)'
+            }}
+          >
+            {t('cursor_size_open_settings')}
+          </button>
+        </div>
+      </Modal>
+    )}
+    </>
   )
 }
 

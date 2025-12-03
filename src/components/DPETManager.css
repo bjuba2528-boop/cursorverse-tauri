@@ -1,0 +1,374 @@
+/* DPET Manager - Modern Pet Library UI */
+.dpet-manager {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  color: #e0e0e0;
+  background: transparent;
+}
+
+/* Header */
+.dpet-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dpet-header h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.dpet-subtitle {
+  font-size: 1.1rem;
+  color: #ffb3b3;
+  margin: 0;
+}
+
+/* View Switcher */
+.dpet-view-switcher {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 2rem;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 8px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dpet-view-switcher button {
+  flex: 1;
+  padding: 12px 24px;
+  border: none;
+  background: transparent;
+  color: #999;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.dpet-view-switcher button.active {
+  background: rgba(255, 74, 74, 0.25);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 74, 74, 0.25);
+}
+
+.dpet-view-switcher button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+}
+
+/* Section */
+.dpet-section {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dpet-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dpet-section-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Buttons */
+.dpet-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.dpet-btn-primary {
+  display: none; /* скрыть кнопку добавления */
+}
+
+.dpet-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.dpet-btn-success {
+  background: linear-gradient(135deg, #ff4a4a 0%, #b30000 100%);
+  color: #fff;
+}
+
+.dpet-btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 74, 74, 0.35);
+}
+
+.dpet-btn-danger {
+  background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+  color: white;
+}
+
+.dpet-btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(238, 9, 121, 0.4);
+}
+
+.dpet-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Empty State */
+.dpet-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #888;
+}
+
+.dpet-empty p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.dpet-empty p:first-child {
+  font-size: 1.3rem;
+  color: #aaa;
+  margin-bottom: 1rem;
+}
+
+.dpet-hint {
+  font-size: 0.9rem !important;
+  color: #666 !important;
+}
+
+/* Package Grid */
+.dpet-packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.dpet-package-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dpet-package-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 74, 74, 0.45);
+  box-shadow: 0 8px 24px rgba(255, 74, 74, 0.2);
+}
+
+.dpet-package-card.selected {
+  border-color: rgba(255, 74, 74, 0.65);
+  background: rgba(255, 74, 74, 0.1);
+}
+
+.dpet-package-preview {
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dpet-package-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+.dpet-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.dpet-zoom-modal {
+  background: rgba(20, 20, 22, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 80vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.dpet-zoom-modal h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.dpet-zoom-modal img {
+  max-width: 75vw;
+  max-height: 60vh;
+  object-fit: contain;
+}
+
+.dpet-package-placeholder {
+  font-size: 4rem;
+  opacity: 0.3;
+}
+
+.dpet-package-info {
+  flex: 1;
+}
+
+.dpet-package-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.dpet-author {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.dpet-description {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: #aaa;
+  line-height: 1.4;
+}
+
+/* Pet Grid */
+.dpet-pets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.dpet-pet-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.dpet-pet-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 74, 74, 0.45);
+  box-shadow: 0 4px 16px rgba(255, 74, 74, 0.18);
+}
+
+.dpet-pet-info {
+  flex: 1;
+}
+
+.dpet-pet-info h3 {
+  margin: 0 0 0.75rem 0;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.dpet-state,
+.dpet-position {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Loading */
+.dpet-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.dpet-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: dpet-spin 1s linear infinite;
+}
+
+@keyframes dpet-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dpet-loading p {
+  margin-top: 1rem;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dpet-manager {
+    padding: 1rem;
+  }
+
+  .dpet-header h1 {
+    font-size: 2rem;
+  }
+
+  .dpet-packages-grid,
+  .dpet-pets-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dpet-section {
+    padding: 1.5rem;
+  }
+
+  .dpet-section-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .dpet-view-switcher {
+    max-width: 100%;
+  }
+}

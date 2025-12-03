@@ -1,6 +1,6 @@
 [package]
 name = "cursorverse"
-version = "1.5.0"
+version = "1.6.0"
 description = "Полнофункциональная система персонализации Windows"
 authors = ["CursorVerse Team"]
 license = ""
@@ -13,6 +13,7 @@ custom-protocol = ["tauri/custom-protocol"]
 
 [build-dependencies]
 tauri-build = { workspace = true, features = [] }
+winres = "0.1"
 
 [dependencies]
 slu-ipc = { workspace = true }
@@ -21,7 +22,7 @@ seelen-core = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 serde_yaml = { workspace = true }
-tauri = { workspace = true, features = [ "tray-icon", "image-png", "image-ico"] }
+tauri = { workspace = true, features = [ "tray-icon", "image-png", "image-ico", "webview-data-url"] }
 tauri-plugin-shell = { workspace = true }
 tauri-plugin-dialog = { workspace = true }
 tauri-plugin-autostart = { workspace = true }
@@ -31,8 +32,10 @@ tauri-plugin-fs = { workspace = true }
 tauri-plugin-process = { workspace = true }
 tauri-plugin-deep-link = { workspace = true }
 tauri-plugin-http = { workspace = true }
+tauri-plugin-global-shortcut = { workspace = true }
 winreg = { workspace = true }
 regex = { workspace = true }
+scraper = { workspace = true }
 winapi = { version = "0.3", features = ["winuser", "shellapi", "dwmapi", "winnt", "processthreadsapi", "wingdi", "d3d11", "psapi", "commdlg", "libloaderapi", "shobjidl_core", "shlobj", "objidl", "wtypes", "combaseapi", "ole2"] }
 reqwest = { workspace = true }
 zip = { version = "0.6" }

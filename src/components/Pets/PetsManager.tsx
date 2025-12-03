@@ -14,8 +14,8 @@ interface Pet {
 interface CatalogPet {
   id: string;
   name: string;
-  category: string;
-  preview: string;
+  preview_path?: string;
+  states?: string[];
 }
 
 export const PetsManager: React.FC<{ onClose: () => void }> = ({ onClose }) => {
@@ -23,14 +23,11 @@ export const PetsManager: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [availablePets, setAvailablePets] = useState<CatalogPet[]>([]);
   const [selectedPetId, setSelectedPetId] = useState<string | null>(null);
   const [catalogLoading, setCatalogLoading] = useState(true);
-  const [addingPet, setAddingPet] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const selectedPet = availablePets.find((pet) => pet.id === selectedPetId) || null;
 
-  const categories = ['all', ...Array.from(new Set(availablePets.map(pet => pet.category)))].sort();
-  const filteredPets = selectedCategory === 'all' 
-    ? availablePets 
-    : availablePets.filter(pet => pet.category === selectedCategory);
+  // Категории убраны; показываем весь список
+  const filteredPets = availablePets;
 
   useEffect(() => {
     loadPets();
@@ -39,7 +36,7 @@ export const PetsManager: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
   const loadPets = async () => {
     try {
-      const loadedPets = await invoke<Pet[]>('get_all_pets');
+      const loadedPets = await invoke<Pet[]>('dpet_get_all_pets');
       setPets(loadedPets);
     } catch (error) {
       console.error('Failed to load pets:', error);
@@ -49,7 +46,8 @@ export const PetsManager: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const loadAvailablePets = async () => {
     try {
       setCatalogLoading(true);
-      const catalog = await invoke<CatalogPet[]>('get_available_pets');
+      // Загружаем пакеты из `%LOCALAPPDATA%/CursorVerse/CustomPets`
+      const catalog = await invoke<CatalogPet[]>('dpet_load_packages');
       setAvailablePets(catalog);
       setSelectedPetId((current) => {
         if (current && catalog.some((pet) => pet.id === current)) {
@@ -64,22 +62,9 @@ export const PetsManager: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     }
   };
 
-  const handleAddPet = async () => {
-    if (!selectedPetId) return;
-    try {
-      setAddingPet(true);
-      await invoke('add_pet_from_catalog', { petId: selectedPetId });
-      await loadPets();
-    } catch (error) {
-      console.error('Failed to add pet:', error);
-    } finally {
-      setAddingPet(false);
-    }
-  };
-
   const handleRemovePet = async (petId: string) => {
     try {
-      await invoke('remove_pet', { petId });
+      await invoke('dpet_remove_pet', { petId });
       await loadPets();
     } catch (error) {
       console.error('Failed to remove pet:', error);
@@ -105,21 +90,11 @@ export const PetsManager: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               <p className="catalog-status">Загружаем коллекцию...</p>
             ) : availablePets.length === 0 ? (
               <p className="catalog-status">
-                Папка CustomPets пуста. Добавьте файлы в C:\\Users\\ВАШЕ_ИМЯ\\AppData\\Local\\CursorVerse\\CustomPets
+                Папка CustomPets пуста. Добавьте файлы в %LOCALAPPDATA%\\CursorVerse\\CustomPets
               </p>
             ) : (
               <>
-                <div className="category-filter">
-                  {categories.map((cat) => (
-                    <button
-                      key={cat}
-                      className={`category-button ${selectedCategory === cat ? 'active' : ''}`}
-                      onClick={() => setSelectedCategory(cat)}
-                    >
-                      {cat === 'all' ? '🌟 Все' : cat}
-                    </button>
-                  ))}
-                </div>
+                {/* Фильтр категорий удалён */}
                 <div className="catalog-grid">
                   {filteredPets.map((pet) => (
                     <button
@@ -127,7 +102,7 @@ export const PetsManager: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       className={`catalog-card ${selectedPetId === pet.id ? 'selected' : ''}`}
                       onClick={() => setSelectedPetId(pet.id)}
                     >
-                      <img src={pet.preview} alt={pet.name} />
+                      <img src={pet.preview_path || ''} alt={pet.name} />
                       <span>{pet.name}</span>
                     </button>
                   ))}
@@ -137,7 +112,7 @@ export const PetsManager: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
             {selectedPet && (
               <div className="selected-pet-preview">
-                <img src={selectedPet.preview} alt={selectedPet.name} />
+                <img src={selectedPet.preview_path || ''} alt={selectedPet.name} />
                 <div>
                   <h4>{selectedPet.name}</h4>
                   <p>Будет добавлен в виде отдельного окна.</p>
@@ -145,13 +120,7 @@ export const PetsManager: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
             )}
 
-            <button
-              className="add-pet-button"
-              onClick={handleAddPet}
-              disabled={!selectedPetId || addingPet}
-            >
-              {addingPet ? 'Добавляем...' : 'Добавить выбранного питомца'}
-            </button>
+            {/* Кнопка добавления удалена по запросу пользователя */}
           </div>
 
           <div className="pets-list">

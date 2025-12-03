@@ -1,0 +1,11 @@
+
+
+[2025-12-01 19:03:19] Client version: 1763795194
+[2025-12-01 19:03:19] Loading workshop items for 0 installed apps for user [a:1:1691786549]:
+[2025-12-01 19:03:23] [AppID 1980920] Loaded workshop items in "C:\Users\shust\Desktop\cursorverse-tauri\steamapps\workshop" (0 installed, 0 needed)
+[2025-12-01 19:03:23] [AppID 1980920] Download item 2970172335 requested by app
+[2025-12-01 19:03:23] [AppID 1980920] Starting Workshop download job (requested item 2970172335 )
+[2025-12-01 19:03:23] [AppID 1980920] Detected workshop change : changed cached item 2970172335, new handle 2074513917297586749 
+[2025-12-01 19:03:24] [AppID 1980920] Download item 2970172335 result : OK
+[2025-12-01 19:03:24] [AppID 1980920] Finished Workshop download job : No Error
+[2025-12-01 19:03:24] [AppID 1980920] Updating workshop item details failed with Failure

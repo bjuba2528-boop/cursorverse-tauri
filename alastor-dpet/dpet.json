@@ -1,0 +1,28 @@
+{
+  "name": "Alastor - Radio Demon",
+  "author": "Hazbin Hotel / EmberCL (Shimeji)",
+  "fps": 24,
+  "scale": 1.2,
+  "behavior_change_rarity": 30.0,
+  
+  "can_move": true,
+  "can_drag": true,
+  "can_click": true,
+  "can_fall": true,
+  
+  "move_speed": 3.0,
+  
+  "physics": {
+    "max_velocity": 50.0,
+    "friction": 0.88,
+    "gravity": 2.5
+  },
+  
+  "animations": {
+    "idle": ["animations/idle/placeholder.gif"],
+    "walk": ["animations/walk/placeholder.gif"],
+    "fall": ["animations/fall/placeholder.gif"],
+    "drag": ["animations/drag/placeholder.gif"],
+    "click": ["animations/click/placeholder.gif"]
+  }
+}
